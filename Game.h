@@ -7,11 +7,18 @@
 
 #include <memory>
 #include <SFML/Graphics.hpp>
+#include "roadfighter/Entity.h"
+#include "roadfighter/World.h"
 
 class Game {
     private:
+
         std::shared_ptr<sf::RenderWindow> window;
+
+        std::shared_ptr<roadfighter::World> world;
+
     public:
+
         void run();
 };
 

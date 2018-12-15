@@ -8,6 +8,8 @@
 namespace roadfighter {
     class Entity {
 
+        public:
+            virtual void draw() = 0;
     };
 
 }

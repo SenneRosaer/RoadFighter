@@ -6,10 +6,13 @@
 #define ROADFIGHTER_PLAYERCAR_H
 
 #include "Entity.h"
+#include <iostream>
+
 
 namespace roadfighter {
     class PlayerCar : public roadfighter::Entity {
-
+        protected:
+            std::pair<float,float> centralpos = {0, -2};
     };
 }
 

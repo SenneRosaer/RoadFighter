@@ -11,9 +11,15 @@
 namespace roadfighter {
     class World : public roadfighter::Entity {
 
-        public:
+        private:
             std::shared_ptr<roadfighter::Entity> Player;
 
+        public:
+            World();
+
+            void draw() override;
+
+            void setPlayer(const std::shared_ptr<Entity> &Player);
     };
 
 }

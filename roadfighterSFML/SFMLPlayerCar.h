@@ -14,9 +14,13 @@ class PlayerCar : public roadfighter::PlayerCar {
         private:
             std::shared_ptr<sf::RenderWindow> window;
             sf::Sprite sprite;
+            sf::Texture texture;
 
-        public:
+
+public:
             PlayerCar(const std::shared_ptr<sf::RenderWindow> window);
+
+    void draw() override;
 };
 }
 
