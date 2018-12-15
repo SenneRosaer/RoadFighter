@@ -14,7 +14,7 @@ class SFMLFactory : public roadfighter::EntityFactory{
     private:
         std::shared_ptr<sf::RenderWindow> window;
     public:
-        SFMLFactory();
+        SFMLFactory(std::shared_ptr<sf::RenderWindow> window);
 
         std::shared_ptr<roadfighter::Entity> createPlayerCar() override;
 };

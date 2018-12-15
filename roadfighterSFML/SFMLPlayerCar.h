@@ -13,6 +13,7 @@ namespace roadfighterSFML {
 class PlayerCar : public roadfighter::PlayerCar {
         private:
             std::shared_ptr<sf::RenderWindow> window;
+            sf::Sprite sprite;
 
         public:
             PlayerCar(const std::shared_ptr<sf::RenderWindow> window);

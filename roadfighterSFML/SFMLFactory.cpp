@@ -9,6 +9,6 @@ std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerC
     return std::make_shared<roadfighterSFML::PlayerCar>(window);
 }
 
-roadfighterSFML::SFMLFactory::SFMLFactory() {
-    window.get()->create(sf::VideoMode(300,400),"RoadFighter");
+roadfighterSFML::SFMLFactory::SFMLFactory(std::shared_ptr<sf::RenderWindow> window) {
+    this->window = window;
 }
