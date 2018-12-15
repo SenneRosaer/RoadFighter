@@ -15,7 +15,7 @@ class PlayerCar : public roadfighter::PlayerCar {
             std::shared_ptr<sf::RenderWindow> window;
 
         public:
-    PlayerCar(const std::shared_ptr<sf::RenderWindow> window);
+            PlayerCar(const std::shared_ptr<sf::RenderWindow> window);
 };
 }
 
