@@ -16,14 +16,14 @@ namespace roadfighterSFML {
 
     private:
         std::shared_ptr<sf::RenderWindow> window;
-        sf::Sprite sprite;
+        sf::RectangleShape BG1;
+        sf::RectangleShape BG2;
         sf::Texture texture;
     public:
         SFMLBackground(const std::shared_ptr<sf::RenderWindow> &window);
 
         void draw() override;
 
-        void update() override;
     };
 
 }

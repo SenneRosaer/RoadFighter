@@ -51,6 +51,8 @@ Game::Game() {
     window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800,600),"TheGame");
     world = std::make_shared<roadfighter::World>();
     factory = std::make_shared<roadfighterSFML::SFMLFactory>(window);
+
     world->setPlayer(factory->createPlayerCar());
+    world->setBackground(factory->createBackground());
 
 }

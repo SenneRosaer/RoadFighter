@@ -6,11 +6,16 @@
 #define ROADFIGHTER_BACKGROUND_H
 
 #include "Entity.h"
+#include <iostream>
 
 namespace roadfighter {
     class Background: public Entity {
-        public:
+        protected:
+            std::pair<float,float> centralpos1 = {-1, 0};
+            std::pair<float,float> centralpos2 = {-1,6};
 
+        public:
+        void update() override;
     };
 }
 

@@ -7,10 +7,10 @@
 
 void roadfighter::PlayerCar::move(std::string input) {
     if(input == "left"){
-        centralpos.first = centralpos.first - 0.1;
+        centralpos.first = centralpos.first - 0.08;
     }
     else if (input == "right"){
-        centralpos.first = centralpos.first + 0.1;
+        centralpos.first = centralpos.first + 0.08;
     }
 }
 
@@ -41,3 +41,4 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs) {
         }
     }
 }
+

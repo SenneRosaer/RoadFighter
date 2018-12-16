@@ -13,7 +13,7 @@ roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> wi
 
     sprite.setTexture(texture);
     sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
-    sprite.scale(1.2, 1.2);
+    sprite.scale(1.3, 1.3);
 }
 
 

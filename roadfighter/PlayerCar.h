@@ -20,6 +20,10 @@ namespace roadfighter {
             void UpdateMovement(std::vector<std::string> inputs);
 
             void move(std::string input);
+
+
+
+    public:
     };
 }
 
