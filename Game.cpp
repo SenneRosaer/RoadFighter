@@ -7,9 +7,10 @@
 
 
 void Game::run() {
-    window = std::make_shared<sf::RenderWindow>(sf::VideoMode(300,400),"TheGame");
-    world = std::make_shared<roadfighter::World>();
-    roadfighterSFML::SFMLFactory Factory(window);
+
+
+    //TODO op c++ manier oplossen
+    window->setFramerateLimit(30);
 
 
     while (window->isOpen())
@@ -23,11 +24,33 @@ void Game::run() {
                 window->close();
         }
 
+        world->update();
         window->clear();
 
-        world->setPlayer(Factory.createPlayerCar());
+        /*
+        sf::Texture testTexture;
+        testTexture.loadFromFile("../Sprites/road.piko");
+        //154 192  77  96
+        sf::Sprite testrect;
+        testrect.setTexture(testTexture);
+        //testrect.setOrigin(77,96);
+        testrect.scale(1.6,2);
+        window->draw(testrect);
+        */
+
         world->draw();
+
+
+
         window->display();
     }
+
+}
+
+Game::Game() {
+    window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800,600),"TheGame");
+    world = std::make_shared<roadfighter::World>();
+    factory = std::make_shared<roadfighterSFML::SFMLFactory>(window);
+    world->setPlayer(factory->createPlayerCar());
 
 }

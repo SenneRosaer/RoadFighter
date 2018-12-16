@@ -7,12 +7,19 @@
 
 #include "Entity.h"
 #include <iostream>
-
+#include <vector>
 
 namespace roadfighter {
     class PlayerCar : public roadfighter::Entity {
         protected:
+
             std::pair<float,float> centralpos = {0, -2};
+
+            int speed = 0;
+
+            void UpdateMovement(std::vector<std::string> inputs);
+
+            void move(std::string input);
     };
 }
 

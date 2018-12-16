@@ -9,6 +9,7 @@
 #include <SFML/Graphics.hpp>
 #include "roadfighter/Entity.h"
 #include "roadfighter/World.h"
+#include "roadfighterSFML/SFMLFactory.h"
 
 class Game {
     private:
@@ -17,9 +18,12 @@ class Game {
 
         std::shared_ptr<roadfighter::World> world;
 
-    public:
+        std::shared_ptr<roadfighterSFML::SFMLFactory> factory;
 
-        void run();
+    public:
+    Game();
+
+    void run();
 };
 
 

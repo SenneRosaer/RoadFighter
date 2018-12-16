@@ -15,3 +15,7 @@ roadfighter::World::World() {
 void roadfighter::World::setPlayer(const std::shared_ptr<roadfighter::Entity> &Player) {
     World::Player = Player;
 }
+
+void roadfighter::World::update() {
+    Player->update();
+}

@@ -21,6 +21,8 @@ public:
             PlayerCar(const std::shared_ptr<sf::RenderWindow> window);
 
     void draw() override;
+
+    void update() override;
 };
 }
 

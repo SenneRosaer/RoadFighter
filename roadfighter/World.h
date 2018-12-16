@@ -20,6 +20,8 @@ namespace roadfighter {
             void draw() override;
 
             void setPlayer(const std::shared_ptr<Entity> &Player);
+
+        void update() override;
     };
 
 }
