@@ -13,7 +13,9 @@ namespace roadfighter {
 
             virtual void update() = 0;
 
+            virtual void update(int speed) = 0;
 
+            virtual int getSpeed() = 0;
     };
 
 }

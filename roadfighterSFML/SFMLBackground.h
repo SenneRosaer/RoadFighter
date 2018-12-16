@@ -18,6 +18,8 @@ namespace roadfighterSFML {
         std::shared_ptr<sf::RenderWindow> window;
         sf::RectangleShape BG1;
         sf::RectangleShape BG2;
+        sf::RectangleShape BG3;
+
         sf::Texture texture;
     public:
         SFMLBackground(const std::shared_ptr<sf::RenderWindow> &window);

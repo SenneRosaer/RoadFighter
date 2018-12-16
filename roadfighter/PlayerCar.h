@@ -21,7 +21,10 @@ namespace roadfighter {
 
             void move(std::string input);
 
+    public:
+        void update(int speed) override;
 
+        int getSpeed() override;
 
     public:
     };

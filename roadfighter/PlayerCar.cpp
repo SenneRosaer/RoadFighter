@@ -20,7 +20,7 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs) {
     bool breaking = false;
     for (int i = 0; i < inputs.size(); i++) {
         if(inputs[i] == "up"){
-            if(this->speed < 400) {
+            if(this->speed < 200) {
                 this->speed = this->speed + 2;
                 speed = true;
             }
@@ -31,14 +31,24 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs) {
             breaking = true;
         }
     }
+    //Breaking fixen
     if(!speed){
         if(this->speed > 0) {
             if(breaking){
-                this->speed = -2;
+                this->speed = this->speed - 2;
             } else {
                 this->speed = this->speed - 1;
             }
         }
     }
+
+}
+
+void roadfighter::PlayerCar::update(int speed) {
+
+}
+
+int roadfighter::PlayerCar::getSpeed() {
+    return speed;
 }
 

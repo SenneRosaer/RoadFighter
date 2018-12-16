@@ -20,9 +20,17 @@ void roadfighter::World::setPlayer(const std::shared_ptr<roadfighter::Entity> &P
 
 void roadfighter::World::update() {
     Player->update();
-    Background->update();
+    Background->update(Player->getSpeed());
 }
 
 void roadfighter::World::setBackground(const std::shared_ptr<roadfighter::Entity> &Background) {
     World::Background = Background;
+}
+
+void roadfighter::World::update(int speed) {
+
+}
+
+int roadfighter::World::getSpeed() {
+    return 0;
 }

@@ -26,6 +26,10 @@ namespace roadfighter {
         void setBackground(const std::shared_ptr<Entity> &Background);
 
         void update() override;
+
+        void update(int speed) override;
+
+        int getSpeed() override;
     };
 
 }

@@ -13,9 +13,14 @@ namespace roadfighter {
         protected:
             std::pair<float,float> centralpos1 = {-1, 0};
             std::pair<float,float> centralpos2 = {-1,6};
+            std::pair<float,float> centralpos3 = {-1,12};
 
         public:
         void update() override;
+
+        void update(int speed) override;
+
+        int getSpeed() override;
     };
 }
 
