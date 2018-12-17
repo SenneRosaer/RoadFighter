@@ -11,7 +11,7 @@ void roadfighter::Background::update() {
 
 void roadfighter::Background::update(int speed) {
     //TODO met speed player aanpassen
-    float movement = 0.005 * speed;
+    float movement = 0.01 * speed/10;
     centralpos1.second = centralpos1.second - movement;
     centralpos2.second = centralpos2.second - movement;
     centralpos3.second = centralpos3.second - movement;

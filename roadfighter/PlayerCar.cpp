@@ -6,11 +6,16 @@
 
 
 void roadfighter::PlayerCar::move(std::string input) {
+    //TODO fix lim muren
     if(input == "left"){
-        centralpos.first = centralpos.first - 0.08;
+        if(centralpos.first > - 1.861) {
+            centralpos.first = centralpos.first - 0.07;
+        }
     }
     else if (input == "right"){
-        centralpos.first = centralpos.first + 0.08;
+        if(centralpos.first < -0.065) {
+            centralpos.first = centralpos.first + 0.07;
+        }
     }
 }
 
@@ -31,14 +36,17 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs) {
             breaking = true;
         }
     }
-    //Breaking fixen
+
     if(!speed){
-        if(this->speed > 0) {
+        if(this->speed >= 0) {
             if(breaking){
                 this->speed = this->speed - 2;
             } else {
                 this->speed = this->speed - 1;
             }
+        }
+        if(this->speed < 0){
+            this->speed = 0;
         }
     }
 

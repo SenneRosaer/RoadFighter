@@ -13,7 +13,7 @@ namespace roadfighter {
     class PlayerCar : public roadfighter::Entity {
         protected:
 
-            std::pair<float,float> centralpos = {0, -2};
+            std::pair<float,float> centralpos = {-0.9, -2};
 
             int speed = 0;
 
