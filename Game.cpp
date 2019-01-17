@@ -4,18 +4,38 @@
 
 #include "Game.h"
 #include "roadfighterSFML/SFMLFactory.h"
-
+#include "Singleton/Random.h"
+#include <ctime>
+#include <chrono>
+#include <thread>
 
 void Game::run() {
 
 
     //TODO op c++ manier oplossen
-    window->setFramerateLimit(30);
+    //window->setFramerateLimit(30);
 
 
+    std::chrono::system_clock::time_point a = std::chrono::system_clock::now();
+    std::chrono::system_clock::time_point b = std::chrono::system_clock::now();
+
+
+    std::chrono::system_clock::time_point test;
+    std::chrono::system_clock::time_point test2;
+
+    bool first = true;
     while (window->isOpen())
     {
+        a = std::chrono::system_clock::now();
+        std::chrono::duration<double,std::milli> frameTime = a -b;
 
+        if(frameTime.count() < 33){
+            std::chrono::duration<double,std::milli > t(33 - frameTime.count());
+            auto tDuration = std::chrono::duration_cast<std::chrono::milliseconds>(t);
+            std::this_thread::sleep_for(std::chrono::milliseconds(tDuration.count()));
+        }
+
+        b = std::chrono::system_clock::now();
 
         sf::Event event;
         while (window->pollEvent(event))
@@ -25,18 +45,34 @@ void Game::run() {
         }
 
         world->update();
+        std::cout << world->respawnTimer << std::endl;
+        if(world->getPlayer() == nullptr and world->respawnTimer == 0){
+            world->setPlayer(factory->createPlayerCar());
+            world->respawnTimer = 30;
+        }else if(world->getPlayer() == nullptr){
+            world->respawnTimer--;
+        }
+        if(world->isShoot()){
+            double first = world->getPlayer()->getObjbox()->centralpos.first;
+            double second = world->getPlayer()->getObjbox()->centralpos.second;
+            world->addBullet(factory->createBullet(first,second));
+        }
+        std::chrono::duration<double,std::milli > testing = test - std::chrono::system_clock::now();
+        if(first or testing.count() < -1000) {
+            if(world->getPlayer() != nullptr) {
+                if (world->getPlayer()->getSpeed() > 150 && world->getPassingCars().size() < 5) {
+                    first = false;
+                    test = std::chrono::system_clock::now();
+                    std::chrono::duration<double, std::milli> t2 = test - b;
+                    world->addPassingCar(factory->createPassingCar(Random::getInstance().getRandom()));
+
+                }
+            }
+        }
+
         window->clear();
 
-        /*
-        sf::Texture testTexture;
-        testTexture.loadFromFile("../Sprites/road.piko");
-        //154 192  77  96
-        sf::Sprite testrect;
-        testrect.setTexture(testTexture);
-        //testrect.setOrigin(77,96);
-        testrect.scale(1.6,2);
-        window->draw(testrect);
-        */
+
 
         world->draw();
 
@@ -54,5 +90,6 @@ Game::Game() {
 
     world->setPlayer(factory->createPlayerCar());
     world->setBackground(factory->createBackground());
+
 
 }

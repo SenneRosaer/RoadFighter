@@ -12,7 +12,13 @@ class Transformation {
 private:
     std::pair<int,int> Screensize;
 public:
-    std::pair<float,float> Transform(std::pair<float,float>input);
+    std::pair<double,double> Transform(std::pair<double,double>input);
+
+    std::pair<double,double> ReverseTransform(std::pair<double,double> input);
+
+    double heightReverse(double in);
+
+    double widthReverse(double in);
 
     void setScreensize(const std::pair<int, int> &Screensize);
 

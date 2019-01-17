@@ -11,7 +11,7 @@ void roadfighter::Background::update() {
 
 void roadfighter::Background::update(int speed) {
     //TODO met speed player aanpassen
-    float movement = 0.01 * speed/10;
+    double movement = 0.01 * speed/10;
     centralpos1.second = centralpos1.second - movement;
     centralpos2.second = centralpos2.second - movement;
     centralpos3.second = centralpos3.second - movement;
@@ -31,4 +31,25 @@ void roadfighter::Background::update(int speed) {
 
 int roadfighter::Background::getSpeed() {
     return 0;
+}
+
+
+bool roadfighter::Background::Delete() {
+    return toDel;
+}
+
+ObjBox roadfighter::Background::getObjBox() {
+    return ObjBox(std::pair<double,double>(), 0, 0);
+}
+
+std::shared_ptr<ObjBox> roadfighter::Background::getObjbox() {
+    return std::shared_ptr<ObjBox>();
+}
+
+void roadfighter::Background::setDelete(bool del) {
+    toDel = del;
+}
+
+bool roadfighter::Background::Shoot() {
+    return false;
 }

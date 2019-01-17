@@ -8,13 +8,13 @@
 void roadfighter::PlayerCar::move(std::string input) {
     //TODO fix lim muren
     if(input == "left"){
-        if(centralpos.first > - 1.861) {
-            centralpos.first = centralpos.first - 0.07;
+        if(centralpos.first > - 1.84) {
+            centralpos.first = centralpos.first - 0.06;
         }
     }
     else if (input == "right"){
-        if(centralpos.first < -0.065) {
-            centralpos.first = centralpos.first + 0.07;
+        if(centralpos.first < -0.07) {
+            centralpos.first = centralpos.first + 0.06;
         }
     }
 }
@@ -23,6 +23,16 @@ void roadfighter::PlayerCar::move(std::string input) {
 void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs) {
     bool speed = false;
     bool breaking = false;
+    if(reloading){
+        shoot = false;
+        if(reload >= 1) {
+            reload--;
+        }else {
+            reload = 30;
+            reloading = false;
+
+        }
+    }
     for (int i = 0; i < inputs.size(); i++) {
         if(inputs[i] == "up"){
             if(this->speed < 200) {
@@ -35,12 +45,16 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs) {
         if(inputs[i] == "down"){
             breaking = true;
         }
+        if(inputs[i] == "space" && !reloading){
+            shoot = true;
+            reloading = true;
+        }
     }
 
     if(!speed){
         if(this->speed >= 0) {
             if(breaking){
-                this->speed = this->speed - 2;
+                this->speed = this->speed - 4;
             } else {
                 this->speed = this->speed - 1;
             }
@@ -49,6 +63,7 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs) {
             this->speed = 0;
         }
     }
+
 
 }
 
@@ -60,3 +75,23 @@ int roadfighter::PlayerCar::getSpeed() {
     return speed;
 }
 
+
+bool roadfighter::PlayerCar::Delete() {
+    return toDel;
+}
+
+ObjBox roadfighter::PlayerCar::getObjBox() {
+    ObjBox(centralpos,height,width);
+}
+
+std::shared_ptr<ObjBox> roadfighter::PlayerCar::getObjbox() {
+    return std::make_shared<ObjBox>(centralpos,height,width);
+}
+
+void roadfighter::PlayerCar::setDelete(bool del) {
+    toDel = del;
+}
+
+bool roadfighter::PlayerCar::Shoot() {
+    return  shoot;
+}

@@ -13,18 +13,40 @@ namespace roadfighter {
     class PlayerCar : public roadfighter::Entity {
         protected:
 
-            std::pair<float,float> centralpos = {-0.9, -2};
+            std::pair<double,double> centralpos = {-0.9, -2};
 
             int speed = 0;
+
+            bool shoot = false;
+
+            int reload = 30;
+
+            bool reloading = false;
 
             void UpdateMovement(std::vector<std::string> inputs);
 
             void move(std::string input);
 
+            bool toDel = false;
+
+        double height;
+
+        double width;
+
     public:
         void update(int speed) override;
 
         int getSpeed() override;
+
+        bool Delete() override;
+
+        ObjBox getObjBox() override;
+
+        std::shared_ptr<ObjBox> getObjbox() override;
+
+        void setDelete(bool del) override;
+
+        bool Shoot() override;
 
     public:
     };

@@ -18,7 +18,11 @@ class SFMLFactory : public roadfighter::EntityFactory{
 
         std::shared_ptr<roadfighter::Entity> createPlayerCar() override;
 
-    std::shared_ptr<roadfighter::Entity> createBackground() override;
+        std::shared_ptr<roadfighter::Entity> createBackground() override;
+
+        std::shared_ptr<roadfighter::Entity> createPassingCar(double i) override;
+
+    std::shared_ptr<roadfighter::Entity> createBullet(double first, double second) override;
 };
 }
 

@@ -9,9 +9,9 @@ roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::Render
     //TODO fix properheid of andere manier
     texture.loadFromFile("../Sprites/road2.png");
 
+    //repeatble intrect sprite (texture,intrect) ??
 
-
-    BG1.setSize(sf::Vector2f(window->getSize().x/2,window->getSize().y+200));
+    BG1.setSize(sf::Vector2f((window->getSize().x/2),window->getSize().y+200));
     BG1.setOrigin(window->getSize().x/4,(window->getSize().y/2) + 100);
     BG1.setTexture(&texture);
     std::cout << BG1.getSize().y << std::endl;
@@ -20,9 +20,9 @@ roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::Render
 }
 
 void roadfighterSFML::SFMLBackground::draw() {
-    std::pair<float,float> position = Transformation::getInstance(window->getSize().x,window->getSize().y).Transform(centralpos1);
-    std::pair<float,float> position2 = Transformation::getInstance(window->getSize().x,window->getSize().y).Transform(centralpos2);
-    std::pair<float,float> position3 = Transformation::getInstance(window->getSize().x,window->getSize().y).Transform(centralpos3);
+    std::pair<double,double> position = Transformation::getInstance(window->getSize().x,window->getSize().y).Transform(centralpos1);
+    std::pair<double,double> position2 = Transformation::getInstance(window->getSize().x,window->getSize().y).Transform(centralpos2);
+    std::pair<double,double> position3 = Transformation::getInstance(window->getSize().x,window->getSize().y).Transform(centralpos3);
 
 
     BG1.setPosition(position.first,position.second);

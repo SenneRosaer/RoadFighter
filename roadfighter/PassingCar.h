@@ -1,25 +1,32 @@
 //
-// Created by senne on 12/16/18.
+// Created by senne on 12/21/18.
 //
 
-#ifndef ROADFIGHTER_BACKGROUND_H
-#define ROADFIGHTER_BACKGROUND_H
+#ifndef ROADFIGHTER_PASSINGCAR_H
+#define ROADFIGHTER_PASSINGCAR_H
 
 #include "Entity.h"
 #include <iostream>
 
 namespace roadfighter {
-    class Background: public Entity {
+    class PassingCar : public roadfighter::Entity {
         protected:
-            std::pair<double,double> centralpos1 = {-1, 0};
-            std::pair<double,double> centralpos2 = {-1,6};
-            std::pair<double,double> centralpos3 = {-1,12};
+                std::pair<double,double> centralpos;
+
+                int speed = 150;
 
         bool toDel = false;
 
-        public:
+        double height;
+
+        double width;
+
+    public:
+
+        //Auto's gaan bij genereren
         void update() override;
 
+        //Beweging van de bestaande auto's
         void update(int speed) override;
 
         int getSpeed() override;
@@ -33,8 +40,7 @@ namespace roadfighter {
         void setDelete(bool del) override;
 
         bool Shoot() override;
-
     };
 }
 
-#endif //ROADFIGHTER_BACKGROUND_H
+#endif //ROADFIGHTER_PASSINGCAR_H

@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-int Random::getRandom() {
+double Random::getRandom() {
     srand( time(NULL));
-    int random = rand() % 4+ 0;
-
+    int random = rand() % positions.size() + 0;
+    return positions[random];
 }
