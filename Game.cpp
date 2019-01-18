@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "roadfighterSFML/SFMLFactory.h"
 #include "Singleton/Random.h"
+#include "Observer/ObserverScore.h"
 #include <ctime>
 #include <chrono>
 #include <thread>
@@ -14,7 +15,7 @@ void Game::run() {
 
     //TODO op c++ manier oplossen
     //window->setFramerateLimit(30);
-
+    std::shared_ptr<ObserverScore> obs = std::make_shared<ObserverScore>(world,window);
 
     std::chrono::system_clock::time_point a = std::chrono::system_clock::now();
     std::chrono::system_clock::time_point b = std::chrono::system_clock::now();
@@ -22,6 +23,10 @@ void Game::run() {
 
     std::chrono::system_clock::time_point test;
     std::chrono::system_clock::time_point test2;
+
+
+
+
 
     bool first = true;
     while (window->isOpen())
@@ -44,19 +49,7 @@ void Game::run() {
                 window->close();
         }
 
-        world->update();
-        std::cout << world->respawnTimer << std::endl;
-        if(world->getPlayer() == nullptr and world->respawnTimer == 0){
-            world->setPlayer(factory->createPlayerCar());
-            world->respawnTimer = 30;
-        }else if(world->getPlayer() == nullptr){
-            world->respawnTimer--;
-        }
-        if(world->isShoot()){
-            double first = world->getPlayer()->getObjbox()->centralpos.first;
-            double second = world->getPlayer()->getObjbox()->centralpos.second;
-            world->addBullet(factory->createBullet(first,second));
-        }
+
         std::chrono::duration<double,std::milli > testing = test - std::chrono::system_clock::now();
         if(first or testing.count() < -1000) {
             if(world->getPlayer() != nullptr) {
@@ -72,7 +65,18 @@ void Game::run() {
 
         window->clear();
 
-
+        world->update();
+        if(world->getPlayer() == nullptr and world->respawnTimer == 0){
+            world->setPlayer(factory->createPlayerCar());
+            world->respawnTimer = 30;
+        }else if(world->getPlayer() == nullptr){
+            world->respawnTimer--;
+        }
+        if(world->isShoot()){
+            double first = world->getPlayer()->getObjbox()->centralpos.first;
+            double second = world->getPlayer()->getObjbox()->centralpos.second;
+            world->addBullet(factory->createBullet(first,second));
+        }
 
         world->draw();
 
@@ -92,4 +96,7 @@ Game::Game() {
     world->setBackground(factory->createBackground());
 
 
+
+
 }
+

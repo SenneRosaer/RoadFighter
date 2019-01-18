@@ -8,11 +8,11 @@
 #include <memory>
 #include "Entity.h"
 #include <vector>
-
+#include "../Observer/Subject.h"
 class Observer;
 
 namespace roadfighter {
-    class World : public roadfighter::Entity {
+    class World : public roadfighter::Entity, public Subject {
 
         private:
             std::shared_ptr<roadfighter::Entity> Player;
@@ -24,6 +24,19 @@ namespace roadfighter {
             std::vector<std::shared_ptr<roadfighter::Entity>> Bullets;
 
             bool shoot = false;
+
+            //score
+            int score = 0;
+
+            int destroyedCars = 0;
+            int crashes = 0;
+
+            //Distance
+            int SpeedLoop = 10;
+
+            int Distance = 0;
+
+            int speedAVG = 0;
 
             std::vector<std::shared_ptr<Observer>> observers;
 
@@ -68,7 +81,14 @@ namespace roadfighter {
 
         bool isShoot() const;
 
-        void notify();
+
+        void calcDistance();
+
+        void calcScore();
+
+        void attach(std::shared_ptr<Observer> observer) override;
+
+        void notify(int scoreUpdate) override;
     };
 
 }

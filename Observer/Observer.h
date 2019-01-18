@@ -8,22 +8,25 @@
 #include <memory>
 #include "../roadfighter/Entity.h"
 #include "../roadfighter/World.h"
+#include "../Game.h"
 
 
-class Observer {
+class Observer : public std::enable_shared_from_this<Observer>{
     std::shared_ptr<roadfighter::World> obj;
 
 
 public:
     Observer(std::shared_ptr<roadfighter::World> obj);
 
-    virtual void update() = 0;
+
+
+    virtual void update(int score) = 0;
 
 protected:
 
     const std::shared_ptr<roadfighter::World> &getObj() const;
 
-    int score = 0;
+
 };
 
 

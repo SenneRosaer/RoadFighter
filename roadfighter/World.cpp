@@ -5,6 +5,7 @@
 #include "World.h"
 #include "EntityFactory.h"
 #include <iostream>
+#include "../Observer/Observer.h"
 
 void roadfighter::World::draw() {
     Background->draw();
@@ -76,10 +77,14 @@ void roadfighter::World::update(){
 
     Collision();
     if(Player != nullptr) {
+        calcDistance();
         if (getPlayer()->Delete()) {
             setPlayer(nullptr);
         }
+
     }
+    calcScore();
+    notify(score);
 }
 
 void roadfighter::World::setBackground(const std::shared_ptr<roadfighter::Entity> &Background) {
@@ -136,6 +141,9 @@ void roadfighter::World::Collision() {
                     if (tempvec[i].second < heigth2 and tempvec[i].second > heigth1) {
                         std::cout << "crash" << std::endl;
                         getPlayer()->setDelete(true);
+                        crashes++;
+                        calcScore();
+                        notify(score);
                     }
                 }
 
@@ -158,6 +166,9 @@ void roadfighter::World::Collision() {
                 if(Position.second > Heigth1){
                     bullet->setDelete(true);
                     passingcar->setDelete(true);
+                    destroyedCars++;
+                    calcScore();
+                    notify(score);
                 }
             }
 
@@ -189,4 +200,29 @@ bool roadfighter::World::isShoot() const {
 
 void roadfighter::World::addBullet(std::shared_ptr<roadfighter::Entity> bullet) {
     Bullets.push_back(bullet);
+}
+
+
+
+void roadfighter::World::calcDistance() {
+
+    Distance = Distance + Player->getSpeed()/100;
+}
+
+void roadfighter::World::calcScore() {
+    int dist = (Distance / 10);
+    int destr = destroyedCars *50;
+    int crash = crashes*-100;
+    score = dist + destr +crash;
+
+}
+
+void roadfighter::World::attach(std::shared_ptr<Observer> observer) {
+    observers.push_back(observer);
+}
+
+void roadfighter::World::notify(int scoreUpdate) {
+    for(auto obs : observers){
+        obs->update(scoreUpdate);
+    }
 }

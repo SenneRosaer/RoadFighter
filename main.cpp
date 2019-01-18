@@ -7,6 +7,7 @@
 //TODO meer lanes waarin de auto's kunnen spawnen
 //TODO bewegingen korter maken zodat schieten beter gaat .
 //TODO beter manier voor delay respawn
+//TODO fix schieten met auto er onder is rip
 int main() {
     Game TestGame;
     TestGame.run();

@@ -10,9 +10,11 @@
 #include "roadfighter/Entity.h"
 #include "roadfighter/World.h"
 #include "roadfighterSFML/SFMLFactory.h"
+#include "Observer/Subject.h"
 
 class Game {
     private:
+        int score = 0;
 
         std::shared_ptr<sf::RenderWindow> window;
 
@@ -20,7 +22,9 @@ class Game {
 
         std::shared_ptr<roadfighterSFML::SFMLFactory> factory;
 
-    public:
+
+
+public:
     Game();
 
     void run();
