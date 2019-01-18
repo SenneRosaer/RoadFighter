@@ -24,4 +24,4 @@ ADD_EXECUTABLE(plotter_sfml ${SRC})
 # (The SFML_LIBRARIES variable is defined by FindSFML.cmake, if SFML was found)
 TARGET_LINK_LIBRARIES(plotter_sfml ${SFML_LIBRARIES})
 
-INSTALL(TARGETS plotter_sfml DESTINATION ${PROJECT_SOURCE_DIR}/bin)
+#INSTALL(TARGETS plotter_sfml DESTINATION ${PROJECT_SOURCE_DIR}/bin)
