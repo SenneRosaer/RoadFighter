@@ -14,6 +14,7 @@
 
 class Game {
     private:
+
         int score = 0;
 
         std::shared_ptr<sf::RenderWindow> window;
@@ -25,8 +26,14 @@ class Game {
 
 
 public:
+    /**
+     * Constructor
+     */
     Game();
 
+    /**
+     * Runs the game
+     */
     void run();
 };
 

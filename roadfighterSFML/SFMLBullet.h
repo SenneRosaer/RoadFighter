@@ -9,16 +9,27 @@
 #include <SFML/Graphics.hpp>
 
 namespace roadfighterSFML {
-class SFMLBullet : public roadfighter::Bullet {
+class SFMLBullet : public roadfighter::Bullet
+{
 private:
-    std::shared_ptr<sf::RenderWindow> window;
-    sf::Sprite sprite;
-    sf::Texture texture;
+        std::shared_ptr<sf::RenderWindow> window;
+        sf::Sprite sprite;
+        sf::Texture texture;
+
 public:
-    void draw() override;
-    SFMLBullet(const std::shared_ptr<sf::RenderWindow> window, double first , double second);
+        /**
+         * Draws the bullet
+         */
+        void draw() override;
 
+        /**
+         * Constructor with a window and the position
+         * @param window
+         * @param first
+         * @param second
+         */
+        SFMLBullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second);
 };
-}
+} // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_SFMLBULLET_H
+#endif // ROADFIGHTER_SFMLBULLET_H

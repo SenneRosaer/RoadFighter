@@ -8,6 +8,9 @@
 
 #include <iostream>
 
+/**
+ * Struct for returning collision data
+ */
 struct ObjBox {
     std::pair<float,float> centralpos;
     double height;

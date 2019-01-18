@@ -11,20 +11,29 @@
 #include <memory>
 
 namespace roadfighterSFML {
-class PassingCar : public roadfighter::PassingCar {
-        private:
-            std::shared_ptr<sf::RenderWindow> window;
-            sf::Sprite sprite;
-            sf::Texture texture;
+class PassingCar : public roadfighter::PassingCar
+{
+private:
+        std::shared_ptr<sf::RenderWindow> window;
+        sf::Sprite sprite;
+        sf::Texture texture;
 
-        public:
-            PassingCar(const std::shared_ptr<sf::RenderWindow> window);
+public:
+        /**
+         * Constructor with sfml window
+         * @param window
+         */
+        PassingCar(const std::shared_ptr<sf::RenderWindow> window);
 
-            //random meegegeven om dan aan het gewone object een spawn positie mee te geve
-            PassingCar(const std::shared_ptr<sf::RenderWindow> window, double random);
+        /**
+         * Constructor with window and a random value to determine the spawning location
+         * @param window
+         * @param random
+         */
+        PassingCar(const std::shared_ptr<sf::RenderWindow> window, double random);
 
-    void draw() override;
+        void draw() override;
 };
-}
+} // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_SFMLPASSINGCAR_H
+#endif // ROADFIGHTER_SFMLPASSINGCAR_H

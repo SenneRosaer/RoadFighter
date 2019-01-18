@@ -8,24 +8,27 @@
 #include <iostream>
 #include <vector>
 
-class Random {
+class Random
+{
 public:
-    static Random& getInstance()
-    {
-        static Random instance;
-        return instance;
-    }
+        static Random& getInstance()
+        {
+                static Random instance;
+                return instance;
+        }
 
-
-    double getRandom();
+        /**
+         *  Returns a random value of the positions vector
+         * @return double
+         */
+        double getRandom();
 
 private:
-    //Vector with positions to choose from TODO Set correct pos
-    std::vector<double> positions {-0.1,-1.6,-1,-0.7};
-    Random(){};
-    Random(Random const&);
-    Random operator=(Random const&);
+        // Vector with positions to choose from TODO Set correct pos
+        std::vector<double> positions{-0.1, -1.6, -1, -0.7};
+        Random(){};
+        Random(Random const&);
+        Random operator=(Random const&);
 };
 
-
-#endif //ROADFIGHTER_RANDOM_H
+#endif // ROADFIGHTER_RANDOM_H

@@ -5,25 +5,34 @@
 #ifndef ROADFIGHTER_SFMLPLAYERCAR_H
 #define ROADFIGHTER_SFMLPLAYERCAR_H
 
-#include <SFML/Graphics.hpp>
 #include "../roadfighter/PlayerCar.h"
+#include <SFML/Graphics.hpp>
 #include <memory>
 
 namespace roadfighterSFML {
-class PlayerCar : public roadfighter::PlayerCar {
-        private:
-            std::shared_ptr<sf::RenderWindow> window;
-            sf::Sprite sprite;
-            sf::Texture texture;
-
+class PlayerCar : public roadfighter::PlayerCar
+{
+private:
+        std::shared_ptr<sf::RenderWindow> window;
+        sf::Sprite sprite;
+        sf::Texture texture;
 
 public:
-            PlayerCar(const std::shared_ptr<sf::RenderWindow> window);
+        /**
+         * Constructor with a SFML window
+         * @param window
+         */
+        PlayerCar(const std::shared_ptr<sf::RenderWindow> window);
+        /**
+         * Draws the player
+         */
+        void draw() override;
 
-    void draw() override;
-
-    void update() override;
+        /**
+         * Updates the player
+         */
+        void update() override;
 };
-}
+} // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_SFMLPLAYERCAR_H
+#endif // ROADFIGHTER_SFMLPLAYERCAR_H

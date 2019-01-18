@@ -5,22 +5,20 @@
 #ifndef ROADFIGHTER_OBSERVERSCORE_H
 #define ROADFIGHTER_OBSERVERSCORE_H
 
-
 #include "Observer.h"
 #include <SFML/Graphics.hpp>
 
-class ObserverScore : public Observer{
+class ObserverScore : public Observer
+{
 private:
-    std::shared_ptr<sf::RenderWindow> window;
-    sf::Font font;
-    sf::Text text;
+        std::shared_ptr<sf::RenderWindow> window;
+        sf::Font font;
+        sf::Text text;
+
 public:
-    ObserverScore(std::shared_ptr<roadfighter::World> obj,std::shared_ptr<sf::RenderWindow> wind);
+        ObserverScore(std::shared_ptr<roadfighter::World> obj, std::shared_ptr<sf::RenderWindow> wind);
 
-    void update(int score) override;
-
-
+        void update(int score) override;
 };
 
-
-#endif //ROADFIGHTER_OBSERVERSCORE_H
+#endif // ROADFIGHTER_OBSERVERSCORE_H

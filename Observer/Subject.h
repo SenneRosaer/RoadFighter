@@ -9,14 +9,13 @@
 
 class Observer;
 
-class Subject {
+class Subject
+{
 
 public:
-    virtual void attach(std::shared_ptr<Observer> observer) = 0;
+        virtual void attach(std::shared_ptr<Observer> observer) = 0;
 
-    virtual void notify(int scoreUpdate) = 0;
-
+        virtual void notify(int scoreUpdate) = 0;
 };
 
-
-#endif //ROADFIGHTER_SUBJECT_H
+#endif // ROADFIGHTER_SUBJECT_H
