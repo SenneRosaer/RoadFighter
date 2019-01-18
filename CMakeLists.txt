@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.6)
 project(RoadFighter)
-add_executable(run main.cpp )
+#add_executable(run main.cpp )
 
 
 # Extend the CMake module path to find the FindSFML.cmake
