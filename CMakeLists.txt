@@ -18,10 +18,10 @@ SET(SRC main.cpp roadfighter/Entity.cpp roadfighter/Entity.h roadfighter/World.c
 INCLUDE_DIRECTORIES(${SFML_INCLUDE_DIR})
 
 # The program we're compiling with the sources set above
-ADD_EXECUTABLE(plotter_sfml ${SRC})
+ADD_EXECUTABLE(roadfighter_sfml ${SRC})
 
 # Link target to SFML libs
 # (The SFML_LIBRARIES variable is defined by FindSFML.cmake, if SFML was found)
-TARGET_LINK_LIBRARIES(plotter_sfml ${SFML_LIBRARIES})
+TARGET_LINK_LIBRARIES(roadfighter_sfml ${SFML_LIBRARIES})
 
 #INSTALL(TARGETS plotter_sfml DESTINATION ${PROJECT_SOURCE_DIR}/bin)
