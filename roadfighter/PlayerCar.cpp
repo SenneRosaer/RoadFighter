@@ -69,7 +69,6 @@ int roadfighter::PlayerCar::getSpeed() { return speed; }
 
 bool roadfighter::PlayerCar::Delete() { return toDel; }
 
-ObjBox roadfighter::PlayerCar::getObjBox() { ObjBox(centralpos, height, width); }
 
 std::shared_ptr<ObjBox> roadfighter::PlayerCar::getObjbox()
 {

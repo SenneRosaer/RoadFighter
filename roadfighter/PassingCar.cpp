@@ -26,8 +26,6 @@ int roadfighter::PassingCar::getSpeed() { return 0; }
 
 bool roadfighter::PassingCar::Delete() { return toDel; }
 
-ObjBox roadfighter::PassingCar::getObjBox() { ObjBox(centralpos, height, width); }
-
 std::shared_ptr<ObjBox> roadfighter::PassingCar::getObjbox()
 {
         return std::make_shared<ObjBox>(centralpos, height, width);

@@ -29,8 +29,6 @@ int roadfighter::Background::getSpeed() { return 0; }
 
 bool roadfighter::Background::Delete() { return toDel; }
 
-ObjBox roadfighter::Background::getObjBox() { return ObjBox(std::pair<double, double>(), 0, 0); }
-
 std::shared_ptr<ObjBox> roadfighter::Background::getObjbox() { return std::shared_ptr<ObjBox>(); }
 
 void roadfighter::Background::setDelete(bool del) { toDel = del; }

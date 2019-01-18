@@ -148,7 +148,7 @@ void roadfighter::World::Collision()
                         std::pair<double, double> Position = bullet->getObjbox()->centralpos;
 
                         if (Position.first > Width1 - 0.05 and Position.first < Width2 + 0.05) {
-                                if (Position.second > Heigth1) {
+                                if (Position.second > Heigth1 and Position.second < Heigth2+ 0.1) {
                                         bullet->setDelete(true);
                                         passingcar->setDelete(true);
                                         destroyedCars++;
@@ -160,7 +160,6 @@ void roadfighter::World::Collision()
         }
 }
 
-ObjBox roadfighter::World::getObjBox() { return ObjBox(std::pair<double, double>(), 0, 0); }
 
 std::shared_ptr<ObjBox> roadfighter::World::getObjbox() { return std::shared_ptr<ObjBox>(); }
 

@@ -28,8 +28,6 @@ bool roadfighter::Bullet::Delete() { return toDel; }
 
 void roadfighter::Bullet::setDelete(bool del) { toDel = del; }
 
-ObjBox roadfighter::Bullet::getObjBox() { return ObjBox({0, 0}, 0, 0); }
-
 std::shared_ptr<ObjBox> roadfighter::Bullet::getObjbox() { return std::make_shared<ObjBox>(pos, 0, 0); }
 
 bool roadfighter::Bullet::Shoot() { return false; }
