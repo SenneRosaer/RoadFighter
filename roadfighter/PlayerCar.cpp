@@ -63,7 +63,7 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs)
         }
 }
 
-void roadfighter::PlayerCar::update(int speed) {}
+void roadfighter::PlayerCar::update(int speed, std::shared_ptr<roadfighter::Entity> Player) {}
 
 int roadfighter::PlayerCar::getSpeed() { return speed; }
 

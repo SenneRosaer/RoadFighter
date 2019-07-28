@@ -4,7 +4,7 @@
 
 #include "Bullet.h"
 
-void roadfighter::Bullet::update(int speed)
+void roadfighter::Bullet::update(int speed, std::shared_ptr<roadfighter::Entity> Player)
 {
         int relativespeed = this->speed - speed;
         if (relativespeed < 0) {
@@ -22,7 +22,7 @@ void roadfighter::Bullet::update(int speed)
 
 void roadfighter::Bullet::update() {}
 
-int roadfighter::Bullet::getSpeed() { return 0; }
+int roadfighter::Bullet::getSpeed() { return speed; }
 
 bool roadfighter::Bullet::Delete() { return toDel; }
 

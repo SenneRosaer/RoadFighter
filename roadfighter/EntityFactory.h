@@ -9,10 +9,9 @@
 #include <memory>
 
 namespace roadfighter {
-class EntityFactory
-{
+    class EntityFactory {
 
-public:
+    public:
         /**
          * Create a playercar
          * @return
@@ -23,7 +22,7 @@ public:
          * Create a background
          * @return
          */
-        virtual std::shared_ptr<roadfighter::Entity> createBackground() = 0;
+        virtual std::shared_ptr<roadfighter::Entity> createBackground(int i) = 0;
 
         /**
          * Create a passing car
@@ -39,7 +38,12 @@ public:
          * @return
          */
         virtual std::shared_ptr<roadfighter::Entity> createBullet(double first, double second) = 0;
-};
+
+        virtual std::shared_ptr<roadfighter::Entity> createRock(double i) = 0;
+
+        virtual std::shared_ptr<roadfighter::Entity> createMovingCar(double i) = 0;
+
+    };
 } // namespace roadfighter
 
 #endif // ROADFIGHTER_ENTITYFACTORY_H

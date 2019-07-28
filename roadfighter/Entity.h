@@ -28,7 +28,7 @@ public:
          * Update an object with a speed
          * @param speed
          */
-        virtual void update(int speed) = 0;
+        virtual void update(int speed, std::shared_ptr<roadfighter::Entity> Player) = 0;
 
         /**
          * Return the speed of an object

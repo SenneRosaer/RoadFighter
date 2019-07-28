@@ -1,17 +1,16 @@
 //
-// Created by senne on 12/21/18.
+// Created by sennerosaer on 7/23/19.
 //
 
-#ifndef ROADFIGHTER_PASSINGCAR_H
-#define ROADFIGHTER_PASSINGCAR_H
+#ifndef ROADFIGHTER_MOVINGCAR_H
+#define ROADFIGHTER_MOVINGCAR_H
 
+#include "iostream"
 #include "Entity.h"
-#include <iostream>
 
 namespace roadfighter {
-class PassingCar : public roadfighter::Entity
-{
-protected:
+    class MovingCar : public roadfighter::Entity {
+    protected:
         std::pair<double, double> centralpos;
 
         int speed = 150;
@@ -22,7 +21,11 @@ protected:
 
         double width;
 
-public:
+        double movesLeft = 0.6;
+
+
+
+    public:
         /**
          * Update
          */
@@ -63,7 +66,7 @@ public:
          * @return
          */
         bool Shoot() override;
-};
-} // namespace roadfighter
+    };
+}
 
-#endif // ROADFIGHTER_PASSINGCAR_H
+#endif //ROADFIGHTER_MOVINGCAR_H

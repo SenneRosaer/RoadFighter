@@ -38,7 +38,7 @@ public:
          * Update object with a speed
          * @param speed
          */
-        void update(int speed) override;
+        void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
          * Return the speed of the object

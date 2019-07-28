@@ -27,7 +27,7 @@ public:
          * Constructor with window
          * @param window
          */
-        SFMLBackground(const std::shared_ptr<sf::RenderWindow>& window);
+        SFMLBackground(const std::shared_ptr<sf::RenderWindow>& window, int type);
 
         /**
          * Draws the background

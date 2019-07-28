@@ -5,10 +5,11 @@
 #include "SFMLBackground.h"
 #include "../Singleton/Transformation.h"
 
-roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::RenderWindow>& window) : window(window)
+roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::RenderWindow>& window,int type) : window(window)
 {
         // TODO fix properheid of andere manier
-        texture.loadFromFile("../Sprites/road2.png");
+        std::string filename = "../Sprites/road" + std::to_string(type) + ".png";
+        texture.loadFromFile(filename);
 
         // repeatble intrect sprite (texture,intrect) ??
 

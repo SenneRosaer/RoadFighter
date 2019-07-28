@@ -5,8 +5,8 @@
 #include "ObserverScore.h"
 #include "../Singleton/Transformation.h"
 
-ObserverScore::ObserverScore(std::shared_ptr<roadfighter::World> obj, std::shared_ptr<sf::RenderWindow> wind)
-    : Observer(obj)
+ObserverScore::ObserverScore( std::shared_ptr<sf::RenderWindow> wind)
+
 {
         this->window = wind;
         if (!font.loadFromFile("../Observer/arial.ttf")) {

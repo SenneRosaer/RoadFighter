@@ -12,3 +12,15 @@ double Random::getRandom()
         int random = rand() % positions.size() + 0;
         return positions[random];
 }
+
+double Random::getRandom2()
+{
+    srand(time(NULL));
+    int random = rand() % 2 + 0;
+    return random;
+}
+
+double Random::getRandom3() {
+    srand(time(NULL));
+    int random = rand() % positionsRock.size() + 0;
+    return positionsRock[random];}

@@ -22,7 +22,7 @@ roadfighterSFML::PassingCar::PassingCar(const std::shared_ptr<sf::RenderWindow> 
 
         this->window = window;
 
-        texture.loadFromFile("../Sprites/PassingCar.piko");
+        texture.loadFromFile("../Sprites/PassingCar1.piko");
         texture.setSmooth(true);
 
         sprite.setTexture(texture);
@@ -33,4 +33,5 @@ roadfighterSFML::PassingCar::PassingCar(const std::shared_ptr<sf::RenderWindow> 
                      .heightReverse(texture.getSize().y * 0.5);
         width = Transformation::getInstance(window->getSize().x, window->getSize().y)
                     .widthReverse(texture.getSize().x * 0.5);
+
 }

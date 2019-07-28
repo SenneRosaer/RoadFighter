@@ -11,6 +11,10 @@
 #include "roadfighter/World.h"
 #include "roadfighterSFML/SFMLFactory.h"
 #include "Observer/Subject.h"
+#include "Menu.h"
+#include "JSON/single_include/nlohmann/json.hpp"
+#include <fstream>
+
 
 class Game {
     private:
@@ -22,6 +26,11 @@ class Game {
         std::shared_ptr<roadfighter::World> world;
 
         std::shared_ptr<roadfighterSFML::SFMLFactory> factory;
+
+        std::shared_ptr<Menu> menu;
+
+
+
 
 
 
@@ -35,6 +44,9 @@ public:
      * Runs the game
      */
     void run();
+
+    void Parse(int level);
+
 };
 
 

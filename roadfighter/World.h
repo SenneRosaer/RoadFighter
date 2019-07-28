@@ -9,20 +9,25 @@
 #include "Entity.h"
 #include <memory>
 #include <vector>
+
 class Observer;
 
 namespace roadfighter {
-class World : public roadfighter::Entity, public Subject
-{
+    class World : public roadfighter::Entity, public Subject {
 
-private:
+    private:
         std::shared_ptr<roadfighter::Entity> Player;
 
         std::shared_ptr<roadfighter::Entity> Background;
 
         std::vector<std::shared_ptr<roadfighter::Entity>> passingCars;
 
+        std::vector<std::shared_ptr<roadfighter::Entity>> movingCars;
+
+
         std::vector<std::shared_ptr<roadfighter::Entity>> Bullets;
+
+        std::vector<std::shared_ptr<roadfighter::Entity>> Rocks;
 
         bool shoot = false;
 
@@ -36,15 +41,21 @@ private:
         int SpeedLoop = 10;
 
         int Distance = 0;
+        int DistanceToNextLevel = 2000;
 
         int speedAVG = 0;
 
         std::vector<std::shared_ptr<Observer>> observers;
 
-public:
+    public:
         int respawnTimer = 30;
 
-public:
+        //TODO getter setter
+        bool rock = false;
+        bool passingCar = false;
+        bool movingCar = false;
+
+    public:
         /**
          * Constructor
          */
@@ -59,13 +70,13 @@ public:
          * Set the player
          * @param Player
          */
-        void setPlayer(const std::shared_ptr<Entity>& Player);
+        void setPlayer(const std::shared_ptr<Entity> &Player);
 
         /**
          * Set the background
          * @param Background
          */
-        void setBackground(const std::shared_ptr<Entity>& Background);
+        void setBackground(const std::shared_ptr<Entity> &Background);
 
         /**
          * Update an object
@@ -76,7 +87,7 @@ public:
          * Update an object with a speed
          * @param speed
          */
-        void update(int speed) override;
+        void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
          * Get the speed of an object
@@ -88,13 +99,13 @@ public:
          * Return the player
          * @return
          */
-        const std::shared_ptr<Entity>& getPlayer() const;
+        const std::shared_ptr<Entity> &getPlayer() const;
 
         /**
          * Return the passingcars
          * @return
          */
-        const std::vector<std::shared_ptr<Entity>>& getPassingCars() const;
+        const std::vector<std::shared_ptr<Entity>> &getPassingCars() const;
 
         /**
          * Add a passingcar
@@ -163,8 +174,16 @@ public:
          * Notify the observers
          * @param scoreUpdate
          */
-        void notify(int scoreUpdate) override;
-};
+        void notify() override;
+
+        void addRock(std::shared_ptr<roadfighter::Entity> rock);
+
+        const std::vector<std::shared_ptr<Entity>> &getMovingCars() const;
+
+        void addMovingCar(std::shared_ptr<roadfighter::Entity> car);
+
+        void reset();
+    };
 
 } // namespace roadfighter
 

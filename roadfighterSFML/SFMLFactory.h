@@ -10,12 +10,11 @@
 #include <memory>
 
 namespace roadfighterSFML {
-class SFMLFactory : public roadfighter::EntityFactory
-{
-private:
+    class SFMLFactory : public roadfighter::EntityFactory {
+    private:
         std::shared_ptr<sf::RenderWindow> window;
 
-public:
+    public:
         /**
          * Constructor with window
          * @param window
@@ -32,7 +31,7 @@ public:
          * Create a background
          * @return shared_ptr of Entity
          */
-        std::shared_ptr<roadfighter::Entity> createBackground() override;
+        std::shared_ptr<roadfighter::Entity> createBackground(int i) override;
 
         /**
          * Create a passing car
@@ -48,7 +47,13 @@ public:
          * @return shared_ptr of Entity
          */
         std::shared_ptr<roadfighter::Entity> createBullet(double first, double second) override;
-};
+
+        std::shared_ptr<roadfighter::Entity> createRock(double i) override;
+
+        std::shared_ptr<roadfighter::Entity> createMovingCar(double i) override;
+
+
+    };
 } // namespace roadfighterSFML
 
 #endif // ROADFIGHTER_SFMLFACTORY_H

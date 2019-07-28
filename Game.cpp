@@ -6,82 +6,222 @@
 #include "Observer/ObserverScore.h"
 #include "Singleton/Random.h"
 #include "roadfighterSFML/SFMLFactory.h"
+#include "Singleton/Transformation.h"
 #include <chrono>
 #include <ctime>
 #include <thread>
+using json = nlohmann::json;
 
-void Game::run()
-{
 
-        // TODO op c++ manier oplossen
-        // window->setFramerateLimit(30);
-        std::shared_ptr<ObserverScore> obs = std::make_shared<ObserverScore>(world, window);
+void Game::run() {
 
-        std::chrono::system_clock::time_point a = std::chrono::system_clock::now();
-        std::chrono::system_clock::time_point b = std::chrono::system_clock::now();
 
-        std::chrono::system_clock::time_point test;
-        std::chrono::system_clock::time_point test2;
+    std::shared_ptr<ObserverScore> obs = std::make_shared<ObserverScore>(window);
+    world->attach(obs);
 
-        bool first = true;
-        while (window->isOpen()) {
-                a = std::chrono::system_clock::now();
-                std::chrono::duration<double, std::milli> frameTime = a - b;
 
-                if (frameTime.count() < 33) {
-                        std::chrono::duration<double, std::milli> t(33 - frameTime.count());
-                        auto tDuration = std::chrono::duration_cast<std::chrono::milliseconds>(t);
-                        std::this_thread::sleep_for(std::chrono::milliseconds(tDuration.count()));
+
+
+    bool first = true;
+    bool first2 = true;
+    bool first3 = true;
+    bool menuActive = true;
+
+    int RockTimer = 80;
+    int Car1Timer = 25;
+
+
+    //TEST
+    const int FPS = 30;
+    const int framdelay = 1000/FPS;
+    int framestart;
+    int frametime;
+    //
+
+
+
+    auto nextFrame = std::chrono::steady_clock::now();
+
+    while (window->isOpen()) {
+
+        nextFrame +=  std::chrono::milliseconds(33);
+
+        if (!menuActive) {
+
+
+
+            if (first or Car1Timer <= 0) {
+                if (world->getPlayer() != nullptr) {
+                    int random = Random::getInstance().getRandom2();
+                    if(world->passingCar and !world->movingCar){
+                        random= 0;
+                    } else if(!world->passingCar and !world->movingCar){
+                        random = 2;
+                    } else if(!world->passingCar and world->movingCar){
+                        random = 1;
+                    }
+                    switch (random) {
+                        case 0:
+                            if (world->getPlayer()->getSpeed() > 150 && world->getPassingCars().size() < 7) {
+                                first = false;
+                                world->addPassingCar(
+                                        factory->createPassingCar(Random::getInstance().getRandom()));
+                                Car1Timer = 25;
+                            }
+                            break;
+                        case 1:
+                            if (world->getPlayer()->getSpeed() > 150 && world->getMovingCars().size() < 4) {
+                                first = false;
+                                world->addMovingCar(
+                                        factory->createMovingCar(Random::getInstance().getRandom()));
+                                Car1Timer = 25;
+                            }
+                            break;
+                        default:
+                            break;
+
+                    }
                 }
+            } else {
+                Car1Timer--;
+            }
 
-                b = std::chrono::system_clock::now();
 
-                sf::Event event;
-                while (window->pollEvent(event)) {
-                        if (event.type == sf::Event::Closed)
-                                window->close();
+            if(world->rock) {
+                if (first2 or RockTimer <= 0) {
+                    if (world->getPlayer() != nullptr) {
+                        if (world->getPlayer()->getSpeed() > 150) {
+                            first2 = false;
+                            RockTimer = 80;
+                            world->addRock(
+                                    factory->createRock(Random::getInstance().getRandom3()));
+                        }
+                    }
+                } else {
+                    RockTimer--;
                 }
+            }
 
-                std::chrono::duration<double, std::milli> testing = test - std::chrono::system_clock::now();
-                if (first or testing.count() < -1000) {
-                        if (world->getPlayer() != nullptr) {
-                                if (world->getPlayer()->getSpeed() > 150 && world->getPassingCars().size() < 5) {
-                                        first = false;
-                                        test = std::chrono::system_clock::now();
-                                        std::chrono::duration<double, std::milli> t2 = test - b;
-                                        world->addPassingCar(
-                                            factory->createPassingCar(Random::getInstance().getRandom()));
-                                }
+
+
+            window->clear();
+
+            world->update();
+            if (world->getPlayer() == nullptr and world->respawnTimer == 0) {
+                world->setPlayer(factory->createPlayerCar());
+                world->respawnTimer = 30;
+            } else if (world->getPlayer() == nullptr) {
+                world->respawnTimer--;
+            }
+            if (world->isShoot()) {
+                //TODO andere benaming voor first
+                double first = world->getPlayer()->getObjbox()->centralpos.first;
+                double second = world->getPlayer()->getObjbox()->centralpos.second;
+                world->addBullet(factory->createBullet(first, second));
+            }
+
+            world->draw();
+
+            window->display();
+            sf::Event event;
+            while (window->pollEvent(event)) {
+                switch(event.type){
+                    case sf::Event::KeyReleased:
+                        switch(event.key.code){
+
+                            case sf::Keyboard::Escape:
+                                menuActive = true;
+                                world->reset();
+                                break;
+
+
+
                         }
                 }
+                if (event.type == sf::Event::Closed)
+                    window->close();
+            }
+        } else {
 
-                window->clear();
 
-                world->update();
-                if (world->getPlayer() == nullptr and world->respawnTimer == 0) {
-                        world->setPlayer(factory->createPlayerCar());
-                        world->respawnTimer = 30;
-                } else if (world->getPlayer() == nullptr) {
-                        world->respawnTimer--;
+
+            sf::Event event;
+            while (window->pollEvent(event)) {
+                switch(event.type){
+                    case sf::Event::KeyReleased:
+                        switch(event.key.code){
+
+                            case sf::Keyboard::Up:
+                                menu->Up();
+                                break;
+
+                            case sf::Keyboard::Down:
+                                menu->Down();
+                                break;
+
+                            case sf::Keyboard::Escape:
+                                window->close();
+                                break;
+
+                            case sf::Keyboard::Return:
+                                menu->GetSelected();
+                                menuActive = false;
+                                Parse(menu->GetSelected());
+                                //of cases per level
+                                break;
+
+
+                    }
                 }
-                if (world->isShoot()) {
-                        double first = world->getPlayer()->getObjbox()->centralpos.first;
-                        double second = world->getPlayer()->getObjbox()->centralpos.second;
-                        world->addBullet(factory->createBullet(first, second));
-                }
+                if (event.type == sf::Event::Closed)
+                    window->close();
+            }
 
-                world->draw();
 
-                window->display();
+            window->clear();
+            menu->drawMenu();
+            window->display();
         }
+
+        std::this_thread::sleep_until(nextFrame);
+    }
+
+
+
 }
 
-Game::Game()
-{
-        window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "TheGame");
-        world = std::make_shared<roadfighter::World>();
-        factory = std::make_shared<roadfighterSFML::SFMLFactory>(window);
+Game::Game() {
+    window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "TheGame");
+    world = std::make_shared<roadfighter::World>();
+    factory = std::make_shared<roadfighterSFML::SFMLFactory>(window);
+    menu = std::make_shared<Menu>(window);
 
-        world->setPlayer(factory->createPlayerCar());
-        world->setBackground(factory->createBackground());
+    world->setPlayer(factory->createPlayerCar());
+}
+
+void Game::Parse(int level) {
+
+    std::string file = "../JSON/Level"+ std::to_string(level) + ".json";
+    std::cout << file << std::endl;
+    std::ifstream ifstr(file);
+    json js = json::parse(ifstr);
+
+    std::string background = js["background"];
+    std::vector<std::string> enemies = js["enemies"];
+    for(auto item : enemies){
+        if(item == "car1"){
+            world->passingCar = true;
+        }
+        if(item == "rock"){
+            world->rock = true;
+        }
+        if(item == "car2"){
+            world->movingCar = true;
+        }
+    }
+
+
+    world->setBackground(factory->createBackground(level));
+
+
 }

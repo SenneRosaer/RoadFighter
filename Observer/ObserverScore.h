@@ -16,7 +16,7 @@ private:
         sf::Text text;
 
 public:
-        ObserverScore(std::shared_ptr<roadfighter::World> obj, std::shared_ptr<sf::RenderWindow> wind);
+        ObserverScore(std::shared_ptr<sf::RenderWindow> wind);
 
         void update(int score) override;
 };

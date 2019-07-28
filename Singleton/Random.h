@@ -22,11 +22,16 @@ public:
          * @return double
          */
         double getRandom();
+        double getRandom2();
+       double getRandom3();
+
 
 private:
         // Vector with positions to choose from TODO Set correct pos
         std::vector<double> positions{-0.1, -1.6, -1, -0.7};
-        Random(){};
+    std::vector<double> positionsRock{-1.86,-1.38,-0.3,-0.9};
+
+    Random(){};
         Random(Random const&);
         Random operator=(Random const&);
 };

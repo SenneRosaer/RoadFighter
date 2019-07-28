@@ -15,7 +15,7 @@ class Subject
 public:
         virtual void attach(std::shared_ptr<Observer> observer) = 0;
 
-        virtual void notify(int scoreUpdate) = 0;
+        virtual void notify() = 0;
 };
 
 #endif // ROADFIGHTER_SUBJECT_H

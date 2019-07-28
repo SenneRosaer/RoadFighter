@@ -7,6 +7,8 @@
 #include "SFMLBullet.h"
 #include "SFMLPassingCar.h"
 #include "SFMLPlayerCar.h"
+#include "SFMLRock.h"
+#include "SFMLMovingCar.h"
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerCar()
 {
@@ -15,9 +17,9 @@ std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerC
 
 roadfighterSFML::SFMLFactory::SFMLFactory(std::shared_ptr<sf::RenderWindow> window) { this->window = window; }
 
-std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createBackground()
+std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createBackground(int i)
 {
-        return std::make_shared<roadfighterSFML::SFMLBackground>(window);
+        return std::make_shared<roadfighterSFML::SFMLBackground>(window, i);
 }
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPassingCar(double i)
@@ -28,4 +30,12 @@ std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPassing
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createBullet(double first, double second)
 {
         return std::make_shared<roadfighterSFML::SFMLBullet>(window, first, second);
+}
+
+std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createRock(double i) {
+        return std::make_shared<roadfighterSFML::SFMLRock>(window,i);
+}
+
+std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createMovingCar(double i) {
+        return std::make_shared<roadfighterSFML::SFMLMovingCar>(window,i);
 }

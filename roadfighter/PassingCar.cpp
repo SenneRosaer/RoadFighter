@@ -6,7 +6,7 @@
 
 void roadfighter::PassingCar::update() {}
 
-void roadfighter::PassingCar::update(int speed)
+void roadfighter::PassingCar::update(int speed, std::shared_ptr<roadfighter::Entity> Player)
 {
         int relativespeed = this->speed - speed;
         if (relativespeed < 0) {

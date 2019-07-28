@@ -6,7 +6,7 @@
 
 void roadfighter::Background::update() {}
 
-void roadfighter::Background::update(int speed)
+void roadfighter::Background::update(int speed, std::shared_ptr<roadfighter::Entity> Player)
 {
         // TODO met speed player aanpassen
         double movement = 0.01 * speed / 10;

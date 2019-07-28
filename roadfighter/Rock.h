@@ -1,21 +1,26 @@
 //
-// Created by senne on 1/16/19.
+// Created by sennerosaer on 7/22/19.
 //
 
-#ifndef ROADFIGHTER_BULLET_H
-#define ROADFIGHTER_BULLET_H
+#ifndef ROADFIGHTER_ROCK_H
+#define ROADFIGHTER_ROCK_H
 
 #include "Entity.h"
 
 namespace roadfighter {
-class Bullet : public roadfighter::Entity
-{
-protected:
-        int speed = 350;
-        std::pair<double, double> pos;
+    class Rock : public roadfighter::Entity {
+    protected:
+        std::pair<double, double> centralpos;
+
+        int speed = 0;
+
         bool toDel = false;
 
-public:
+        double height;
+
+        double width;
+
+    public:
         /**
          * Updates the object with a speed
          * @param speed
@@ -51,12 +56,11 @@ public:
          */
         std::shared_ptr<ObjBox> getObjbox() override;
 
-        /**
-         * Return if an object must shoot;
-         * @return
-         */
-        bool Shoot() override;
-};
-} // namespace roadfighter
 
-#endif // ROADFIGHTER_BULLET_H
+        bool Shoot() override;
+
+
+    };
+}
+
+#endif //ROADFIGHTER_ROCK_H
