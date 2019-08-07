@@ -24,13 +24,13 @@ void roadfighter::PassingCar::update(int speed, std::shared_ptr<roadfighter::Ent
 
 int roadfighter::PassingCar::getSpeed() { return 0; }
 
-bool roadfighter::PassingCar::Delete() { return toDel; }
+int roadfighter::PassingCar::Delete() { return toDel; }
 
 std::shared_ptr<ObjBox> roadfighter::PassingCar::getObjbox()
 {
         return std::make_shared<ObjBox>(centralpos, height, width);
 }
 
-void roadfighter::PassingCar::setDelete(bool del) { toDel = del; }
+void roadfighter::PassingCar::setDelete(int del) { toDel = del; }
 
 bool roadfighter::PassingCar::Shoot() { return false; }

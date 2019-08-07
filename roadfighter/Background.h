@@ -12,11 +12,13 @@ namespace roadfighter {
 class Background : public Entity
 {
 protected:
-        std::pair<double, double> centralpos1 = {-1, 0};
-        std::pair<double, double> centralpos2 = {-1, 6};
-        std::pair<double, double> centralpos3 = {-1, 12};
+        std::pair<double, double> centralpos1 = {-1, -3};
+        std::pair<double, double> centralpos2 = {-1, 3};
+        std::pair<double, double> centralpos3 = {-1, 9};
 
-        bool toDel = false;
+        int toDel = 0;
+
+        int CarTravelledDistance = 0;
 
 public:
         /**
@@ -40,7 +42,7 @@ public:
          * Returns if the object must be deleted
          * @return
          */
-        bool Delete() override;
+        int Delete() override;
 
         /**
          * Return the object box of the object
@@ -52,7 +54,7 @@ public:
          * Sets if the object must be deleted
          * @param del
          */
-        void setDelete(bool del) override;
+        void setDelete(int del) override;
 
         /**
          * Return if the object shoots

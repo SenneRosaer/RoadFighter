@@ -46,6 +46,22 @@ namespace roadfighter {
         int speedAVG = 0;
 
         std::vector<std::shared_ptr<Observer>> observers;
+        std::shared_ptr<Observer> StartRaceTimerObserver;
+
+        int currentLevel;
+
+        bool levelFinished = false;
+
+        int worldResetTimer = 0;
+
+        bool finisFunctionReached = false;
+
+        //For timer at start of level
+        bool levelStarted = false;
+        int timerInFrames = 90;
+
+        //Respawn
+
 
     public:
         int respawnTimer = 30;
@@ -123,7 +139,7 @@ namespace roadfighter {
          * Return if we have to delete the object
          * @return
          */
-        bool Delete() override;
+        int Delete() override;
 
         /**
          * Control collision between player and other cars and between other cars and bullets
@@ -140,7 +156,7 @@ namespace roadfighter {
          * Set to delete the object
          * @param del
          */
-        void setDelete(bool del) override;
+        void setDelete(int del) override;
 
         /**
          *
@@ -176,6 +192,7 @@ namespace roadfighter {
          */
         void notify() override;
 
+
         void addRock(std::shared_ptr<roadfighter::Entity> rock);
 
         const std::vector<std::shared_ptr<Entity>> &getMovingCars() const;
@@ -183,6 +200,29 @@ namespace roadfighter {
         void addMovingCar(std::shared_ptr<roadfighter::Entity> car);
 
         void reset();
+
+        int getCurrentLevel() const;
+
+        void setCurrentLevel(int currentLevel);
+
+        void finish();
+
+        bool isLevelFinished() const;
+
+        void setLevelFinished(bool levelFinished);
+
+        int getWorldResetTimer() const;
+
+        void setWorldResetTimer(int worldResetTimer);
+
+        bool isLevelStarted() const;
+
+        void setLevelStarted(bool levelStarted);
+
+        int getTimerInFrames() const;
+
+        void setTimerInFrames(int timerInFrames);
+
     };
 
 } // namespace roadfighter

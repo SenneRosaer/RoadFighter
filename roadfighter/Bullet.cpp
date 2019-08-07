@@ -24,9 +24,9 @@ void roadfighter::Bullet::update() {}
 
 int roadfighter::Bullet::getSpeed() { return speed; }
 
-bool roadfighter::Bullet::Delete() { return toDel; }
+int roadfighter::Bullet::Delete() { return toDel; }
 
-void roadfighter::Bullet::setDelete(bool del) { toDel = del; }
+void roadfighter::Bullet::setDelete(int del) { toDel = del; }
 
 std::shared_ptr<ObjBox> roadfighter::Bullet::getObjbox() { return std::make_shared<ObjBox>(pos, 0, 0); }
 

@@ -48,6 +48,7 @@ void roadfighterSFML::PlayerCar::update()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
                 inputs.push_back("space");
         }
+    roadfighter::PlayerCar::update();
 
-        UpdateMovement(inputs);
+    UpdateMovement(inputs);
 }

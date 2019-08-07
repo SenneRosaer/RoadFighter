@@ -18,6 +18,8 @@ public:
 
         virtual void update(int score) = 0;
 
+        virtual std::string getType() = 0;
+
 
 };
 

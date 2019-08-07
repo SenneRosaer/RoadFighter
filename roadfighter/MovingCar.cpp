@@ -66,7 +66,7 @@ int roadfighter::MovingCar::getSpeed() {
     return 150;
 }
 
-bool roadfighter::MovingCar::Delete() {
+int roadfighter::MovingCar::Delete() {
     return toDel;
 }
 
@@ -74,7 +74,7 @@ std::shared_ptr<ObjBox> roadfighter::MovingCar::getObjbox() {
     return std::make_shared<ObjBox>(centralpos, height, width);
 }
 
-void roadfighter::MovingCar::setDelete(bool del) {
+void roadfighter::MovingCar::setDelete(int del) {
     toDel = del;
 }
 

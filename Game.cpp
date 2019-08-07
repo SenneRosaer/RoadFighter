@@ -7,6 +7,7 @@
 #include "Singleton/Random.h"
 #include "roadfighterSFML/SFMLFactory.h"
 #include "Singleton/Transformation.h"
+#include "Observer/ObserverStartRace.h"
 #include <chrono>
 #include <ctime>
 #include <thread>
@@ -17,8 +18,10 @@ void Game::run() {
 
 
     std::shared_ptr<ObserverScore> obs = std::make_shared<ObserverScore>(window);
-    world->attach(obs);
+    std::shared_ptr<ObserverStartRace> obs2 = std::make_shared<ObserverStartRace>(window);
 
+    world->attach(obs);
+    world->attach(obs2);
 
 
 
@@ -47,6 +50,7 @@ void Game::run() {
         nextFrame +=  std::chrono::milliseconds(33);
 
         if (!menuActive) {
+
 
 
 
@@ -105,14 +109,19 @@ void Game::run() {
 
 
             window->clear();
+            world->draw();
 
             world->update();
-            if (world->getPlayer() == nullptr and world->respawnTimer == 0) {
+
+            if(!world->isLevelStarted() and world->getTimerInFrames() >0){
+                world->setTimerInFrames(world->getTimerInFrames() - 1);
+            } else if( world->getTimerInFrames() <= 0){
+                world->setLevelStarted(true);
+                world->setTimerInFrames(90);
                 world->setPlayer(factory->createPlayerCar());
-                world->respawnTimer = 30;
-            } else if (world->getPlayer() == nullptr) {
-                world->respawnTimer--;
+                std::cout << "reached" << std::endl;
             }
+
             if (world->isShoot()) {
                 //TODO andere benaming voor first
                 double first = world->getPlayer()->getObjbox()->centralpos.first;
@@ -120,7 +129,15 @@ void Game::run() {
                 world->addBullet(factory->createBullet(first, second));
             }
 
-            world->draw();
+            if(world->isLevelFinished() and world->getWorldResetTimer() <=0){
+                if(world->getCurrentLevel() < 3) {
+                    world->reset();
+                    Parse(world->getCurrentLevel() + 1);
+                }
+            } else if (world->getWorldResetTimer() > 0){
+                world->setWorldResetTimer(world->getWorldResetTimer()-1);
+            }
+
 
             window->display();
             sf::Event event;
@@ -196,7 +213,6 @@ Game::Game() {
     factory = std::make_shared<roadfighterSFML::SFMLFactory>(window);
     menu = std::make_shared<Menu>(window);
 
-    world->setPlayer(factory->createPlayerCar());
 }
 
 void Game::Parse(int level) {
@@ -220,8 +236,9 @@ void Game::Parse(int level) {
         }
     }
 
-
+    world->setCurrentLevel(level);
     world->setBackground(factory->createBackground(level));
+    world->setLevelFinished(false);
 
 
 }

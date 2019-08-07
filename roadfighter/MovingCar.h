@@ -15,7 +15,7 @@ namespace roadfighter {
 
         int speed = 150;
 
-        bool toDel = false;
+        int toDel = 0;
 
         double height;
 
@@ -47,7 +47,7 @@ namespace roadfighter {
          * Return if an object must be deleted
          * @return
          */
-        bool Delete() override;
+        int Delete() override;
 
         /**
          * Return a shared_ptr of the object box
@@ -59,7 +59,7 @@ namespace roadfighter {
          * Set if an object must be deleted or not
          * @param del
          */
-        void setDelete(bool del) override;
+        void setDelete(int del) override;
 
         /**
          * Return if the object shot

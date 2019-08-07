@@ -27,11 +27,19 @@ protected:
 
         void move(std::string input);
 
-        bool toDel = false;
+        int toDel = 0;
 
         double height;
 
         double width;
+
+        int CarTravelledDistance = 0;
+        bool finished = false;
+
+
+        int respawntimer = 60;
+
+        bool disableActions = false;
 
 public:
         /**
@@ -50,7 +58,7 @@ public:
          * Return if the object has to be deletes
          * @return
          */
-        bool Delete() override;
+        int Delete() override;
 
         /**
          * Returns a shared_ptr of the object box
@@ -62,13 +70,15 @@ public:
          * Set if the object must be deleted
          * @param del
          */
-        void setDelete(bool del) override;
+        void setDelete(int del) override;
 
         /**
          * Return if the object shot
          * @return
          */
         bool Shoot() override;
+
+    void update() override;
 
 public:
 };

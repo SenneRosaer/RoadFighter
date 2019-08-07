@@ -6,6 +6,7 @@
 #define ROADFIGHTER_SFMLBACKGROUND_H
 
 #include "../roadfighter/Background.h"
+#include "../Observer/Observer.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
@@ -22,6 +23,10 @@ private:
 
         sf::Texture texture;
 
+        sf::Texture fintexture;
+
+        bool finishDrawed = false;
+
 public:
         /**
          * Constructor with window
@@ -33,6 +38,8 @@ public:
          * Draws the background
          */
         void draw() override;
+
+
 };
 
 } // namespace roadfighterSFML

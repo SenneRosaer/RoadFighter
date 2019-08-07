@@ -19,6 +19,8 @@ public:
         ObserverScore(std::shared_ptr<sf::RenderWindow> wind);
 
         void update(int score) override;
+
+    std::string getType() override;
 };
 
 #endif // ROADFIGHTER_OBSERVERSCORE_H

@@ -40,13 +40,13 @@ public:
          * Return if an object must be deleted
          * @return
          */
-        virtual bool Delete() = 0;
+        virtual int Delete() = 0;
 
         /**
          * Set if an object must be deleted
          * @param del
          */
-        virtual void setDelete(bool del) = 0;
+        virtual void setDelete(int del) = 0;
 
         /**
          * Return if an object must shoot

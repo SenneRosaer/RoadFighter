@@ -25,3 +25,8 @@ void ObserverScore::update(int score)
         text.setPosition(static_cast<float>(t.first), static_cast<float>(t.second));
         window->draw(text);
 }
+
+
+std::string ObserverScore::getType() {
+    return "Score";
+}

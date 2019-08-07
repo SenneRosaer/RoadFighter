@@ -28,11 +28,11 @@ int roadfighter::Rock::getSpeed() {
     return 0;
 }
 
-bool roadfighter::Rock::Delete() {
+int roadfighter::Rock::Delete() {
     return toDel;
 }
 
-void roadfighter::Rock::setDelete(bool del) {
+void roadfighter::Rock::setDelete(int del) {
     toDel = del;
 }
 
