@@ -24,7 +24,7 @@ void roadfighter::Background::update(int speed, std::shared_ptr<roadfighter::Ent
                 centralpos3.second = centralpos2.second + 6;
         }
 
-        CarTravelledDistance = CarTravelledDistance + speed / 100;
+        CarTravelledDistance = CarTravelledDistance + speed;
 
 }
 

@@ -9,6 +9,7 @@
 #include "SFMLPlayerCar.h"
 #include "SFMLRock.h"
 #include "SFMLMovingCar.h"
+#include "SFMLAIRacer.h"
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerCar()
 {
@@ -38,4 +39,8 @@ std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createRock(do
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createMovingCar(double i) {
         return std::make_shared<roadfighterSFML::SFMLMovingCar>(window,i);
+}
+
+std::shared_ptr<roadfighter::AIRacer> roadfighterSFML::SFMLFactory::createAI() {
+    return std::make_shared<roadfighterSFML::SFMLAIRacer>(window);
 }

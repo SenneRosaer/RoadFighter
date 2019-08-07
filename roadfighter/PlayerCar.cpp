@@ -101,8 +101,8 @@ bool roadfighter::PlayerCar::Shoot() { return shoot; }
 
 
 void roadfighter::PlayerCar::update() {
-    CarTravelledDistance = CarTravelledDistance + speed / 100;
-    if(CarTravelledDistance > 1000){
+    CarTravelledDistance = CarTravelledDistance + speed;
+    if(CarTravelledDistance > 100000){
         finished = true;
     }
 

@@ -39,7 +39,7 @@ roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::Render
 void roadfighterSFML::SFMLBackground::draw() {
 
 
-    if(CarTravelledDistance > 950 and !finishDrawed){
+    if(CarTravelledDistance > 95000 and !finishDrawed){
        if(BG1.getPosition().y < 0 and BG2.getPosition().y < BG1.getPosition().y){
            BG1.setTexture(&fintexture);
            finishDrawed = true;

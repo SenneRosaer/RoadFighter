@@ -52,6 +52,8 @@ namespace roadfighterSFML {
 
         std::shared_ptr<roadfighter::Entity> createMovingCar(double i) override;
 
+        std::shared_ptr<roadfighter::AIRacer> createAI() override;
+
 
     };
 } // namespace roadfighterSFML

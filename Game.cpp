@@ -119,7 +119,7 @@ void Game::run() {
                 world->setLevelStarted(true);
                 world->setTimerInFrames(90);
                 world->setPlayer(factory->createPlayerCar());
-                std::cout << "reached" << std::endl;
+                world->setAi(factory->createAI());
             }
 
             if (world->isShoot()) {

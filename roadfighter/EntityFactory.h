@@ -6,6 +6,7 @@
 #define ROADFIGHTER_ENTITYFACTORY_H
 
 #include "Entity.h"
+#include "AIRacer.h"
 #include <memory>
 
 namespace roadfighter {
@@ -42,6 +43,8 @@ namespace roadfighter {
         virtual std::shared_ptr<roadfighter::Entity> createRock(double i) = 0;
 
         virtual std::shared_ptr<roadfighter::Entity> createMovingCar(double i) = 0;
+
+        virtual std::shared_ptr<roadfighter::AIRacer> createAI() = 0;
 
     };
 } // namespace roadfighter

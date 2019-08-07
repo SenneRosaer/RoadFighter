@@ -19,7 +19,6 @@ ObserverStartRace::ObserverStartRace(std::shared_ptr<sf::RenderWindow> wind) {
 }
 
 void ObserverStartRace::update(int timer) {
-    std::cout << timer << std::endl;
     if(timer != 0) {
         text.setString(std::to_string(timer));
         std::pair<double, double> t =

@@ -7,6 +7,7 @@
 
 #include "../Observer/Subject.h"
 #include "Entity.h"
+#include "AIRacer.h"
 #include <memory>
 #include <vector>
 
@@ -29,6 +30,8 @@ namespace roadfighter {
 
         std::vector<std::shared_ptr<roadfighter::Entity>> Rocks;
 
+        std::shared_ptr<roadfighter::AIRacer> AI;
+
         bool shoot = false;
 
         // score
@@ -41,7 +44,7 @@ namespace roadfighter {
         int SpeedLoop = 10;
 
         int Distance = 0;
-        int DistanceToNextLevel = 2000;
+        int DistanceToNextLevel = 100000;
 
         int speedAVG = 0;
 
@@ -222,6 +225,10 @@ namespace roadfighter {
         int getTimerInFrames() const;
 
         void setTimerInFrames(int timerInFrames);
+
+        const std::shared_ptr<roadfighter::AIRacer> &getAi() const;
+
+        void setAi(const std::shared_ptr<roadfighter::AIRacer> &ai);
 
     };
 
