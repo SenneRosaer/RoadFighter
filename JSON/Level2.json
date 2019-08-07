@@ -1,0 +1,4 @@
+{
+	"background" : "road2.png",
+	"enemies": ["car1","rock","car2"]
+}

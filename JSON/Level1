@@ -1,0 +1,4 @@
+{
+	"background" : "1",
+	"enemies": ["car1","stone"]
+}	
