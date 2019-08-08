@@ -41,7 +41,7 @@ void Game::run() {
     int frametime;
     //
 
-
+    int level;
 
     auto nextFrame = std::chrono::steady_clock::now();
 
@@ -118,7 +118,7 @@ void Game::run() {
             } else if( world->getTimerInFrames() <= 0){
                 world->setLevelStarted(true);
                 world->setTimerInFrames(90);
-                world->setPlayer(factory->createPlayerCar());
+                world->setPlayer(factory->createPlayerCar(level));
                 world->setAi(factory->createAI());
             }
 
@@ -184,6 +184,7 @@ void Game::run() {
                                 menu->GetSelected();
                                 menuActive = false;
                                 Parse(menu->GetSelected());
+                                level = menu->GetSelected();
                                 //of cases per level
                                 break;
 

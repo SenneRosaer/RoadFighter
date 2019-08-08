@@ -5,8 +5,9 @@
 #include "SFMLPlayerCar.h"
 #include "../Singleton/Transformation.h"
 
-roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> window) {
+roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level) {
     this->window = window;
+    this->level = level;
 
     texture.loadFromFile("../Sprites/CarPlayer.piko");
     texture.setSmooth(true);

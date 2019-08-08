@@ -20,6 +20,8 @@ protected:
 
         int CarTravelledDistance = 0;
 
+        bool bossfight = false;
+
 public:
         /**
          * Updated the object

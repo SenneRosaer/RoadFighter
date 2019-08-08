@@ -63,7 +63,8 @@ namespace roadfighter {
         bool levelStarted = false;
         int timerInFrames = 90;
 
-        //Respawn
+        //Boss
+        bool bossFight = false;
 
 
     public:

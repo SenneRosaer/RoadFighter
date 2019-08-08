@@ -11,9 +11,9 @@
 #include "SFMLMovingCar.h"
 #include "SFMLAIRacer.h"
 
-std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerCar()
+std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerCar(int level)
 {
-        return std::make_shared<roadfighterSFML::PlayerCar>(window);
+        return std::make_shared<roadfighterSFML::PlayerCar>(window,level);
 }
 
 roadfighterSFML::SFMLFactory::SFMLFactory(std::shared_ptr<sf::RenderWindow> window) { this->window = window; }

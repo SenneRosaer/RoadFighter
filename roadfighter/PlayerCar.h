@@ -41,6 +41,10 @@ protected:
 
         bool disableActions = false;
 
+        int level;
+
+        bool bossfight = false;
+
 public:
         /**
          * Update object with a speed

@@ -11,9 +11,13 @@ roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::Render
     // TODO fix properheid of andere manier
     std::string filename = "../Sprites/road" + std::to_string(type) + ".png";
     texture.loadFromFile(filename);
-
-    std::string filenamefin = "../Sprites/road" + std::to_string(type) + "Fin.png";
-    fintexture.loadFromFile(filenamefin);
+    if(type != 3) {
+        std::string filenamefin = "../Sprites/road" + std::to_string(type) + "Fin.png";
+        fintexture.loadFromFile(filenamefin);
+    } else {
+        std::string filenamefin = "../Sprites/road" + std::to_string(type) + ".png";
+        fintexture.loadFromFile(filenamefin);
+    }
     // repeatble intrect sprite (texture,intrect) ??
 
     BG1.setSize(sf::Vector2f((window->getSize().x / 2), window->getSize().y ));
@@ -24,7 +28,9 @@ roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::Render
     BG2 = BG1;
     BG3 = BG1;
 
-
+    if(type == 3){
+        bossfight = true;
+    }
     //https://en.sfml-dev.org/forums/index.php?topic=10660.0
     /*
      * eerst texture me al die dingen

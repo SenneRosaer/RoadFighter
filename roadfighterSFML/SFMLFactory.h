@@ -25,7 +25,7 @@ namespace roadfighterSFML {
          * Create a playercar
          * @return shared_ptr of Entity
          */
-        std::shared_ptr<roadfighter::Entity> createPlayerCar() override;
+        std::shared_ptr<roadfighter::Entity> createPlayerCar(int level) override;
 
         /**
          * Create a background

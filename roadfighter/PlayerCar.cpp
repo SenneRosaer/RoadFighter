@@ -37,15 +37,19 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs)
             if (!finished) {
                 for (int i = 0; i < inputs.size(); i++) {
                     if (inputs[i] == "up") {
-                        if (this->speed < 200) {
-                            this->speed = this->speed + 2;
-                            speed = true;
+                        if(!bossfight) {
+                            if (this->speed < 200) {
+                                this->speed = this->speed + 2;
+                                speed = true;
+                            }
                         }
                     } else {
                         move(inputs[i]);
                     }
-                    if (inputs[i] == "down") {
-                        breaking = true;
+                    if(!bossfight) {
+                        if (inputs[i] == "down") {
+                            breaking = true;
+                        }
                     }
                     if (inputs[i] == "space" && !reloading) {
                         shoot = true;
@@ -54,24 +58,28 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs)
                 }
 
                 if (!speed) {
-                    if (this->speed >= 0) {
-                        if (breaking) {
-                            this->speed = this->speed - 4;
-                        } else {
-                            this->speed = this->speed - 1;
+                    if(!bossfight){
+                        if (this->speed >= 0) {
+                            if (breaking) {
+                                this->speed = this->speed - 4;
+                            } else {
+                                this->speed = this->speed - 1;
+                            }
                         }
+                        if (this->speed < 0) {
+                            this->speed = 0;
+                        }
+                    }
+                }
+            } else {
+                if(!bossfight) {
+                    if (this->speed >= 0) {
+                        this->speed = this->speed - 4;
+
                     }
                     if (this->speed < 0) {
                         this->speed = 0;
                     }
-                }
-            } else {
-                if (this->speed >= 0) {
-                    this->speed = this->speed - 4;
-
-                }
-                if (this->speed < 0) {
-                    this->speed = 0;
                 }
             }
         }
@@ -103,7 +111,9 @@ bool roadfighter::PlayerCar::Shoot() { return shoot; }
 void roadfighter::PlayerCar::update() {
     CarTravelledDistance = CarTravelledDistance + speed;
     if(CarTravelledDistance > 100000){
-        finished = true;
+        if(level != 3) {
+            finished = true;
+        }
     }
 
     //2 is for respawning the car
@@ -116,5 +126,12 @@ void roadfighter::PlayerCar::update() {
             respawntimer = 60;
             disableActions = false;
         }
+    }
+
+    if(level == 3 and CarTravelledDistance > 100000){
+        speed = 100;
+        bossfight = true;
+        disableActions = false;
+
     }
 }

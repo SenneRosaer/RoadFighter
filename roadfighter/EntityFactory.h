@@ -17,7 +17,7 @@ namespace roadfighter {
          * Create a playercar
          * @return
          */
-        virtual std::shared_ptr<roadfighter::Entity> createPlayerCar() = 0;
+        virtual std::shared_ptr<roadfighter::Entity> createPlayerCar(int level) = 0;
 
         /**
          * Create a background
