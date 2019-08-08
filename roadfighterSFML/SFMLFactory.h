@@ -6,6 +6,7 @@
 #define ROADFIGHTER_SFMLFACTORY_H
 
 #include "../roadfighter/EntityFactory.h"
+#include "../roadfighter/Boss.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
@@ -53,6 +54,8 @@ namespace roadfighterSFML {
         std::shared_ptr<roadfighter::Entity> createMovingCar(double i) override;
 
         std::shared_ptr<roadfighter::AIRacer> createAI() override;
+
+        std::shared_ptr<roadfighter::Boss> createBoss() override;
 
 
     };

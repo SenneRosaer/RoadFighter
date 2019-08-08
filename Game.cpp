@@ -29,7 +29,7 @@ void Game::run() {
     bool first2 = true;
     bool first3 = true;
     bool menuActive = true;
-
+    bool bossCreated = false;
     int RockTimer = 80;
     int Car1Timer = 25;
 
@@ -113,6 +113,25 @@ void Game::run() {
 
             world->update();
 
+
+            if(world->isGameEnding()){
+                sf::Font font;
+                sf::Text text;
+                if (!font.loadFromFile("../Observer/arial.ttf")) {
+                    std::cout << "cant load font" << std::endl;
+                }
+                text.setFont(font);
+                // text.setFillColor(sf::Color::White);
+                text.setCharacterSize(30);
+                text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2);
+                text.setString("Congratulations!!");
+                std::pair<double, double> t =
+                        Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({-1.8, 0});
+                text.setPosition(static_cast<float>(t.first), static_cast<float>(t.second));
+                window->draw(text);
+            }
+
+
             if(!world->isLevelStarted() and world->getTimerInFrames() >0){
                 world->setTimerInFrames(world->getTimerInFrames() - 1);
             } else if( world->getTimerInFrames() <= 0){
@@ -136,6 +155,20 @@ void Game::run() {
                 }
             } else if (world->getWorldResetTimer() > 0){
                 world->setWorldResetTimer(world->getWorldResetTimer()-1);
+            }
+
+            if(world->getCurrentLevel() == 3 and world->isBossFight() and bossCreated == false){
+                world->setBoss(factory->createBoss());
+                bossCreated = true;
+            }
+
+            if(bossCreated and world->getBoss() != nullptr) {
+                if (world->getBoss()->isGetRocks()) {
+                    world->getBoss()->setGetRocks(false);
+                    for (auto pos:world->getBoss()->getRockPos()) {
+                        world->addRock(factory->createRock(pos));
+                    }
+                }
             }
 
 
@@ -213,6 +246,7 @@ Game::Game() {
     world = std::make_shared<roadfighter::World>();
     factory = std::make_shared<roadfighterSFML::SFMLFactory>(window);
     menu = std::make_shared<Menu>(window);
+
 
 }
 

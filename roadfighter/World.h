@@ -8,6 +8,7 @@
 #include "../Observer/Subject.h"
 #include "Entity.h"
 #include "AIRacer.h"
+#include "Boss.h"
 #include <memory>
 #include <vector>
 
@@ -66,6 +67,9 @@ namespace roadfighter {
         //Boss
         bool bossFight = false;
 
+        std::shared_ptr<roadfighter::Boss> boss = nullptr;
+
+        bool gameEnding = false;
 
     public:
         int respawnTimer = 30;
@@ -230,6 +234,22 @@ namespace roadfighter {
         const std::shared_ptr<roadfighter::AIRacer> &getAi() const;
 
         void setAi(const std::shared_ptr<roadfighter::AIRacer> &ai);
+
+        int getDistance() const;
+
+        void setDistance(int distance);
+
+        bool isBossFight() const;
+
+        void setBossFight(bool bossFight);
+
+        const std::shared_ptr<roadfighter::Boss> &getBoss() const;
+
+        void setBoss(const std::shared_ptr<roadfighter::Boss> &boss);
+
+        void gameEnd();
+
+        bool isGameEnding() const;
 
     };
 

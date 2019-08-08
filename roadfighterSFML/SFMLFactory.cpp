@@ -10,6 +10,7 @@
 #include "SFMLRock.h"
 #include "SFMLMovingCar.h"
 #include "SFMLAIRacer.h"
+#include "SFMLBoss.h"
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerCar(int level)
 {
@@ -43,4 +44,8 @@ std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createMovingC
 
 std::shared_ptr<roadfighter::AIRacer> roadfighterSFML::SFMLFactory::createAI() {
     return std::make_shared<roadfighterSFML::SFMLAIRacer>(window);
+}
+
+std::shared_ptr<roadfighter::Boss> roadfighterSFML::SFMLFactory::createBoss() {
+    return std::make_shared<roadfighterSFML::SFMLBoss>(window);
 }

@@ -28,6 +28,9 @@ void roadfighter::World::draw() {
     if(AI != nullptr and AI->Delete() != 2){
         AI->draw();
     }
+    if(boss != nullptr){
+        boss->draw();
+    }
 }
 
 roadfighter::World::World() {}
@@ -124,13 +127,24 @@ void roadfighter::World::update() {
             setAi(nullptr);
         }
     }
+
+    if(boss != nullptr and Player != nullptr){
+        boss->update(Player->getSpeed(),Player);
+        if(boss->Delete() == 1){
+            setBoss(nullptr);
+        }
+
+    }
     calcScore();
     notify();
 
-    if(Distance >= 100000){
+    if(Distance >= 100000 and currentLevel != 3){
         //iets met timer
         finish();
+    } else if (Distance >= 100000 and currentLevel == 3) {
+        bossFight = true;
     }
+
 }
 
 void roadfighter::World::setBackground(const std::shared_ptr<roadfighter::Entity> &Background) {
@@ -266,6 +280,32 @@ void roadfighter::World::Collision() {
                     rock->setDelete(1);
                     passingcar->setDelete(1);
 
+                }
+            }
+        }
+    }
+
+    if(boss != nullptr) {
+        std::shared_ptr<ObjBox> PassingBox = boss->getObjbox();
+
+        double Width1 = PassingBox->centralpos.first - PassingBox->width / 2;
+        double Width2 = PassingBox->centralpos.first + PassingBox->width / 2;
+        double Heigth1 = PassingBox->centralpos.second - PassingBox->height / 2;
+        double Heigth2 = PassingBox->centralpos.second + PassingBox->height / 2;
+
+        for (auto bullet : Bullets) {
+            std::pair<double, double> Position = bullet->getObjbox()->centralpos;
+
+            if (Position.first > Width1 - 0.05 and Position.first < Width2 + 0.05) {
+                if (Position.second > Heigth1 and Position.second < Heigth2 + 0.1) {
+                    bullet->setDelete(1);
+                    if (boss->getLife() > 0) {
+                        boss->setLife(boss->getLife() - 1);
+                    }
+                    if( boss->getLife() == 0){
+                        boss->setDelete(1);
+                        gameEnd();
+                    }
                 }
             }
         }
@@ -407,4 +447,38 @@ const std::shared_ptr<roadfighter::AIRacer> &roadfighter::World::getAi() const {
 
 void roadfighter::World::setAi(const std::shared_ptr<roadfighter::AIRacer> &ai) {
     AI = ai;
+}
+
+
+int roadfighter::World::getDistance() const {
+    return Distance;
+}
+
+void roadfighter::World::setDistance(int distance) {
+    Distance = distance;
+}
+
+bool roadfighter::World::isBossFight() const {
+    return bossFight;
+}
+
+void roadfighter::World::setBossFight(bool bossFight) {
+    World::bossFight = bossFight;
+}
+
+const std::shared_ptr<roadfighter::Boss> &roadfighter::World::getBoss() const {
+    return boss;
+}
+
+void roadfighter::World::setBoss(const std::shared_ptr<roadfighter::Boss> &boss) {
+    World::boss = boss;
+}
+
+void roadfighter::World::gameEnd() {
+    //Player = nullptr;
+    gameEnding = true;
+}
+
+bool roadfighter::World::isGameEnding() const {
+    return gameEnding;
 }

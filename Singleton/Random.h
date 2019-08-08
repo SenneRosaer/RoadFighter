@@ -24,6 +24,7 @@ public:
         double getRandom();
         double getRandom2();
        double getRandom3();
+       int getRandom4();
 
 
 private:

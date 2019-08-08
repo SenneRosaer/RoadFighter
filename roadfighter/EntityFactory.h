@@ -7,6 +7,7 @@
 
 #include "Entity.h"
 #include "AIRacer.h"
+#include "Boss.h"
 #include <memory>
 
 namespace roadfighter {
@@ -45,6 +46,9 @@ namespace roadfighter {
         virtual std::shared_ptr<roadfighter::Entity> createMovingCar(double i) = 0;
 
         virtual std::shared_ptr<roadfighter::AIRacer> createAI() = 0;
+
+        virtual std::shared_ptr<roadfighter::Boss> createBoss() = 0;
+
 
     };
 } // namespace roadfighter

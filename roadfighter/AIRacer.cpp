@@ -33,7 +33,6 @@ std::shared_ptr<ObjBox> roadfighter::AIRacer::getObjbox() {
 }
 
 void roadfighter::AIRacer::update() {
-    std::cout << "??" << std::endl;
     CarTravelledDistance = CarTravelledDistance + speed;
     if(CarTravelledDistance > 100000){
         finished = true;
@@ -50,7 +49,6 @@ void roadfighter::AIRacer::update() {
             disableActions = false;
         }
     }
-    std::cout << respawntimer << std::endl;
 
 }
 
