@@ -2,14 +2,14 @@
 // Created by sennerosaer on 7/23/19.
 //
 
-#include "SFMLMovingCar.h"
+#include "MovingCar.h"
 #include "../Singleton/Transformation.h"
 
-roadfighterSFML::SFMLMovingCar::SFMLMovingCar(const std::shared_ptr<sf::RenderWindow> window) {
+roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> window) {
     this->window = window;
 }
 
-roadfighterSFML::SFMLMovingCar::SFMLMovingCar(const std::shared_ptr<sf::RenderWindow> window, double random) {
+roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random) {
     this->window = window;
     centralpos = {random, 3.5};
 
@@ -29,7 +29,7 @@ roadfighterSFML::SFMLMovingCar::SFMLMovingCar(const std::shared_ptr<sf::RenderWi
 
 }
 
-void roadfighterSFML::SFMLMovingCar::draw() {
+void roadfighterSFML::MovingCar::draw() {
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);

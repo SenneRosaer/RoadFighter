@@ -35,4 +35,4 @@ public:
 };
 } // namespace roadfighterSFML
 
-#endif // ROADFIGHTER_SFMLPLAYERCAR_H
+#endif //ROADFIGHTER_PLAYERCAR_H

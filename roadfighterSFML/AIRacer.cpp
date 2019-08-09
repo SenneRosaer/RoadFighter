@@ -2,10 +2,10 @@
 // Created by sennerosaer on 8/7/19.
 //
 
-#include "SFMLAIRacer.h"
+#include "AIRacer.h"
 #include "../Singleton/Transformation.h"
 
-roadfighterSFML::SFMLAIRacer::SFMLAIRacer(const std::shared_ptr<sf::RenderWindow> window) {
+roadfighterSFML::AIRacer::AIRacer(const std::shared_ptr<sf::RenderWindow> window) {
     this->window = window;
 
     texture.loadFromFile("../Sprites/AIRacer.piko");
@@ -19,13 +19,13 @@ roadfighterSFML::SFMLAIRacer::SFMLAIRacer(const std::shared_ptr<sf::RenderWindow
     width = Transformation::getInstance(window->getSize().x, window->getSize().y).widthReverse(texture.getSize().x);
 }
 
-void roadfighterSFML::SFMLAIRacer::draw() {
+void roadfighterSFML::AIRacer::draw() {
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);
     window->draw(sprite);
 }
 
-void roadfighterSFML::SFMLAIRacer::update() {
+void roadfighterSFML::AIRacer::update() {
 
 }

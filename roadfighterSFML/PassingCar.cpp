@@ -2,7 +2,7 @@
 // Created by senne on 12/21/18.
 //
 
-#include "SFMLPassingCar.h"
+#include "PassingCar.h"
 #include "../Singleton/Transformation.h"
 
 roadfighterSFML::PassingCar::PassingCar(const std::shared_ptr<sf::RenderWindow> window) { this->window = window; }

@@ -36,4 +36,4 @@ public:
 };
 } // namespace roadfighterSFML
 
-#endif // ROADFIGHTER_SFMLPASSINGCAR_H
+#endif //ROADFIGHTER_PASSINGCAR_H

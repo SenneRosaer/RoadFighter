@@ -9,7 +9,7 @@
 #include <SFML/Graphics.hpp>
 
 namespace roadfighterSFML {
-class SFMLBullet : public roadfighter::Bullet
+class Bullet : public roadfighter::Bullet
 {
 private:
         std::shared_ptr<sf::RenderWindow> window;
@@ -28,8 +28,8 @@ public:
          * @param first
          * @param second
          */
-        SFMLBullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second);
+        Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second);
 };
 } // namespace roadfighterSFML
 
-#endif // ROADFIGHTER_SFMLBULLET_H
+#endif //ROADFIGHTER_BULLET_H

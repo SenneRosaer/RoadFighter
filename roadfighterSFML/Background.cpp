@@ -2,11 +2,11 @@
 // Created by senne on 12/16/18.
 //
 
-#include "SFMLBackground.h"
+#include "Background.h"
 #include "../Singleton/Transformation.h"
 
 
-roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::RenderWindow> &window, int type) : window(
+roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> &window, int type) : window(
         window) {
     // TODO fix properheid of andere manier
     std::string filename = "../Sprites/road" + std::to_string(type) + ".png";
@@ -42,7 +42,7 @@ roadfighterSFML::SFMLBackground::SFMLBackground(const std::shared_ptr<sf::Render
      */
 }
 
-void roadfighterSFML::SFMLBackground::draw() {
+void roadfighterSFML::Background::draw() {
 
 
     if(CarTravelledDistance > 95000 and !finishDrawed){

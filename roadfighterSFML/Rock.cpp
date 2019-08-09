@@ -2,17 +2,17 @@
 // Created by sennerosaer on 7/22/19.
 //
 
-#include "SFMLRock.h"
+#include "Rock.h"
 #include "../Singleton/Transformation.h"
 
-void roadfighterSFML::SFMLRock::draw() {
+void roadfighterSFML::Rock::draw() {
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);
     window->draw(sprite);
 }
 
-roadfighterSFML::SFMLRock::SFMLRock(std::shared_ptr<sf::RenderWindow> window, double i) {
+roadfighterSFML::Rock::Rock(std::shared_ptr<sf::RenderWindow> window, double i) {
     this->window = window;
     centralpos = {i, 3.5};
 

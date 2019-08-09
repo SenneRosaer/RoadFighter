@@ -11,7 +11,7 @@
 #include "../roadfighter/Boss.h"
 
 namespace roadfighterSFML {
-    class SFMLBoss : public roadfighter::Boss {
+    class Boss : public roadfighter::Boss {
     private:
         std::shared_ptr<sf::RenderWindow> window;
         sf::Sprite sprite;
@@ -19,10 +19,10 @@ namespace roadfighterSFML {
     public:
         void draw() override;
 
-        SFMLBoss(const std::shared_ptr<sf::RenderWindow> window);
+        Boss(const std::shared_ptr<sf::RenderWindow> window);
 
     };
 }
 
 
-#endif //ROADFIGHTER_SFMLBOSS_H
+#endif //ROADFIGHTER_BOSS_H

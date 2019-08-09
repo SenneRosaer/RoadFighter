@@ -12,7 +12,7 @@
 #include <memory>
 
 namespace roadfighterSFML {
-class SFMLBackground : public roadfighter::Background
+class Background : public roadfighter::Background
 {
 
 private:
@@ -32,7 +32,7 @@ public:
          * Constructor with window
          * @param window
          */
-        SFMLBackground(const std::shared_ptr<sf::RenderWindow>& window, int type);
+        Background(const std::shared_ptr<sf::RenderWindow>& window, int type);
 
         /**
          * Draws the background
@@ -44,4 +44,4 @@ public:
 
 } // namespace roadfighterSFML
 
-#endif // ROADFIGHTER_SFMLBACKGROUND_H
+#endif //ROADFIGHTER_BACKGROUND_H

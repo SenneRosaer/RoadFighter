@@ -10,16 +10,16 @@
 #include "../roadfighter/Rock.h"
 
 namespace roadfighterSFML{
-    class SFMLRock :  public roadfighter::Rock {
+    class Rock : public roadfighter::Rock {
     private:
         std::shared_ptr<sf::RenderWindow> window;
         sf::Sprite sprite;
         sf::Texture texture;
     public:
         void draw() override;
-        SFMLRock(std::shared_ptr<sf::RenderWindow> window,double i);
+        Rock(std::shared_ptr<sf::RenderWindow> window, double i);
 
     };
 }
 
-#endif //ROADFIGHTER_SFMLROCK_H
+#endif //ROADFIGHTER_ROCK_H

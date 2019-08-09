@@ -2,10 +2,10 @@
 // Created by senne on 1/16/19.
 //
 
-#include "SFMLBullet.h"
+#include "Bullet.h"
 #include "../Singleton/Transformation.h"
 
-void roadfighterSFML::SFMLBullet::draw()
+void roadfighterSFML::Bullet::draw()
 {
         std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(pos);
@@ -13,7 +13,7 @@ void roadfighterSFML::SFMLBullet::draw()
         window->draw(sprite);
 }
 
-roadfighterSFML::SFMLBullet::SFMLBullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second)
+roadfighterSFML::Bullet::Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second)
 {
         this->window = window;
         pos = {first, second};

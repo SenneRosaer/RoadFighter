@@ -2,7 +2,7 @@
 // Created by senne on 12/15/18.
 //
 
-#include "SFMLPlayerCar.h"
+#include "PlayerCar.h"
 #include "../Singleton/Transformation.h"
 
 roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level) {

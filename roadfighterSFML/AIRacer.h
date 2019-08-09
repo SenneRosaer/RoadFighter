@@ -9,7 +9,7 @@
 #include "SFML/Graphics.hpp"
 
 namespace roadfighterSFML {
-    class SFMLAIRacer : public roadfighter::AIRacer {
+    class AIRacer : public roadfighter::AIRacer {
     private:
         std::shared_ptr<sf::RenderWindow> window;
         sf::Sprite sprite;
@@ -19,7 +19,7 @@ namespace roadfighterSFML {
              * Constructor with a SFML window
              * @param window
              */
-        SFMLAIRacer(const std::shared_ptr<sf::RenderWindow> window);
+        AIRacer(const std::shared_ptr<sf::RenderWindow> window);
         /**
          * Draws the player
          */
@@ -32,4 +32,4 @@ namespace roadfighterSFML {
     };
 }
 
-#endif //ROADFIGHTER_SFMLAIRACER_H
+#endif //ROADFIGHTER_AIRACER_H

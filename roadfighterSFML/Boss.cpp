@@ -2,10 +2,10 @@
 // Created by sennerosaer on 8/8/19.
 //
 
-#include "SFMLBoss.h"
+#include "Boss.h"
 #include "../Singleton/Transformation.h"
 
-void roadfighterSFML::SFMLBoss::draw() {
+void roadfighterSFML::Boss::draw() {
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);
@@ -13,7 +13,7 @@ void roadfighterSFML::SFMLBoss::draw() {
 }
 
 
-roadfighterSFML::SFMLBoss::SFMLBoss(const std::shared_ptr<sf::RenderWindow> window) {
+roadfighterSFML::Boss::Boss(const std::shared_ptr<sf::RenderWindow> window) {
     this->window = window;
 
     texture.loadFromFile("../Sprites/Boss.piko");

@@ -10,7 +10,7 @@
 #include "../roadfighter/MovingCar.h"
 
 namespace roadfighterSFML {
-class SFMLMovingCar: public roadfighter::MovingCar {
+class MovingCar: public roadfighter::MovingCar {
     private:
         std::shared_ptr<sf::RenderWindow> window;
         sf::Sprite sprite;
@@ -20,18 +20,18 @@ class SFMLMovingCar: public roadfighter::MovingCar {
          * Constructor with sfml window
          * @param window
          */
-        SFMLMovingCar(const std::shared_ptr<sf::RenderWindow> window);
+        MovingCar(const std::shared_ptr<sf::RenderWindow> window);
 
         /**
          * Constructor with window and a random value to determine the spawning location
          * @param window
          * @param random
          */
-        SFMLMovingCar(const std::shared_ptr<sf::RenderWindow> window, double random);
+        MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random);
 
         void draw() override;
     };
 }
 
 
-#endif //ROADFIGHTER_SFMLMOVINGCAR_H
+#endif //ROADFIGHTER_MOVINGCAR_H

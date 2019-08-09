@@ -3,14 +3,14 @@
 //
 
 #include "SFMLFactory.h"
-#include "SFMLBackground.h"
-#include "SFMLBullet.h"
-#include "SFMLPassingCar.h"
-#include "SFMLPlayerCar.h"
-#include "SFMLRock.h"
-#include "SFMLMovingCar.h"
-#include "SFMLAIRacer.h"
-#include "SFMLBoss.h"
+#include "Background.h"
+#include "Bullet.h"
+#include "PassingCar.h"
+#include "PlayerCar.h"
+#include "Rock.h"
+#include "MovingCar.h"
+#include "AIRacer.h"
+#include "Boss.h"
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPlayerCar(int level)
 {
@@ -21,7 +21,7 @@ roadfighterSFML::SFMLFactory::SFMLFactory(std::shared_ptr<sf::RenderWindow> wind
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createBackground(int i)
 {
-        return std::make_shared<roadfighterSFML::SFMLBackground>(window, i);
+        return std::make_shared<roadfighterSFML::Background>(window, i);
 }
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPassingCar(double i)
@@ -31,21 +31,21 @@ std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createPassing
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createBullet(double first, double second)
 {
-        return std::make_shared<roadfighterSFML::SFMLBullet>(window, first, second);
+        return std::make_shared<roadfighterSFML::Bullet>(window, first, second);
 }
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createRock(double i) {
-        return std::make_shared<roadfighterSFML::SFMLRock>(window,i);
+        return std::make_shared<roadfighterSFML::Rock>(window, i);
 }
 
 std::shared_ptr<roadfighter::Entity> roadfighterSFML::SFMLFactory::createMovingCar(double i) {
-        return std::make_shared<roadfighterSFML::SFMLMovingCar>(window,i);
+        return std::make_shared<roadfighterSFML::MovingCar>(window, i);
 }
 
 std::shared_ptr<roadfighter::AIRacer> roadfighterSFML::SFMLFactory::createAI() {
-    return std::make_shared<roadfighterSFML::SFMLAIRacer>(window);
+    return std::make_shared<roadfighterSFML::AIRacer>(window);
 }
 
 std::shared_ptr<roadfighter::Boss> roadfighterSFML::SFMLFactory::createBoss() {
-    return std::make_shared<roadfighterSFML::SFMLBoss>(window);
+    return std::make_shared<roadfighterSFML::Boss>(window);
 }
