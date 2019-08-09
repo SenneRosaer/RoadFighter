@@ -20,6 +20,7 @@ namespace roadfighter {
     private:
         std::shared_ptr<roadfighter::Entity> Player;
 
+
         std::shared_ptr<roadfighter::Entity> Background;
 
         std::vector<std::shared_ptr<roadfighter::Entity>> passingCars;
@@ -70,6 +71,8 @@ namespace roadfighter {
         std::shared_ptr<roadfighter::Boss> boss = nullptr;
 
         bool gameEnding = false;
+
+        bool finishedFirst = false;
 
     public:
         int respawnTimer = 30;
@@ -250,6 +253,8 @@ namespace roadfighter {
         void gameEnd();
 
         bool isGameEnding() const;
+
+        int getDistanceToNextLevel() const;
 
     };
 

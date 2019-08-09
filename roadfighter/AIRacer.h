@@ -18,7 +18,7 @@ namespace roadfighter {
 
         std::pair<double, double> centralpos = {-1.3, -2};
 
-        int speed;
+        int speed = 0;
 
         int toDel = 0;
 
@@ -53,6 +53,8 @@ namespace roadfighter {
         void update() override;
 
         void updateMovement(std::vector<std::shared_ptr<roadfighter::Entity>> passingCars,std::vector<std::shared_ptr<roadfighter::Entity>> MovingCars,std::vector<std::shared_ptr<roadfighter::Entity>> Rocks, std::shared_ptr<roadfighter::Entity> player);
+
+        int getCarTravelledDistance() const;
     };
 }
 

@@ -114,8 +114,40 @@ void Game::run() {
             world->update();
 
 
+
+            sf::Font font;
+            if (!font.loadFromFile("../Observer/arial.ttf")) {
+                std::cout << "cant load font" << std::endl;
+            }
+
+            if(bossCreated == true and world->getBoss() != nullptr){
+                sf::Text bossLife;
+                bossLife.setFont(font);
+                // text.setFillColor(sf::Color::White);
+                bossLife.setCharacterSize(30);
+                bossLife.setOrigin(bossLife.getLocalBounds().width / 2, bossLife.getLocalBounds().height / 2);
+                bossLife.setString("Boss lifes: "+ std::to_string(world->getBoss()->getLife()));
+                std::pair<double, double> t =
+                        Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({1.1, 0.5});
+                bossLife.setPosition(static_cast<float>(t.first), static_cast<float>(t.second));
+                window->draw(bossLife);
+            }
+
+
+            sf::Text textDistanceLeft;
+
+            textDistanceLeft.setFont(font);
+            // text.setFillColor(sf::Color::White);
+            textDistanceLeft.setCharacterSize(30);
+            textDistanceLeft.setOrigin(textDistanceLeft.getLocalBounds().width / 2, textDistanceLeft.getLocalBounds().height / 2);
+            textDistanceLeft.setString("Distance left: "+ std::to_string(world->getDistanceToNextLevel()/100));
+            std::pair<double, double> t =
+                    Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({1.1, -0.5});
+            textDistanceLeft.setPosition(static_cast<float>(t.first), static_cast<float>(t.second));
+            window->draw(textDistanceLeft);
+
+
             if(world->isGameEnding()){
-                sf::Font font;
                 sf::Text text;
                 if (!font.loadFromFile("../Observer/arial.ttf")) {
                     std::cout << "cant load font" << std::endl;
@@ -126,7 +158,7 @@ void Game::run() {
                 text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2);
                 text.setString("Congratulations!!");
                 std::pair<double, double> t =
-                        Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({-1.8, 0});
+                        Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({-2, 0});
                 text.setPosition(static_cast<float>(t.first), static_cast<float>(t.second));
                 window->draw(text);
             }
@@ -144,7 +176,7 @@ void Game::run() {
             if (world->isShoot()) {
                 //TODO andere benaming voor first
                 double first = world->getPlayer()->getObjbox()->centralpos.first;
-                double second = world->getPlayer()->getObjbox()->centralpos.second;
+                double second = world->getPlayer()->getObjbox()->centralpos.second + world->getPlayer()->getObjbox()->height/2;
                 world->addBullet(factory->createBullet(first, second));
             }
 
@@ -152,6 +184,7 @@ void Game::run() {
                 if(world->getCurrentLevel() < 3) {
                     world->reset();
                     Parse(world->getCurrentLevel() + 1);
+                    level = world->getCurrentLevel() +1 ;
                 }
             } else if (world->getWorldResetTimer() > 0){
                 world->setWorldResetTimer(world->getWorldResetTimer()-1);
@@ -164,9 +197,13 @@ void Game::run() {
 
             if(bossCreated and world->getBoss() != nullptr) {
                 if (world->getBoss()->isGetRocks()) {
-                    world->getBoss()->setGetRocks(false);
-                    for (auto pos:world->getBoss()->getRockPos()) {
-                        world->addRock(factory->createRock(pos));
+                    if( world->getPlayer()->Delete() != 2){
+                        world->getBoss()->setGetRocks(false);
+                        for (auto pos:world->getBoss()->getRockPos()) {
+                            world->addRock(factory->createRock(pos));
+                        }
+                    } else {
+                       world->getBoss()->setGetRocks(false);
                     }
                 }
             }
@@ -182,6 +219,7 @@ void Game::run() {
                             case sf::Keyboard::Escape:
                                 menuActive = true;
                                 world->reset();
+                                bossCreated = false;
                                 break;
 
 

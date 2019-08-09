@@ -21,7 +21,7 @@ void ObserverScore::update(int score)
 {
         text.setString("Score: " + std::to_string(score));
         std::pair<double, double> t =
-            Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({2, 0});
+            Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({1.1, 0});
         text.setPosition(static_cast<float>(t.first), static_cast<float>(t.second));
         window->draw(text);
 }

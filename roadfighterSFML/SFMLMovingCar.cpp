@@ -23,9 +23,9 @@ roadfighterSFML::SFMLMovingCar::SFMLMovingCar(const std::shared_ptr<sf::RenderWi
     sprite.scale(1.3, 1.3);
 
     height = Transformation::getInstance(window->getSize().x, window->getSize().y)
-            .heightReverse(texture.getSize().y * 0.5);
+            .heightReverse(sprite.getLocalBounds().height);
     width = Transformation::getInstance(window->getSize().x, window->getSize().y)
-            .widthReverse(texture.getSize().x * 0.5);
+            .widthReverse(sprite.getLocalBounds().width);
 
 }
 

@@ -123,3 +123,7 @@ void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighte
     }
     roadfighter::AIRacer::update();
 }
+
+int roadfighter::AIRacer::getCarTravelledDistance() const {
+    return CarTravelledDistance;
+}

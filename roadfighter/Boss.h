@@ -45,7 +45,7 @@ namespace roadfighter {
 
         bool getRocks = false;
 
-        int life = 1;
+        int life = 5;
 
     public:
         void update() override;

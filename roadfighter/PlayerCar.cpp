@@ -7,14 +7,16 @@
 void roadfighter::PlayerCar::move(std::string input)
 {
         // TODO fix lim muren
-        if(!finished) {
-            if (input == "left") {
-                if (centralpos.first > -1.84) {
-                    centralpos.first = centralpos.first - 0.06;
-                }
-            } else if (input == "right") {
-                if (centralpos.first < -0.07) {
-                    centralpos.first = centralpos.first + 0.06;
+        if(!finished ) {
+            if(!disableActions) {
+                if (input == "left") {
+                    if (centralpos.first > -1.84) {
+                        centralpos.first = centralpos.first - 0.06;
+                    }
+                } else if (input == "right") {
+                    if (centralpos.first < -0.07) {
+                        centralpos.first = centralpos.first + 0.06;
+                    }
                 }
             }
         }
@@ -131,7 +133,8 @@ void roadfighter::PlayerCar::update() {
     if(level == 3 and CarTravelledDistance > 100000){
         speed = 100;
         bossfight = true;
-        disableActions = false;
+        
+        finished = false;
 
     }
 }

@@ -13,7 +13,6 @@ void roadfighter::Boss::update(int speed, std::shared_ptr<roadfighter::Entity> P
     if (centralpos.second > 2.4) {
         currentspeed = Startspeed;
         centralpos.second = centralpos.second - 0.02;
-        std::cout << centralpos.second << std::endl;
 
     } else {
         currentspeed = endSpeed;

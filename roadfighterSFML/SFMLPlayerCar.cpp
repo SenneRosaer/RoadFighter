@@ -16,9 +16,10 @@ roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> wi
     sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
     sprite.scale(1.3, 1.3);
 
-    height =
-            Transformation::getInstance(window->getSize().x, window->getSize().y).heightReverse(texture.getSize().y);
-    width = Transformation::getInstance(window->getSize().x, window->getSize().y).widthReverse(texture.getSize().x);
+    height = Transformation::getInstance(window->getSize().x, window->getSize().y).heightReverse(
+            sprite.getLocalBounds().height);
+    width = Transformation::getInstance(window->getSize().x, window->getSize().y).widthReverse(
+            sprite.getLocalBounds().width);
 }
 
 void roadfighterSFML::PlayerCar::draw() {
