@@ -8,6 +8,7 @@
 #include "roadfighterSFML/SFMLFactory.h"
 #include "Singleton/Transformation.h"
 #include "Observer/ObserverStartRace.h"
+#include "Exception_class/FontLoadError.h"
 #include <chrono>
 #include <ctime>
 #include <thread>
@@ -116,8 +117,13 @@ void Game::run() {
 
 
             sf::Font font;
-            if (!font.loadFromFile("../Observer/arial.ttf")) {
-                std::cout << "cant load font" << std::endl;
+            try {
+                if (!font.loadFromFile("../Observer/arial.ttf")) {
+                    throw(FontLoadError());
+                }
+            } catch (GameError& e ){
+                std::cerr << e.what() << std::endl;
+                throw;
             }
 
             if(bossCreated == true and world->getBoss() != nullptr){
@@ -149,9 +155,7 @@ void Game::run() {
 
             if(world->isGameEnding()){
                 sf::Text text;
-                if (!font.loadFromFile("../Observer/arial.ttf")) {
-                    std::cout << "cant load font" << std::endl;
-                }
+
                 text.setFont(font);
                 // text.setFillColor(sf::Color::White);
                 text.setCharacterSize(30);
