@@ -4,6 +4,7 @@
 
 #include "Boss.h"
 #include "../Singleton/Transformation.h"
+#include "../Exception_class/SpriteLoadError.h"
 
 void roadfighterSFML::Boss::draw() {
     std::pair<double, double> position =
@@ -16,7 +17,14 @@ void roadfighterSFML::Boss::draw() {
 roadfighterSFML::Boss::Boss(const std::shared_ptr<sf::RenderWindow> window) {
     this->window = window;
 
-    texture.loadFromFile("../Sprites/Boss.piko");
+    try {
+        if (!texture.loadFromFile("../Sprites/Boss.piko")) {
+            throw (SpriteLoadError());
+        }
+    } catch (GameError &e) {
+        std::cerr << e.what() << std::endl;
+        throw;
+    }
     texture.setSmooth(true);
 
     sprite.setTexture(texture);

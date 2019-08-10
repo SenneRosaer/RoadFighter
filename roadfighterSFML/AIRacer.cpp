@@ -4,11 +4,18 @@
 
 #include "AIRacer.h"
 #include "../Singleton/Transformation.h"
+#include "../Exception_class/SpriteLoadError.h"
 
 roadfighterSFML::AIRacer::AIRacer(const std::shared_ptr<sf::RenderWindow> window) {
     this->window = window;
-
-    texture.loadFromFile("../Sprites/AIRacer.piko");
+    try {
+        if (!texture.loadFromFile("../Sprites/AIRacer.piko")) {
+            throw (SpriteLoadError());
+        }
+    } catch(GameError& e){
+        std::cerr << e.what() << std::endl;
+        throw;
+    }
     texture.setSmooth(true);
 
     sprite.setTexture(texture);

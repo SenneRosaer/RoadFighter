@@ -4,31 +4,50 @@
 
 #include "Background.h"
 #include "../Singleton/Transformation.h"
+#include "../Exception_class/GameError.h"
+#include "../Exception_class/SpriteLoadError.h"
 
 
 roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> &window, int type) : window(
         window) {
     // TODO fix properheid of andere manier
     std::string filename = "../Sprites/road" + std::to_string(type) + ".png";
-    texture.loadFromFile(filename);
-    if(type != 3) {
-        std::string filenamefin = "../Sprites/road" + std::to_string(type) + "Fin.png";
-        fintexture.loadFromFile(filenamefin);
-    } else {
-        std::string filenamefin = "../Sprites/road" + std::to_string(type) + ".png";
-        fintexture.loadFromFile(filenamefin);
-    }
-    // repeatble intrect sprite (texture,intrect) ??
 
-    BG1.setSize(sf::Vector2f((window->getSize().x / 2), window->getSize().y ));
+
+    try {
+        if (!texture.loadFromFile(filename)) {
+            throw (SpriteLoadError());
+        }
+
+        if (type != 3) {
+            std::string filenamefin = "../Sprites/road" + std::to_string(type) + "Fin.png";
+            if (!fintexture.loadFromFile(filenamefin)) {
+                throw (SpriteLoadError());
+            }
+
+        } else {
+            std::string filenamefin = "../Sprites/rod" + std::to_string(type) + ".png";
+            if (!fintexture.loadFromFile(filenamefin)) {
+                throw (SpriteLoadError());
+            }
+        }
+    } catch (GameError &e) {
+        std::cerr << e.what() << std::endl;
+        throw;
+    }
+
+
+    BG1.setSize(sf::Vector2f((window->getSize().x / 2), window->getSize().y));
     BG1.setOrigin(window->getSize().x / 4, (window->getSize().y));
     BG1.setTexture(&texture);
 
 
     BG2 = BG1;
     BG3 = BG1;
+    BGFIN = BG1;
+    BGFIN.setTexture(&fintexture);
 
-    if(type == 3){
+    if (type == 3) {
         bossfight = true;
     }
     //https://en.sfml-dev.org/forums/index.php?topic=10660.0
@@ -44,59 +63,37 @@ roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> 
 
 void roadfighterSFML::Background::draw() {
 
+    //maxdistance - 6600 87200
 
-    if(CarTravelledDistance > 95000 and !finishDrawed){
-       if(BG1.getPosition().y < 0 and BG2.getPosition().y < BG1.getPosition().y){
-           BG1.setTexture(&fintexture);
-           finishDrawed = true;
-       }else
-        if(BG2.getPosition().y < 0 and BG3.getPosition().y < BG2.getPosition().y){
-            BG2.setTexture(&fintexture);
-
-            finishDrawed = true;
-        } else
-        if(BG3.getPosition().y < 0 and BG1.getPosition().y < BG3.getPosition().y){
-            BG3.setTexture(&fintexture);
-
-            finishDrawed = true;
-        } else if ( BG3.getPosition().y < 0){
-            BG3.setTexture(&fintexture);
-            finishDrawed = true;
-
-        } else if (BG2.getPosition().y < 0){
-            BG2.setTexture(&fintexture);
-
-            finishDrawed = true;
-
-        } else if (BG1.getPosition().y < 0){
-            BG1.setTexture(&fintexture);
-
-            finishDrawed = true;
-
-        }
-
-
-
-    }
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos1);
     std::pair<double, double> position2 =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos2);
     std::pair<double, double> position3 =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos3);
+    std::pair<double, double> positionfin =
+            Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralposfin);
 
     BG1.setPosition(position.first, position.second);
     BG2.setPosition(position2.first, position2.second);
     BG3.setPosition(position3.first, position3.second);
-
-    // BG1.move(0,1);
-
-    // sprite.move(0,1);
-    //
+    BGFIN.setPosition(positionfin.first, position3.second);
 
     window->draw(BG1);
     window->draw(BG2);
     window->draw(BG3);
+
+    if (CarTravelledDistance > 93900) {
+        if (!finishDrawed and !moveFinish) {
+
+
+            moveFinish = true;
+            finishDrawed = true;
+        }
+    }
+    if (moveFinish) {
+        window->draw(BGFIN);
+    }
 }
 
 

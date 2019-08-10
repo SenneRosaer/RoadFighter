@@ -16,6 +16,10 @@ protected:
         std::pair<double, double> centralpos2 = {-1, 3};
         std::pair<double, double> centralpos3 = {-1, 9};
 
+        std::pair<double, double> centralposfin ={ -1, 3};
+
+        bool moveFinish = false;
+
         int toDel = 0;
 
         int CarTravelledDistance = 0;

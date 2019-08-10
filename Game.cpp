@@ -184,7 +184,7 @@ void Game::run() {
                 if(world->getCurrentLevel() < 3) {
                     world->reset();
                     Parse(world->getCurrentLevel() + 1);
-                    level = world->getCurrentLevel() +1 ;
+                    level = world->getCurrentLevel() ;
                 }
             } else if (world->getWorldResetTimer() > 0){
                 world->setWorldResetTimer(world->getWorldResetTimer()-1);

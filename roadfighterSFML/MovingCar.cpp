@@ -4,6 +4,7 @@
 
 #include "MovingCar.h"
 #include "../Singleton/Transformation.h"
+#include "../Exception_class/SpriteLoadError.h"
 
 roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> window) {
     this->window = window;
@@ -15,7 +16,14 @@ roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> wi
 
     this->window = window;
 
-    texture.loadFromFile("../Sprites/PassingCar2.piko");
+    try {
+        if (!texture.loadFromFile("../Sprites/PassingCar2.piko")) {
+            throw (SpriteLoadError());
+        }
+    } catch (GameError &e) {
+        std::cerr << e.what() << std::endl;
+        throw;
+    }
     texture.setSmooth(true);
 
     sprite.setTexture(texture);

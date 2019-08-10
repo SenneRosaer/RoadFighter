@@ -24,7 +24,7 @@ namespace roadfighter {
 
         int CarTravelledDistance = 0;
 
-        int respawntimer = 60;
+        int respawntimer = 45;
 
         bool disableActions = false;
 

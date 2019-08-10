@@ -4,6 +4,7 @@
 
 #include "Rock.h"
 #include "../Singleton/Transformation.h"
+#include "../Exception_class/SpriteLoadError.h"
 
 void roadfighterSFML::Rock::draw() {
     std::pair<double, double> position =
@@ -18,7 +19,14 @@ roadfighterSFML::Rock::Rock(std::shared_ptr<sf::RenderWindow> window, double i) 
 
     this->window = window;
 
-    texture.loadFromFile("../Sprites/Rock.piko");
+    try {
+        if (!texture.loadFromFile("../Sprites/Rock.piko")) {
+            throw (SpriteLoadError());
+        }
+    } catch (GameError &e) {
+        std::cerr << e.what() << std::endl;
+        throw;
+    }
     texture.setSmooth(true);
 
     sprite.setTexture(texture);

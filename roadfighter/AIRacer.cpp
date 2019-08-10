@@ -76,6 +76,7 @@ void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighte
         obj.insert(obj.end(), passingCars.begin(), passingCars.end());
         obj.insert(obj.end(), MovingCars.begin(), MovingCars.end());
         obj.insert(obj.end(), Rocks.begin(), Rocks.end());
+        obj.push_back(player);
 
 
         for (auto car :obj) {

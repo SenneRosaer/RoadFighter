@@ -25,10 +25,10 @@ void roadfighter::World::draw() {
         rock->draw();
     }
 
-    if(AI != nullptr and AI->Delete() != 2){
+    if (AI != nullptr and AI->Delete() != 2) {
         AI->draw();
     }
-    if(boss != nullptr){
+    if (boss != nullptr) {
         boss->draw();
     }
 }
@@ -72,44 +72,44 @@ void roadfighter::World::update() {
 
     if (Player == nullptr) {
         shoot = false;
-        Background->update(0,Player);
+        Background->update(0, Player);
 
     } else {
         shoot = Player->Shoot();
         Player->update();
-        Background->update(Player->getSpeed(),Player);
+        Background->update(Player->getSpeed(), Player);
     }
 
     for (auto bullet : Bullets) {
         if (Player == nullptr) {
-            bullet->update(0,Player);
+            bullet->update(0, Player);
         } else {
-            bullet->update(Player->getSpeed(),Player);
+            bullet->update(Player->getSpeed(), Player);
         }
     }
 
     for (auto passingcar : passingCars) {
         if (Player == nullptr) {
-            passingcar->update(0,Player);
+            passingcar->update(0, Player);
         } else {
-            passingcar->update(Player->getSpeed(),Player);
+            passingcar->update(Player->getSpeed(), Player);
 
         }
     }
 
     for (auto movingcar : movingCars) {
         if (Player == nullptr) {
-            movingcar->update(0,Player);
+            movingcar->update(0, Player);
         } else {
-            movingcar->update(Player->getSpeed(),Player);
+            movingcar->update(Player->getSpeed(), Player);
         }
     }
 
     for (auto rock : Rocks) {
         if (Player == nullptr) {
-            rock->update(0,Player);
+            rock->update(0, Player);
         } else {
-            rock->update(Player->getSpeed(),Player);
+            rock->update(Player->getSpeed(), Player);
         }
     }
 
@@ -121,19 +121,19 @@ void roadfighter::World::update() {
         }
     }
 
-    if(AI != nullptr){
-        AI->updateMovement(passingCars,movingCars,Rocks, Player);
-        if(AI->Delete() == 1){
+    if (AI != nullptr) {
+        AI->updateMovement(passingCars, movingCars, Rocks, Player);
+        if (AI->Delete() == 1) {
             setAi(nullptr);
         }
     }
 
-    if(boss != nullptr and Player != nullptr){
-        boss->update(Player->getSpeed(),Player);
-        if(boss->Delete() == 1){
+    if (boss != nullptr and Player != nullptr) {
+        boss->update(Player->getSpeed(), Player);
+        if (boss->Delete() == 1) {
             setBoss(nullptr);
         }
-        if(AI != nullptr) {
+        if (AI != nullptr) {
             if (AI->getObjbox()->centralpos.second < -3 or AI->getObjbox()->centralpos.second > 3) {
                 AI = nullptr;
             }
@@ -141,23 +141,26 @@ void roadfighter::World::update() {
     }
 
 
-    if(Distance >= 100000 and currentLevel != 3){
+
+    if (Player != nullptr) {
+        DistanceToNextLevel = DistanceToNextLevel - Player->getSpeed();
+        if (DistanceToNextLevel < 0) {
+            DistanceToNextLevel = 0;
+        }
+    }
+    if (AI != nullptr and Player != nullptr) {
+        if (AI->getCarTravelledDistance() <= 100000 and getDistance() >= 100000) {
+            finishedFirst = true;
+        }
+    }
+
+    if (Distance > 100000 and currentLevel != 3) {
         //iets met timer
         finish();
     } else if (Distance >= 100000 and currentLevel == 3) {
         bossFight = true;
     }
-    if(Player != nullptr) {
-        DistanceToNextLevel =DistanceToNextLevel - Player->getSpeed();
-        if (DistanceToNextLevel < 0) {
-            DistanceToNextLevel = 0;
-        }
-    }
-    if(AI != nullptr and Player != nullptr){
-        if(AI->getCarTravelledDistance() <= 100000 and getDistance() >= 100000) {
-            finishedFirst = true;
-        }
-    }
+
     calcScore();
     notify();
 
@@ -184,15 +187,16 @@ int roadfighter::World::Delete() { return 0; }
 void roadfighter::World::Collision() {
     // TODO FIX
     std::vector<std::shared_ptr<roadfighter::Entity>> allPlayerCollisionObj;
-    for(auto item:Rocks){
+    for (auto item:Rocks) {
         allPlayerCollisionObj.push_back(item);
     }
-    for(auto item: passingCars){
+    for (auto item: passingCars) {
         allPlayerCollisionObj.push_back(item);
     }
-    for(auto item: movingCars){
+    for (auto item: movingCars) {
         allPlayerCollisionObj.push_back(item);
     }
+
     if (getPlayer() != nullptr and Player->Delete() != 2) {
         std::shared_ptr<ObjBox> PlayerBox = Player->getObjbox();
         double width1 = PlayerBox->centralpos.first - PlayerBox->width / 2;
@@ -230,7 +234,7 @@ void roadfighter::World::Collision() {
     //TODO properder oplossen
     if (AI != nullptr and AI->Delete() != 2) {
         auto allAICollisionObj = allPlayerCollisionObj;
-        allAICollisionObj.insert(allAICollisionObj.end(),Bullets.begin(),Bullets.end());
+        allAICollisionObj.insert(allAICollisionObj.end(), Bullets.begin(), Bullets.end());
         std::shared_ptr<ObjBox> PlayerBox = AI->getObjbox();
         double width1 = PlayerBox->centralpos.first - PlayerBox->width / 2;
         double width2 = PlayerBox->centralpos.first + PlayerBox->width / 2;
@@ -249,8 +253,8 @@ void roadfighter::World::Collision() {
                                                   carBox->centralpos.second - carBox->height / 2};
             std::vector<std::pair<double, double>> tempvec = {LUCorner, RUCorner, LLCorner, RLCorner};
             for (int i = 0; i < 4; i++) {
-                if (tempvec[i].first > width1 and tempvec[i].first < width2) {
-                    if (tempvec[i].second < heigth2 and tempvec[i].second > heigth1) {
+                if (tempvec[i].first >= width1 and tempvec[i].first <= width2) {
+                    if (tempvec[i].second <= heigth2 and tempvec[i].second >= heigth1) {
                         AI->setDelete(2);
                         collisionObj->setDelete(1);
                         break;
@@ -258,14 +262,37 @@ void roadfighter::World::Collision() {
                 }
             }
         }
+        if (Player->Delete() != 2) {
+            std::shared_ptr<ObjBox> carBox = Player->getObjbox();
+            std::pair<double, double> LUCorner = {carBox->centralpos.first - carBox->width / 2,
+                                                  carBox->centralpos.second + carBox->height / 2};
+            std::pair<double, double> RUCorner = {carBox->centralpos.first + carBox->width / 2,
+                                                  carBox->centralpos.second + carBox->height / 2};
+            std::pair<double, double> LLCorner = {carBox->centralpos.first - carBox->width / 2,
+                                                  carBox->centralpos.second - carBox->height / 2};
+            std::pair<double, double> RLCorner = {carBox->centralpos.first + carBox->width / 2,
+                                                  carBox->centralpos.second - carBox->height / 2};
+            std::vector<std::pair<double, double>> tempvec = {LUCorner, RUCorner, LLCorner, RLCorner};
+            for (int i = 0; i < 4; i++) {
+                if (tempvec[i].first >= width1 and tempvec[i].first <= width2) {
+                    if (tempvec[i].second <= heigth2 and tempvec[i].second >= heigth1) {
+                        AI->setDelete(2);
+                        Player->setDelete(2);
+                        break;
+                    }
+                }
+            }
+        }
+
+
     }
 
     // TODO betere namen
     std::vector<std::shared_ptr<roadfighter::Entity>> allCarCollisionObj;
-    for(auto item: passingCars){
+    for (auto item: passingCars) {
         allCarCollisionObj.push_back(item);
     }
-    for(auto item: movingCars){
+    for (auto item: movingCars) {
         allCarCollisionObj.push_back(item);
     }
 
@@ -280,8 +307,8 @@ void roadfighter::World::Collision() {
         for (auto bullet : Bullets) {
             std::pair<double, double> Position = bullet->getObjbox()->centralpos;
 
-            if (Position.first > Width1 - 0.05 and Position.first < Width2 + 0.05) {
-                if (Position.second > Heigth1 and Position.second < Heigth2 + 0.1) {
+            if (Position.first >= Width1 - 0.05 and Position.first <= Width2 + 0.05) {
+                if (Position.second >= Heigth1 and Position.second <= Heigth2 + 0.1) {
                     bullet->setDelete(1);
                     passingcar->setDelete(1);
                     destroyedCars++;
@@ -293,8 +320,8 @@ void roadfighter::World::Collision() {
         for (auto rock : Rocks) {
             std::pair<double, double> Position = rock->getObjbox()->centralpos;
 
-            if (Position.first > Width1 - 0.05 and Position.first < Width2 + 0.05) {
-                if (Position.second > Heigth1 and Position.second < Heigth2 + 0.1) {
+            if (Position.first >= Width1 - 0.05 and Position.first <= Width2 + 0.05) {
+                if (Position.second >= Heigth1 and Position.second <= Heigth2 + 0.1) {
                     rock->setDelete(1);
                     passingcar->setDelete(1);
 
@@ -303,7 +330,7 @@ void roadfighter::World::Collision() {
         }
     }
 
-    if(boss != nullptr) {
+    if (boss != nullptr) {
         std::shared_ptr<ObjBox> PassingBox = boss->getObjbox();
 
         double Width1 = PassingBox->centralpos.first - PassingBox->width / 2;
@@ -314,13 +341,13 @@ void roadfighter::World::Collision() {
         for (auto bullet : Bullets) {
             std::pair<double, double> Position = bullet->getObjbox()->centralpos;
 
-            if (Position.first > Width1 - 0.05 and Position.first < Width2 + 0.05) {
-                if (Position.second > Heigth1 and Position.second < Heigth2 + 0.1) {
+            if (Position.first >= Width1 - 0.05 and Position.first <= Width2 + 0.05) {
+                if (Position.second >= Heigth1 and Position.second <= Heigth2 + 0.1) {
                     bullet->setDelete(1);
                     if (boss->getLife() > 0) {
                         boss->setLife(boss->getLife() - 1);
                     }
-                    if( boss->getLife() == 0){
+                    if (boss->getLife() == 0) {
                         boss->setDelete(1);
                         gameEnd();
                     }
@@ -341,17 +368,28 @@ bool roadfighter::World::isShoot() const { return shoot; }
 
 void roadfighter::World::addBullet(std::shared_ptr<roadfighter::Entity> bullet) { Bullets.push_back(bullet); }
 
-void roadfighter::World::calcDistance() { Distance = Distance + Player->getSpeed(); }
+void roadfighter::World::calcDistance() {
+    Distance = Distance + Player->getSpeed();
+    //maxdistance
+    if (DistanceToNextLevel == 0) {
+        Distance = 100000;
+    }
+}
 
 void roadfighter::World::calcScore() {
-    if(!bossFight) {
-        int dist = (Distance / 100);
-        int destr = destroyedCars * 50;
-        int crash = crashes * -100;
-        score = dist + destr + crash;
+    if (!bossFight) {
+        if (!levelFinished) {
+            if (DistanceToNextLevel == 0) {
+                Distance = 100000;
+            }
+            int dist = (Distance / 100);
+            int destr = destroyedCars * 50;
+            int crash = crashes * -100;
+            score = dist + destr + crash;
 
-        if(finishedFirst){
-            score = score + 500;
+            if (finishedFirst) {
+                score = score + 500;
+            }
         }
     }
 }
@@ -360,20 +398,20 @@ void roadfighter::World::attach(std::shared_ptr<Observer> observer) { observers.
 
 void roadfighter::World::notify() {
     for (auto obs : observers) {
-        if(obs->getType() == "Score") {
+        if (obs->getType() == "Score") {
             obs->update(score);
-        } else if( obs->getType() == "StartRaceTimer" and !levelStarted){
+        } else if (obs->getType() == "StartRaceTimer" and !levelStarted) {
             int timer;
-            if(timerInFrames <= 90 and timerInFrames >60){
+            if (timerInFrames <= 90 and timerInFrames > 60) {
                 timer = 3;
             }
-            if(timerInFrames <= 60 and timerInFrames >30){
+            if (timerInFrames <= 60 and timerInFrames > 30) {
                 timer = 2;
             }
-            if(timerInFrames <= 30 and timerInFrames >0){
+            if (timerInFrames <= 30 and timerInFrames > 0) {
                 timer = 1;
             }
-            if(timerInFrames <= 0){
+            if (timerInFrames <= 0) {
                 timer = 0;
 
             }
@@ -390,13 +428,14 @@ void roadfighter::World::addRock(std::shared_ptr<roadfighter::Entity> rock) {
 const std::vector<std::shared_ptr<roadfighter::Entity>> &roadfighter::World::getMovingCars() const {
     return movingCars;
 }
+
 void roadfighter::World::addMovingCar(std::shared_ptr<roadfighter::Entity> car) { movingCars.push_back(car); }
 
 void roadfighter::World::reset() {
     score = 0;
-    destroyedCars=0;
-    crashes=0;
-    Distance=0;
+    destroyedCars = 0;
+    crashes = 0;
+    Distance = 0;
     DistanceToNextLevel = 100000;
 
 
@@ -417,7 +456,7 @@ void roadfighter::World::reset() {
     timerInFrames = 90;
     gameEnding = false;
     boss = nullptr;
-
+    finishedFirst = false;
 
 
 }
@@ -431,12 +470,15 @@ void roadfighter::World::setCurrentLevel(int currentLevel) {
 }
 
 void roadfighter::World::finish() {
-    if(!finisFunctionReached) {
+    if (!finisFunctionReached) {
+        calcScore();
+        notify();
         levelFinished = true;
 
         worldResetTimer = 60;
 
         finisFunctionReached = true;
+
     }
 }
 

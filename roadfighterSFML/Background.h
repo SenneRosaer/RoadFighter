@@ -22,7 +22,7 @@ private:
         sf::RectangleShape BG3;
 
         sf::Texture texture;
-
+        sf::RectangleShape BGFIN;
         sf::Texture fintexture;
 
         bool finishDrawed = false;
