@@ -5,6 +5,8 @@
 #include "World.h"
 #include "../Observer/Observer.h"
 #include "EntityFactory.h"
+#include "../Exception_class/GameError.h"
+#include "../Exception_class/ScoreError.h"
 #include <iostream>
 
 void roadfighter::World::draw() {
@@ -377,20 +379,28 @@ void roadfighter::World::calcDistance() {
 }
 
 void roadfighter::World::calcScore() {
-    if (!bossFight) {
-        if (!levelFinished) {
-            if (DistanceToNextLevel == 0) {
-                Distance = 100000;
-            }
-            int dist = (Distance / 100);
-            int destr = destroyedCars * 50;
-            int crash = crashes * -100;
-            score = dist + destr + crash;
+    try {
+        if (!bossFight) {
+            if (!levelFinished) {
+                if (DistanceToNextLevel == 0) {
+                    Distance = 100000;
+                }
+                int dist = (Distance / 100);
+                int destr = destroyedCars * 50;
+                int crash = crashes * -100;
+                score = dist + destr + crash;
 
-            if (finishedFirst) {
-                score = score + 500;
+                if (finishedFirst) {
+                    score = score + 500;
+                }
             }
         }
+        if(score < 0){
+            throw (ScoreError());
+        }
+    } catch(GameError& e){
+        std::cerr << e.what() << std::endl;
+        score = 0;
     }
 }
 
