@@ -6,13 +6,17 @@
 #define ROADFIGHTER_FONTLOADERROR_H
 
 
-#include "GameError.h"
+#include "FileError.h"
 
-class FontLoadError: public GameError {
+class FontLoadError: public FileError {
 private:
-    const char* errorString = "Error while loading font";
+    const char* errorString = "Error while loading font -> ";
 public:
     const char* what() const noexcept override;
+
+    FontLoadError(const char *file);
+
+    const char* filePath() const noexcept override;
 
 };
 

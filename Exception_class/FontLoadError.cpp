@@ -7,3 +7,9 @@
 const char *FontLoadError::what() const noexcept {
     return errorString;
 }
+
+FontLoadError::FontLoadError(const char *file) : FileError(file) {}
+
+const char* FontLoadError::filePath() const noexcept {
+    return file;
+}

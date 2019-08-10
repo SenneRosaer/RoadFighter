@@ -11,10 +11,10 @@ Menu::Menu(std::shared_ptr<sf::RenderWindow> windowGiven) {
 
     try {
         if (!font.loadFromFile("../Observer/arial.ttf")) {
-            throw (FontLoadError());
+            throw (FontLoadError("../Observer/arial.ttf"));
         }
-    } catch (GameError &e) {
-        std::cerr << e.what() << std::endl;
+    } catch (FileError &e) {
+        std::cerr << e.what() << e.filePath()<<  std::endl;
         throw;
     }
     text[0].setFont(font);

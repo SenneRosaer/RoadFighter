@@ -10,10 +10,10 @@ roadfighterSFML::AIRacer::AIRacer(const std::shared_ptr<sf::RenderWindow> window
     this->window = window;
     try {
         if (!texture.loadFromFile("../Sprites/AIRacer.piko")) {
-            throw (SpriteLoadError());
+            throw (SpriteLoadError("../Sprites/AIRacer.piko"));
         }
-    } catch(GameError& e){
-        std::cerr << e.what() << std::endl;
+    } catch(FileError& e){
+        std::cerr << e.what() << e.filePath()<< std::endl;
         throw;
     }
     texture.setSmooth(true);

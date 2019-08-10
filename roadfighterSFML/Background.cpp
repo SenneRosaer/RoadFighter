@@ -16,23 +16,24 @@ roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> 
 
     try {
         if (!texture.loadFromFile(filename)) {
-            throw (SpriteLoadError());
+            throw (SpriteLoadError(filename.c_str()));
         }
 
         if (type != 3) {
             std::string filenamefin = "../Sprites/road" + std::to_string(type) + "Fin.png";
             if (!fintexture.loadFromFile(filenamefin)) {
-                throw (SpriteLoadError());
+                throw (SpriteLoadError(filenamefin.c_str()));
             }
 
         } else {
-            std::string filenamefin = "../Sprites/rod" + std::to_string(type) + ".png";
+            std::string filenamefin = "../Sprites/road" + std::to_string(type) + ".png";
             if (!fintexture.loadFromFile(filenamefin)) {
-                throw (SpriteLoadError());
+                throw (SpriteLoadError(filenamefin.c_str()));
             }
         }
-    } catch (GameError &e) {
-        std::cerr << e.what() << std::endl;
+    } catch (FileError &e) {
+        std::string test = e.what();
+        std::cerr << e.what() << e.filePath() << std::endl;
         throw;
     }
 

@@ -19,10 +19,10 @@ roadfighterSFML::Bullet::Bullet(const std::shared_ptr<sf::RenderWindow> window, 
 
     try {
         if (!texture.loadFromFile("../Sprites/Bullet.piko")) {
-            throw (SpriteLoadError());
+            throw (SpriteLoadError("../Sprites/Bullet.piko"));
         }
-    } catch (GameError &e) {
-        std::cerr << e.what() << std::endl;
+    } catch (FileError &e) {
+        std::cerr << e.what() << e.filePath() << std::endl;
         throw;
     }
     texture.setSmooth(true);

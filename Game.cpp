@@ -117,12 +117,13 @@ void Game::run() {
 
 
             sf::Font font;
+            const char* filename = "../Observer/arial.ttf";
             try {
-                if (!font.loadFromFile("../Observer/arial.ttf")) {
-                    throw(FontLoadError());
+                if (!font.loadFromFile(filename)) {
+                    throw(FontLoadError(filename));
                 }
-            } catch (GameError& e ){
-                std::cerr << e.what() << std::endl;
+            } catch (FileError& e ){
+                std::cerr << e.what() << e.filePath()<<  std::endl;
                 throw;
             }
 
@@ -293,29 +294,34 @@ Game::Game() {
 }
 
 void Game::Parse(int level) {
+    try {
 
-    std::string file = "../JSON/Level"+ std::to_string(level) + ".json";
-    std::cout << file << std::endl;
-    std::ifstream ifstr(file);
-    json js = json::parse(ifstr);
 
-    std::string background = js["background"];
-    std::vector<std::string> enemies = js["enemies"];
-    for(auto item : enemies){
-        if(item == "car1"){
-            world->passingCar = true;
+        std::string file = "../JSON/Level" + std::to_string(level) + ".json";
+        std::cout << file << std::endl;
+        std::ifstream ifstr(file);
+        json js = json::parse(ifstr);
+
+        std::string background = js["background"];
+        std::vector<std::string> enemies = js["enemies"];
+        for (auto item : enemies) {
+            if (item == "car1") {
+                world->passingCar = true;
+            }
+            if (item == "rock") {
+                world->rock = true;
+            }
+            if (item == "car2") {
+                world->movingCar = true;
+            }
         }
-        if(item == "rock"){
-            world->rock = true;
-        }
-        if(item == "car2"){
-            world->movingCar = true;
-        }
+
+        world->setCurrentLevel(level);
+        world->setBackground(factory->createBackground(level));
+        world->setLevelFinished(false);
+
+    } catch (FileError& e){
+        std::cerr << e.what() << e.filePath() << std::endl;
+        throw;
     }
-
-    world->setCurrentLevel(level);
-    world->setBackground(factory->createBackground(level));
-    world->setLevelFinished(false);
-
-
 }

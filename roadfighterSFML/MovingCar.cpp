@@ -18,10 +18,10 @@ roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> wi
 
     try {
         if (!texture.loadFromFile("../Sprites/PassingCar2.piko")) {
-            throw (SpriteLoadError());
+            throw (SpriteLoadError("../Sprites/PassingCar2.piko"));
         }
-    } catch (GameError &e) {
-        std::cerr << e.what() << std::endl;
+    } catch (FileError &e) {
+        std::cerr << e.what() <<e.filePath()<< std::endl;
         throw;
     }
     texture.setSmooth(true);

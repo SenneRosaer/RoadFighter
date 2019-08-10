@@ -6,13 +6,17 @@
 #define ROADFIGHTER_SPRITELOADERROR_H
 
 
-#include "GameError.h"
+#include "FileError.h"
 
-class SpriteLoadError : public GameError {
+class SpriteLoadError : public FileError {
 private:
-    const char* errorString = "Error while loading sprite";
+    const char* errorString = "Error while loading sprite -> ";
 public:
+    SpriteLoadError(const char *file);
+
     const char* what() const noexcept override;
+
+    const char* filePath() const noexcept override;
 };
 
 

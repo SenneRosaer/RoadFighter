@@ -21,10 +21,10 @@ roadfighterSFML::Rock::Rock(std::shared_ptr<sf::RenderWindow> window, double i) 
 
     try {
         if (!texture.loadFromFile("../Sprites/Rock.piko")) {
-            throw (SpriteLoadError());
+            throw (SpriteLoadError("../Sprites/Rock.piko"));
         }
-    } catch (GameError &e) {
-        std::cerr << e.what() << std::endl;
+    } catch (FileError &e) {
+        std::cerr << e.what() << e.filePath()<<  std::endl;
         throw;
     }
     texture.setSmooth(true);
