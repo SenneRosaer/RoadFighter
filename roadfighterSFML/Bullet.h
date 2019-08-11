@@ -28,7 +28,7 @@ public:
          * @param first
          * @param second
          */
-        Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second);
+        Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second, std::shared_ptr<ConfigData> config);
 };
 } // namespace roadfighterSFML
 

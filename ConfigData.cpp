@@ -64,6 +64,13 @@ ConfigData::ConfigData(std::string filename) {
             accelerationPlayer = std::stoi(tempAP);
             reloadSpeed = std::stoi(tempRS);
 
+            //PassingCar
+            std::string tempMSPassing = js["Variables"]["PassingCar"]["maxSpeed"];
+            maxSpeedPassingCar = std::stoi(tempMSPassing);
+
+            //Bullet
+            std::string tempBulletSpeed = js["Variables"]["Bullet"]["BulletSpeed"];
+            bulletSpeed = std::stoi(tempBulletSpeed);
 
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath() << std::endl;
@@ -184,4 +191,15 @@ int ConfigData::getBossfightSpeed() const {
 
 int ConfigData::getReloadSpeed() const {
     return reloadSpeed;
+}
+
+//PassingCar
+
+int ConfigData::getMaxSpeedPassingCar() const {
+    return maxSpeedPassingCar;
+}
+
+//Bullet
+int ConfigData::getBulletSpeed() const {
+    return bulletSpeed;
 }

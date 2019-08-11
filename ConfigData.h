@@ -93,6 +93,10 @@ public:
 
     int getReloadSpeed() const;
 
+    int getMaxSpeedPassingCar() const;
+
+    int getBulletSpeed() const;
+
     //Variables
     int distance;
         //AI
@@ -106,6 +110,12 @@ public:
         int accelerationPlayer;
         int bossfightSpeed;
         int reloadSpeed;
+
+        //PassingCar
+        int maxSpeedPassingCar;
+
+        //Bullet
+        int bulletSpeed;
 };
 
 

@@ -6,7 +6,6 @@
 #include "../Singleton/Transformation.h"
 #include "../Exception_class/SpriteLoadError.h"
 
-roadfighterSFML::PassingCar::PassingCar(const std::shared_ptr<sf::RenderWindow> window) { this->window = window; }
 
 void roadfighterSFML::PassingCar::draw() {
     std::pair<double, double> position =
@@ -15,15 +14,15 @@ void roadfighterSFML::PassingCar::draw() {
     window->draw(sprite);
 }
 
-roadfighterSFML::PassingCar::PassingCar(const std::shared_ptr<sf::RenderWindow> window, double random) {
+roadfighterSFML::PassingCar::PassingCar(const std::shared_ptr<sf::RenderWindow> window, double random,std::shared_ptr<ConfigData> config) : roadfighter::PassingCar(config) {
     this->window = window;
     centralpos = {random, 3.5};
 
     this->window = window;
-
+    const char* file = config->getPassingCar().c_str();
     try {
-        if (!texture.loadFromFile("../Sprites/PassingCar1.piko")) {
-            throw (SpriteLoadError("../Sprites/PassingCar1.piko"));
+        if (!texture.loadFromFile(file)) {
+            throw (SpriteLoadError(file));
         }
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath()<<  std::endl;

@@ -19,18 +19,13 @@ private:
         sf::Texture texture;
 
 public:
-        /**
-         * Constructor with sfml window
-         * @param window
-         */
-        PassingCar(const std::shared_ptr<sf::RenderWindow> window);
 
         /**
          * Constructor with window and a random value to determine the spawning location
          * @param window
          * @param random
          */
-        PassingCar(const std::shared_ptr<sf::RenderWindow> window, double random);
+        PassingCar(const std::shared_ptr<sf::RenderWindow> window, double random, std::shared_ptr<ConfigData> config);
 
         void draw() override;
 };

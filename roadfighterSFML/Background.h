@@ -32,7 +32,7 @@ public:
          * Constructor with window
          * @param window
          */
-        Background(const std::shared_ptr<sf::RenderWindow>& window, int type);
+        Background(const std::shared_ptr<sf::RenderWindow>& window, int type,std::shared_ptr<ConfigData> config);
 
         /**
          * Draws the background

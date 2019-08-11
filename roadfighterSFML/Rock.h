@@ -17,7 +17,7 @@ namespace roadfighterSFML{
         sf::Texture texture;
     public:
         void draw() override;
-        Rock(std::shared_ptr<sf::RenderWindow> window, double i);
+        Rock(std::shared_ptr<sf::RenderWindow> window, double i, std::shared_ptr<ConfigData> config);
 
     };
 }

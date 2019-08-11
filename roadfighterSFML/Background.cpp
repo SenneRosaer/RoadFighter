@@ -8,29 +8,32 @@
 #include "../Exception_class/SpriteLoadError.h"
 
 
-roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> &window, int type) : window(
-        window) {
+roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> &window, int type,
+                                        std::shared_ptr<ConfigData> config) : window(
+        window), roadfighter::Background(config) {
     // TODO fix properheid of andere manier
-    std::string filename = "../Sprites/road" + std::to_string(type) + ".png";
+    std::string filename;
+    std::string filenamefin;
+    if (type == 1) {
+        filename = config->getBackground1();
+        filenamefin = config->getBackground1Fin();
+    } else if (type == 2) {
+        filename = config->getBackground2();
+        filenamefin = config->getBackground2Fin();
+    } else if (type == 3) {
+        filename = config->getBackground3();
+        filenamefin = config->getBackground3Fin();
+    }
 
 
     try {
         if (!texture.loadFromFile(filename)) {
             throw (SpriteLoadError(filename.c_str()));
         }
-
-        if (type != 3) {
-            std::string filenamefin = "../Sprites/road" + std::to_string(type) + "Fin.png";
-            if (!fintexture.loadFromFile(filenamefin)) {
-                throw (SpriteLoadError(filenamefin.c_str()));
-            }
-
-        } else {
-            std::string filenamefin = "../Sprites/road" + std::to_string(type) + ".png";
-            if (!fintexture.loadFromFile(filenamefin)) {
-                throw (SpriteLoadError(filenamefin.c_str()));
-            }
+        if (!fintexture.loadFromFile(filenamefin)) {
+            throw (SpriteLoadError(filenamefin.c_str()));
         }
+
     } catch (FileError &e) {
         std::string test = e.what();
         std::cerr << e.what() << e.filePath() << std::endl;
@@ -84,7 +87,7 @@ void roadfighterSFML::Background::draw() {
     window->draw(BG2);
     window->draw(BG3);
 
-    if (CarTravelledDistance > 93900) {
+    if (CarTravelledDistance > roadfighter::Entity::Config->getDistance() - 6100) {
         if (!finishDrawed and !moveFinish) {
 
 

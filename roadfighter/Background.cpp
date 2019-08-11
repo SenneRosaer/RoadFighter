@@ -43,3 +43,7 @@ std::shared_ptr<ObjBox> roadfighter::Background::getObjbox() { return std::share
 void roadfighter::Background::setDelete(int del) { toDel = del; }
 
 bool roadfighter::Background::Shoot() { return false; }
+
+roadfighter::Background::Background(std::shared_ptr<ConfigData> config) {
+    roadfighter::Entity::Config = config;
+}

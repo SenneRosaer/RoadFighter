@@ -14,7 +14,7 @@ class PassingCar : public roadfighter::Entity
 protected:
         std::pair<double, double> centralpos;
 
-        int speed = 150;
+        int speed;
 
         int toDel = 0;
 
@@ -23,9 +23,12 @@ protected:
         double width;
 
 public:
-        /**
-         * Update
-         */
+
+    PassingCar(std::shared_ptr<ConfigData> config);
+
+    /**
+     * Update
+     */
         void update() override;
 
         /**

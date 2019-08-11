@@ -22,7 +22,7 @@ void roadfighter::PassingCar::update(int speed, std::shared_ptr<roadfighter::Ent
         }
 }
 
-int roadfighter::PassingCar::getSpeed() { return 0; }
+int roadfighter::PassingCar::getSpeed() { return speed; }
 
 int roadfighter::PassingCar::Delete() { return toDel; }
 
@@ -34,3 +34,8 @@ std::shared_ptr<ObjBox> roadfighter::PassingCar::getObjbox()
 void roadfighter::PassingCar::setDelete(int del) { toDel = del; }
 
 bool roadfighter::PassingCar::Shoot() { return false; }
+
+roadfighter::PassingCar::PassingCar(std::shared_ptr<ConfigData> config) {
+    roadfighter::Entity::Config = config;
+    speed = config->getMaxSpeedPassingCar();
+}

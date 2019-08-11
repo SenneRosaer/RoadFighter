@@ -13,15 +13,16 @@ void roadfighterSFML::Rock::draw() {
     window->draw(sprite);
 }
 
-roadfighterSFML::Rock::Rock(std::shared_ptr<sf::RenderWindow> window, double i) {
+roadfighterSFML::Rock::Rock(std::shared_ptr<sf::RenderWindow> window, double i, std::shared_ptr<ConfigData> config) {
+    roadfighter::Entity::Config = config;
     this->window = window;
     centralpos = {i, 3.5};
 
     this->window = window;
-
+    const char* file = config->getRock().c_str();
     try {
-        if (!texture.loadFromFile("../Sprites/Rock.piko")) {
-            throw (SpriteLoadError("../Sprites/Rock.piko"));
+        if (!texture.loadFromFile(file)) {
+            throw (SpriteLoadError(file));
         }
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath()<<  std::endl;

@@ -6,19 +6,16 @@
 #include "../Singleton/Transformation.h"
 #include "../Exception_class/SpriteLoadError.h"
 
-roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> window) {
-    this->window = window;
-}
 
-roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random) {
+roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random, std::shared_ptr<ConfigData> config):roadfighter::MovingCar(config){
     this->window = window;
     centralpos = {random, 3.5};
 
     this->window = window;
-
+    const char* file = config->getMovingCar().c_str();
     try {
-        if (!texture.loadFromFile("../Sprites/PassingCar2.piko")) {
-            throw (SpriteLoadError("../Sprites/PassingCar2.piko"));
+        if (!texture.loadFromFile(file)) {
+            throw (SpriteLoadError(file));
         }
     } catch (FileError &e) {
         std::cerr << e.what() <<e.filePath()<< std::endl;

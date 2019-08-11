@@ -2,7 +2,7 @@
 
 		"FilePaths":{
 			"Font" : "../Observer/arial.ttf",
-			"Level1" : "../JSON/Level2.json",
+			"Level1" : "../JSON/Level1.json",
 			"Level2" : "../JSON/Level2.json",
 			"Level3" : "../JSON/Level3.json",
 			"Highscore" : "../JSON/HighScore.json",
@@ -33,7 +33,14 @@
 				"reloadSpeed" : "30"
 
 
+			},
+			"PassingCar":{
+				"maxSpeed": "140"
+			},
+			"Bullet":{
+				"BulletSpeed": "350"
 			}
+			
 
 		}
 

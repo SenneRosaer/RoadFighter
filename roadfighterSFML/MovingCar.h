@@ -16,18 +16,13 @@ class MovingCar: public roadfighter::MovingCar {
         sf::Sprite sprite;
         sf::Texture texture;
     public:
-        /**
-         * Constructor with sfml window
-         * @param window
-         */
-        MovingCar(const std::shared_ptr<sf::RenderWindow> window);
 
         /**
          * Constructor with window and a random value to determine the spawning location
          * @param window
          * @param random
          */
-        MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random);
+        MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random, std::shared_ptr<ConfigData> config);
 
         void draw() override;
     };

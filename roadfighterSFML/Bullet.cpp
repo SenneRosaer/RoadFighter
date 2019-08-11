@@ -13,13 +13,14 @@ void roadfighterSFML::Bullet::draw() {
     window->draw(sprite);
 }
 
-roadfighterSFML::Bullet::Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second) {
+roadfighterSFML::Bullet::Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second, std::shared_ptr<ConfigData> config): roadfighter::Bullet(config) {
     this->window = window;
     pos = {first, second};
 
+    const char* file = config->getBullet().c_str();
     try {
-        if (!texture.loadFromFile("../Sprites/Bullet.piko")) {
-            throw (SpriteLoadError("../Sprites/Bullet.piko"));
+        if (!texture.loadFromFile(file)) {
+            throw (SpriteLoadError(file));
         }
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath() << std::endl;

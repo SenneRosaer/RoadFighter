@@ -11,15 +11,18 @@ namespace roadfighter {
 class Bullet : public roadfighter::Entity
 {
 protected:
-        int speed = 350;
+        int speed;
         std::pair<double, double> pos;
         int toDel = 0;
 
 public:
-        /**
-         * Updates the object with a speed
-         * @param speed
-         */
+
+    Bullet(std::shared_ptr<ConfigData> config);
+
+    /**
+     * Updates the object with a speed
+     * @param speed
+     */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**

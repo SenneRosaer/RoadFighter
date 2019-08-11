@@ -13,7 +13,7 @@ namespace roadfighter {
     protected:
         std::pair<double, double> centralpos;
 
-        int speed = 150;
+        int speed;
 
         int toDel = 0;
 
@@ -26,6 +26,9 @@ namespace roadfighter {
 
 
     public:
+
+        MovingCar(std::shared_ptr<ConfigData> config);
+
         /**
          * Update
          */

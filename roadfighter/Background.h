@@ -27,9 +27,11 @@ protected:
         bool bossfight = false;
 
 public:
-        /**
-         * Updated the object
-         */
+    Background(std::shared_ptr<ConfigData> config);
+
+    /**
+     * Updated the object
+     */
         void update() override;
 
         /**
