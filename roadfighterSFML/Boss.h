@@ -19,7 +19,7 @@ namespace roadfighterSFML {
     public:
         void draw() override;
 
-        Boss(const std::shared_ptr<sf::RenderWindow> window);
+        Boss(const std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
 
     };
 }

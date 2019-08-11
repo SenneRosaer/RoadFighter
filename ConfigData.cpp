@@ -72,6 +72,13 @@ ConfigData::ConfigData(std::string filename) {
             std::string tempBulletSpeed = js["Variables"]["Bullet"]["BulletSpeed"];
             bulletSpeed = std::stoi(tempBulletSpeed);
 
+            //Boss
+            std::string tempLifes = js["Variables"]["Boss"]["life"];
+            std::string tempattackTimer = js["Variables"]["Boss"]["attackTimer"];
+
+            lifes = std::stoi(tempLifes);
+            attackTimer = std::stoi(tempattackTimer);
+
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath() << std::endl;
         throw;
@@ -202,4 +209,13 @@ int ConfigData::getMaxSpeedPassingCar() const {
 //Bullet
 int ConfigData::getBulletSpeed() const {
     return bulletSpeed;
+}
+
+//Boss
+int ConfigData::getLifes() const {
+    return lifes;
+}
+
+int ConfigData::getAttackTimer() const {
+    return attackTimer;
 }

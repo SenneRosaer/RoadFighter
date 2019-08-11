@@ -9,7 +9,7 @@
 			"AI" : "../Sprites/AIRacer.piko",
 			"Background1" : ["../Sprites/road1.png","../Sprites/road1Fin.png"],
 			"Background2" : ["../Sprites/road2.png","../Sprites/road2Fin.png"],
-			"Background3" : ["../Sprites/road3.png","../Sprites/road3Fin.png"],
+			"Background3" : ["../Sprites/road3.png","../Sprites/road3.png"],
 			"Boss" : "../Sprites/Boss.piko",
 			"Bullet" : "../Sprites/Bullet.piko",
 			"MovingCar" : "../Sprites/PassingCar2.piko",
@@ -39,6 +39,10 @@
 			},
 			"Bullet":{
 				"BulletSpeed": "350"
+			},
+			"Boss":{
+				"attackTimer" : "60",
+				"life" : "5"
 			}
 			
 

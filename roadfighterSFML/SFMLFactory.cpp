@@ -46,5 +46,5 @@ std::shared_ptr<roadfighter::AIRacer> roadfighterSFML::SFMLFactory::createAI() {
 }
 
 std::shared_ptr<roadfighter::Boss> roadfighterSFML::SFMLFactory::createBoss() {
-    return std::make_shared<roadfighterSFML::Boss>(window);
+    return std::make_shared<roadfighterSFML::Boss>(window, Config);
 }

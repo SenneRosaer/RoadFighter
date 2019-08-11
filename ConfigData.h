@@ -97,6 +97,10 @@ public:
 
     int getBulletSpeed() const;
 
+    int getLifes() const;
+
+    int getAttackTimer() const;
+
     //Variables
     int distance;
         //AI
@@ -116,6 +120,10 @@ public:
 
         //Bullet
         int bulletSpeed;
+
+        //Boss
+        int lifes;
+        int attackTimer;
 };
 
 

@@ -14,12 +14,12 @@ void roadfighterSFML::Boss::draw() {
 }
 
 
-roadfighterSFML::Boss::Boss(const std::shared_ptr<sf::RenderWindow> window) {
+roadfighterSFML::Boss::Boss(const std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config) : roadfighter::Boss(config) {
     this->window = window;
-
+    const char* file = config->getBoss().c_str();
     try {
-        if (!texture.loadFromFile("../Sprites/Boss.piko")) {
-            throw (SpriteLoadError("../Sprites/Boss.piko"));
+        if (!texture.loadFromFile(file)) {
+            throw (SpriteLoadError(file));
         }
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath() << std::endl;

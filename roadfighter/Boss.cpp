@@ -91,3 +91,12 @@ int roadfighter::Boss::getLife() const {
 void roadfighter::Boss::setLife(int life) {
     Boss::life = life;
 }
+
+roadfighter::Boss::Boss(std::shared_ptr<ConfigData> config) {
+    roadfighter::Entity::Config = config;
+    endSpeed = config->getBossfightSpeed();
+    Startspeed = config->getBossfightSpeed() - 10;
+    life = config->getLifes();
+    attackTimerVal = config->getAttackTimer();
+    attackTimer = attackTimerVal;
+}

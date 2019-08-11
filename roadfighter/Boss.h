@@ -25,21 +25,14 @@ namespace roadfighter {
 
         int toDel = 0;
 
-        int CarTravelledDistance = 0;
 
-        int respawntimer = 60;
-
-        bool disableActions = false;
 
         bool finished = false;
 
-        int maxspeed = 190;
-
-        double sidemovement = 0;
-
         std::string move = "left";
 
-        int attackTimer = 60;
+        int attackTimer;
+        int attackTimerVal;
 
         std::vector<double> rockPos;
 
@@ -47,7 +40,10 @@ namespace roadfighter {
 
         int life = 5;
 
+
     public:
+        Boss(std::shared_ptr<ConfigData> config);
+
         void update() override;
 
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
