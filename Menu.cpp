@@ -6,17 +6,21 @@
 #include "Singleton/Transformation.h"
 #include "Exception_class/FontLoadError.h"
 
-Menu::Menu(std::shared_ptr<sf::RenderWindow> windowGiven) {
+Menu::Menu(std::shared_ptr<sf::RenderWindow> windowGiven, std::shared_ptr<ConfigData> config) {
     window = windowGiven;
+    Menu::config = config;
 
     try {
-        if (!font.loadFromFile("../Observer/arial.ttf")) {
-            throw (FontLoadError("../Observer/arial.ttf"));
+        std::string fontfile = config->getFont();
+        if (!font.loadFromFile(fontfile)) {
+            throw (FontLoadError(fontfile.c_str()));
         }
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath()<<  std::endl;
         throw;
     }
+
+    //constructs all the text used for the levels
     text[0].setFont(font);
     text[0].setColor(sf::Color::Red);
     text[0].setString("Level 1");
@@ -38,6 +42,7 @@ Menu::Menu(std::shared_ptr<sf::RenderWindow> windowGiven) {
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform({0, -0.4});
     text[1].setPosition(static_cast<float>(t2.first), static_cast<float>(t2.second));
 
+
     text[2].setFont(font);
     text[2].setColor(sf::Color::White);
     text[2].setString("Level 3");
@@ -58,6 +63,7 @@ void Menu::drawMenu() {
 }
 
 void Menu::Up() {
+    //Colors the level above if there is one red
     if (selected - 1 >= 0) {
         text[selected].setColor(sf::Color::White);
         text[selected - 1].setColor(sf::Color::Red);
@@ -67,6 +73,7 @@ void Menu::Up() {
 }
 
 void Menu::Down() {
+    //Colors the level below if there is one red
     if (selected + 1 <= 2) {
         text[selected].setColor(sf::Color::White);
         text[selected + 1].setColor(sf::Color::Red);

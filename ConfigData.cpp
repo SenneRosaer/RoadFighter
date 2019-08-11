@@ -25,12 +25,7 @@ ConfigData::ConfigData(std::string filename) {
         Level3 = js["FilePaths"]["Level3"];
         Highscore = js["FilePaths"]["Highscore"];
         AI = js["FilePaths"]["AI"];
-        Background1 = js["FilePaths"]["Background1"][0];
-        Background1Fin = js["FilePaths"]["Background1"][1];
-        Background2 = js["FilePaths"]["Background2"][0];
-        Background2Fin = js["FilePaths"]["Background2"][1];
-        Background3 = js["FilePaths"]["Background3"][0];
-        Background3Fin = js["FilePaths"]["Background3"][1];
+
         Boss = js["FilePaths"]["Boss"];
         Bullet = js["FilePaths"]["Bullet"];
         MovingCar = js["FilePaths"]["MovingCar"];
@@ -78,6 +73,16 @@ ConfigData::ConfigData(std::string filename) {
 
             lifes = std::stoi(tempLifes);
             attackTimer = std::stoi(tempattackTimer);
+
+            //Extra
+            std::string tempGameEndingTimer = js["Variables"]["GameEndingTimer"];
+            std::string tempRockSpawnTimer = js["Variables"]["RockSpawnTimer"];
+            std::string tempCarSpawnTimer = js["Variables"]["CarSpawnTimer"];
+
+            GameEndingTimer = std::stoi(tempGameEndingTimer);
+            RockSpawnTimer = std::stoi(tempRockSpawnTimer);
+            CarSpawnTimer = std::stoi(tempCarSpawnTimer);
+
 
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath() << std::endl;
@@ -218,4 +223,43 @@ int ConfigData::getLifes() const {
 
 int ConfigData::getAttackTimer() const {
     return attackTimer;
+}
+
+//Extra
+int ConfigData::getGameEndingTimer() const {
+    return GameEndingTimer;
+}
+
+int ConfigData::getCarSpawnTimer() const {
+    return CarSpawnTimer;
+}
+
+int ConfigData::getRockSpawnTimer() const {
+    return RockSpawnTimer;
+}
+
+
+//SETTERS
+void ConfigData::setBackground1(const std::string &background1) {
+    Background1 = background1;
+}
+
+void ConfigData::setBackground2(const std::string &background2) {
+    Background2 = background2;
+}
+
+void ConfigData::setBackground3(const std::string &background3) {
+    Background3 = background3;
+}
+
+void ConfigData::setBackground1Fin(const std::string &background1Fin) {
+    Background1Fin = background1Fin;
+}
+
+void ConfigData::setBackground2Fin(const std::string &background2Fin) {
+    Background2Fin = background2Fin;
+}
+
+void ConfigData::setBackground3Fin(const std::string &background3Fin) {
+    Background3Fin = background3Fin;
 }

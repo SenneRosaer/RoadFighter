@@ -53,9 +53,11 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs)
                             breaking = true;
                         }
                     }
-                    if (inputs[i] == "space" && !reloading) {
-                        shoot = true;
-                        reloading = true;
+                    if(!disableActions) {
+                        if (inputs[i] == "space" && !reloading) {
+                            shoot = true;
+                            reloading = true;
+                        }
                     }
                 }
 

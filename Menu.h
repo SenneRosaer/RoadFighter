@@ -8,22 +8,56 @@
 #include <memory>
 #include "SFML/Graphics.hpp"
 #include "iostream"
+#include "ConfigData.h"
 
 
 class Menu {
 private:
     std::shared_ptr<sf::RenderWindow> window;
+
+    std::shared_ptr<ConfigData> config;
 public:
-    Menu(std::shared_ptr<sf::RenderWindow> window);
+    /**
+     * Constructor
+     * @param window
+     */
+    Menu(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
+
+    /**
+     * Draw the menu
+     */
     void drawMenu();
+
+    /**
+     * Move up
+     */
     void Up();
+    /**
+     * Move down
+     */
     void Down();
+
+    /**
+     * Give back the selected item
+     * @return integer
+     */
     int GetSelected();
 
 
 private:
+    /**
+     * Selected level to turn red
+     */
     int selected = 0;
+
+    /**
+     * Used font
+     */
     sf::Font font;
+
+    /**
+     * Text for every level
+     */
     sf::Text text[3];
 };
 

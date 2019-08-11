@@ -31,10 +31,40 @@ private:
     std::string Rock;
 
     //Variables
+        int distance;
+        //AI
+        int respawnTimerAI;
+        int maxSpeedAI;
+        int accelerationAI;
 
+        //Player
+        int respawnTimerPlayer;
+        int maxSpeedPlayer;
+        int accelerationPlayer;
+        int bossfightSpeed;
+        int reloadSpeed;
+
+        //PassingCar
+        int maxSpeedPassingCar;
+
+        //Bullet
+        int bulletSpeed;
+
+        //Boss
+        int lifes;
+        int attackTimer;
+
+        //Extra
+        int GameEndingTimer;
+        int CarSpawnTimer;
+        int RockSpawnTimer;
 
 
 public:
+    /**
+     * Constructor that parses the config file
+     * @param filename
+     */
     ConfigData(std::string filename);
 
     //Files
@@ -101,29 +131,25 @@ public:
 
     int getAttackTimer() const;
 
-    //Variables
-    int distance;
-        //AI
-        int respawnTimerAI;
-        int maxSpeedAI;
-        int accelerationAI;
+    int getGameEndingTimer() const;
 
-        //Player
-        int respawnTimerPlayer;
-        int maxSpeedPlayer;
-        int accelerationPlayer;
-        int bossfightSpeed;
-        int reloadSpeed;
+    int getCarSpawnTimer() const;
 
-        //PassingCar
-        int maxSpeedPassingCar;
+    int getRockSpawnTimer() const;
 
-        //Bullet
-        int bulletSpeed;
+    void setBackground1(const std::string &background1);
 
-        //Boss
-        int lifes;
-        int attackTimer;
+    void setBackground2(const std::string &background2);
+
+    void setBackground3(const std::string &background3);
+
+    void setBackground1Fin(const std::string &background1Fin);
+
+    void setBackground2Fin(const std::string &background2Fin);
+
+    void setBackground3Fin(const std::string &background3Fin);
+
+
 };
 
 

@@ -1,4 +1,4 @@
 {
-	"background" : "road3.png",
+	"Background" : ["../Sprites/road3.png","../Sprites/road3.png"],
 	"enemies": ["rock","car2"]
 }

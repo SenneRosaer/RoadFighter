@@ -21,7 +21,6 @@
 class Game {
     private:
 
-        int score = 0;
 
         std::shared_ptr<sf::RenderWindow> window;
 
@@ -40,6 +39,7 @@ class Game {
 
 
 
+
 public:
     /**
      * Constructor
@@ -48,9 +48,15 @@ public:
 
     /**
      * Runs the game
+     * Updates the world and draws everything needed
+     * Also creates the objects using a factory
      */
     void run();
 
+    /**
+     * Parses a file specified in the configuration file in which stands information about the level
+     * @param level
+     */
     void Parse(int level);
 
 };

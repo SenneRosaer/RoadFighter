@@ -10,19 +10,20 @@
 
 using json = nlohmann::json;
 
-Scoreboard::Scoreboard(std::shared_ptr<sf::RenderWindow> windowGiven) {
+Scoreboard::Scoreboard(std::shared_ptr<sf::RenderWindow> windowGiven, std::shared_ptr<ConfigData> config) {
     window = windowGiven;
+    Scoreboard::config = config;
 
+    const char* fontfile = config->getFont().c_str();
     try {
-        if (!font.loadFromFile("../Observer/arial.ttf")) {
-            throw (FontLoadError("../Observer/arial.ttf"));
+        if (!font.loadFromFile(fontfile)) {
+            throw (FontLoadError(fontfile));
         }
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath()<<  std::endl;
         throw;
     }
 
-    //TODO calcScores and update
 }
 
 void Scoreboard::drawBoard() {
@@ -31,8 +32,7 @@ void Scoreboard::drawBoard() {
     try {
 
 
-        std::string file = "../JSON/HighScore.json";
-        std::cout << file << std::endl;
+        std::string file = config->getHighscore();
         std::ifstream ifstr(file);
         json js = json::parse(ifstr);
 
@@ -56,7 +56,6 @@ void Scoreboard::drawBoard() {
 
     for (int i = 0; i < scores2.size(); i++) {
         text[i].setFont(font);
-        //TODO namen
         text[i].setString( std::to_string(scores2[i]));
         sf::FloatRect rect = text[i].getLocalBounds();
         text[i].setOrigin(rect.left + rect.width / 2.0f,
@@ -76,7 +75,7 @@ void Scoreboard::setScoresCurrentGame(const std::vector<int> &scoresCurrentGame)
         sum = sum + item;
     }
 
-    std::string file = "../JSON/HighScore.json";
+    std::string file = config->getHighscore();
     std::ifstream ifstr(file);
     json js = json::parse(ifstr);
     std::vector<std::string> scores = js["scores"];
@@ -103,7 +102,7 @@ void Scoreboard::setScoresCurrentGame(const std::vector<int> &scoresCurrentGame)
 
     js["scores"] = putBack;
 
-    std::ofstream out ("../JSON/HighScore.json");
+    std::ofstream out (file);
     out << js << std::endl;
 
 }
