@@ -43,7 +43,6 @@ namespace roadfighter {
         int crashes = 0;
 
         // Distance
-        int SpeedLoop = 10;
 
         int Distance = 0;
         int DistanceToNextLevel = 100000;
@@ -73,6 +72,10 @@ namespace roadfighter {
         bool gameEnding = false;
 
         bool finishedFirst = false;
+
+        std::vector<int> finalscores;
+
+        bool crashDuringBoss = false;
 
     public:
         int respawnTimer = 30;
@@ -255,6 +258,10 @@ namespace roadfighter {
         bool isGameEnding() const;
 
         int getDistanceToNextLevel() const;
+
+        const std::vector<int> &getFinalscores() const;
+
+        void setFinalscores(const std::vector<int> &finalscores);
 
     };
 

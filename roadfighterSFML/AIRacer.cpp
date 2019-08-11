@@ -3,17 +3,22 @@
 //
 
 #include "AIRacer.h"
+
+#include <utility>
 #include "../Singleton/Transformation.h"
 #include "../Exception_class/SpriteLoadError.h"
 
-roadfighterSFML::AIRacer::AIRacer(const std::shared_ptr<sf::RenderWindow> window) {
+roadfighterSFML::AIRacer::AIRacer(const std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config): roadfighter::AIRacer(std::move(config)) {
+
     this->window = window;
+
     try {
-        if (!texture.loadFromFile("../Sprites/AIRacer.piko")) {
-            throw (SpriteLoadError("../Sprites/AIRacer.piko"));
+        const char* file = roadfighter::Entity::Config->getAi().c_str();
+        if (!texture.loadFromFile(file)) {
+            throw (SpriteLoadError(file));
         }
-    } catch(FileError& e){
-        std::cerr << e.what() << e.filePath()<< std::endl;
+    } catch (FileError &e) {
+        std::cerr << e.what() << e.filePath() << std::endl;
         throw;
     }
     texture.setSmooth(true);

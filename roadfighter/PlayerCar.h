@@ -17,9 +17,12 @@ protected:
 
         int speed = 0;
 
+        int maxSpeed;
+
         bool shoot = false;
 
-        int reload = 30;
+        int reload;
+        int reloadval;
 
         bool reloading = false;
 
@@ -37,7 +40,8 @@ protected:
         bool finished = false;
 
 
-        int respawntimer = 60;
+        int respawntimer;
+        int respawntimerVal;
 
         bool disableActions = false;
 
@@ -45,11 +49,16 @@ protected:
 
         bool bossfight = false;
 
+        int acceleration;
+
 public:
-        /**
-         * Update object with a speed
-         * @param speed
-         */
+
+    PlayerCar(std::shared_ptr<ConfigData> config);
+
+    /**
+     * Update object with a speed
+     * @param speed
+     */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**

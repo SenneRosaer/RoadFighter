@@ -34,7 +34,7 @@ std::shared_ptr<ObjBox> roadfighter::AIRacer::getObjbox() {
 
 void roadfighter::AIRacer::update() {
     CarTravelledDistance = CarTravelledDistance + speed;
-    if(CarTravelledDistance > 100000){
+    if(CarTravelledDistance > roadfighter::Entity::Config->getDistance()){
         finished = true;
     }
 
@@ -45,7 +45,7 @@ void roadfighter::AIRacer::update() {
         disableActions = true;
         if(respawntimer <= 0){
             toDel = 0;
-            respawntimer = 60;
+            respawntimer = respawntimeVal;
             disableActions = false;
         }
     }
@@ -64,7 +64,7 @@ void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighte
 
     if(!disableActions) {
         if (speed < maxspeed) {
-            speed = speed + 3;
+            speed = speed + acceleration;
         }
 
 
@@ -127,4 +127,12 @@ void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighte
 
 int roadfighter::AIRacer::getCarTravelledDistance() const {
     return CarTravelledDistance;
+}
+
+roadfighter::AIRacer::AIRacer(std::shared_ptr<ConfigData> config) {
+    roadfighter::Entity::Config = config;
+    respawntimer = roadfighter::Entity::Config->getRespawnTimerAi();
+    respawntimeVal = respawntimer;
+    maxspeed = roadfighter::Entity::Config->getMaxSpeedAi();
+    acceleration = roadfighter::Entity::Config->getAccelerationAi();
 }

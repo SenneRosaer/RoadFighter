@@ -24,18 +24,24 @@ namespace roadfighter {
 
         int CarTravelledDistance = 0;
 
-        int respawntimer = 45;
+        int respawntimer;
+
+        int respawntimeVal;
 
         bool disableActions = false;
 
         bool finished = false;
 
-        int maxspeed = 190;
+        int maxspeed;
+
+        int acceleration;
 
         double sidemovement = 0;
 
     private:
     public:
+        AIRacer( std::shared_ptr<ConfigData> config);
+
         void draw() override;
 
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;

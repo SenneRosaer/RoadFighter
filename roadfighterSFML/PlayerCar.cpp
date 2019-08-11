@@ -6,13 +6,14 @@
 #include "../Singleton/Transformation.h"
 #include "../Exception_class/SpriteLoadError.h"
 
-roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level) {
+roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level,std::shared_ptr<ConfigData> config) : roadfighter::PlayerCar(config) {
     this->window = window;
     this->level = level;
 
     try {
-        if (!texture.loadFromFile("../Sprites/CarPlayer.piko")) {
-            throw (SpriteLoadError("../Sprites/CarPlayer.piko"));
+        const char* file = roadfighter::Entity::Config->getPlayer().c_str();
+        if (!texture.loadFromFile(file)) {
+            throw (SpriteLoadError(file));
         }
     } catch (FileError &e) {
         std::cerr << e.what() << e.filePath()<< std::endl;

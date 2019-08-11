@@ -24,7 +24,7 @@ public:
 private:
     int selected = 0;
     sf::Font font;
-    sf::Text text[4];
+    sf::Text text[3];
 };
 
 

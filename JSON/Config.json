@@ -1,4 +1,42 @@
 {
-	"background" : "road3.png",
-	"enemies": ["rock","car2"]
+
+		"FilePaths":{
+			"Font" : "../Observer/arial.ttf",
+			"Level1" : "../JSON/Level2.json",
+			"Level2" : "../JSON/Level2.json",
+			"Level3" : "../JSON/Level3.json",
+			"Highscore" : "../JSON/HighScore.json",
+			"AI" : "../Sprites/AIRacer.piko",
+			"Background1" : ["../Sprites/road1.png","../Sprites/road1Fin.png"],
+			"Background2" : ["../Sprites/road2.png","../Sprites/road2Fin.png"],
+			"Background3" : ["../Sprites/road3.png","../Sprites/road3Fin.png"],
+			"Boss" : "../Sprites/Boss.piko",
+			"Bullet" : "../Sprites/Bullet.piko",
+			"MovingCar" : "../Sprites/PassingCar2.piko",
+			"PassingCar" : "../Sprites/PassingCar1.piko",
+			"Player" : "../Sprites/CarPlayer.piko",
+			"Rock" : "../Sprites/Rock.piko"
+		},
+
+		"Variables":{
+			"Distance" : "100000",
+			"Ai":{
+				"respawnTimer": "45",
+				"maxSpeed" : "190",
+				"acceleration" : "3"
+			},
+			"Player":{
+				"respawnTimer" : "60",
+				"maxSpeed" : "200",
+				"bossFightSpeed" : "100",
+				"acceleration" : "2",
+				"reloadSpeed" : "30"
+
+
+			}
+
+		}
+
 }
+
+	

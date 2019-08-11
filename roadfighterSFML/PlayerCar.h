@@ -22,7 +22,7 @@ public:
          * Constructor with a SFML window
          * @param window
          */
-        PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level);
+        PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level, std::shared_ptr<ConfigData> config);
         /**
          * Draws the player
          */

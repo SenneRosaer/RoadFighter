@@ -6,11 +6,14 @@
 #define ROADFIGHTER_ENTITY_H
 
 #include "../Utils/Utils.h"
+#include "../ConfigData.h"
 #include <memory>
 
 namespace roadfighter {
 class Entity : public std::enable_shared_from_this<roadfighter::Entity>
 {
+protected:
+    std::shared_ptr<ConfigData> Config;
 
 public:
 

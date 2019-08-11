@@ -14,13 +14,14 @@ namespace roadfighterSFML {
     class SFMLFactory : public roadfighter::EntityFactory {
     private:
         std::shared_ptr<sf::RenderWindow> window;
+        std::shared_ptr<ConfigData> Config;
 
     public:
         /**
          * Constructor with window
          * @param window
          */
-        SFMLFactory(std::shared_ptr<sf::RenderWindow> window);
+        SFMLFactory(std::shared_ptr<sf::RenderWindow> window,std::shared_ptr<ConfigData> Config);
 
         /**
          * Create a playercar

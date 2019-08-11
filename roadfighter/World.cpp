@@ -224,6 +224,9 @@ void roadfighter::World::Collision() {
                         collisionObj->setDelete(1);
                         crashes++;
                         calcScore();
+                        if(bossFight){
+                            crashDuringBoss = true;
+                        }
                         notify();
                         break;
                     }
@@ -394,6 +397,11 @@ void roadfighter::World::calcScore() {
                     score = score + 500;
                 }
             }
+        } else {
+            if(crashDuringBoss){
+                score = score -100;
+                crashDuringBoss = false;
+            }
         }
         if(score < 0){
             throw (ScoreError());
@@ -488,6 +496,7 @@ void roadfighter::World::finish() {
         worldResetTimer = 60;
 
         finisFunctionReached = true;
+        finalscores.push_back(score);
 
     }
 }
@@ -560,6 +569,8 @@ void roadfighter::World::setBoss(const std::shared_ptr<roadfighter::Boss> &boss)
 void roadfighter::World::gameEnd() {
     //Player = nullptr;
     gameEnding = true;
+    finalscores.push_back(score);
+
 }
 
 bool roadfighter::World::isGameEnding() const {
@@ -568,4 +579,12 @@ bool roadfighter::World::isGameEnding() const {
 
 int roadfighter::World::getDistanceToNextLevel() const {
     return DistanceToNextLevel;
+}
+
+const std::vector<int> &roadfighter::World::getFinalscores() const {
+    return finalscores;
+}
+
+void roadfighter::World::setFinalscores(const std::vector<int> &finalscores) {
+    World::finalscores = finalscores;
 }

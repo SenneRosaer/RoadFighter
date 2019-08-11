@@ -19,7 +19,7 @@ namespace roadfighterSFML {
              * Constructor with a SFML window
              * @param window
              */
-        AIRacer(const std::shared_ptr<sf::RenderWindow> window);
+        AIRacer(const std::shared_ptr<sf::RenderWindow> window,std::shared_ptr<ConfigData> config);
         /**
          * Draws the player
          */

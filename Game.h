@@ -13,6 +13,8 @@
 #include "Observer/Subject.h"
 #include "Menu.h"
 #include "JSON/single_include/nlohmann/json.hpp"
+#include "Scoreboard.h"
+#include "ConfigData.h"
 #include <fstream>
 
 
@@ -28,6 +30,10 @@ class Game {
         std::shared_ptr<roadfighterSFML::SFMLFactory> factory;
 
         std::shared_ptr<Menu> menu;
+
+        std::shared_ptr<Scoreboard> scoreboard;
+
+        std::shared_ptr<ConfigData> Config;
 
 
 
