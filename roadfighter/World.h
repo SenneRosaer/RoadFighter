@@ -89,7 +89,7 @@ namespace roadfighter {
         /**
          * Constructor
          */
-        World();
+        World(std::shared_ptr<ConfigData> config);
 
         /**
          * Draw all the objects in the world
@@ -114,14 +114,15 @@ namespace roadfighter {
         void update() override;
 
         /**
-         * Update an object with a speed
+         * Updates the object with extra parameters
          * @param speed
+         * @param Player
          */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
-         * Get the speed of an object
-         * @return
+         * Returns the speed of the object
+         * @return speed
          */
         int getSpeed() override;
 
@@ -150,7 +151,8 @@ namespace roadfighter {
         void addBullet(std::shared_ptr<roadfighter::Entity> bullet);
 
         /**
-         * Return if we have to delete the object
+         * Returns a certain value to determine the delete status
+         * 0 = nothing, 1 = delete, 2 = respawn
          * @return
          */
         int Delete() override;
@@ -207,60 +209,152 @@ namespace roadfighter {
         void notify() override;
 
 
+        /**
+         * Add a rock to the rocks
+         * @param rock
+         */
         void addRock(std::shared_ptr<roadfighter::Entity> rock);
 
+        /**
+         * Return the movingcars
+         * @return
+         */
         const std::vector<std::shared_ptr<Entity>> &getMovingCars() const;
 
+        /**
+         * Add a moving car
+         * @param car
+         */
         void addMovingCar(std::shared_ptr<roadfighter::Entity> car);
 
+        /**
+         * Reset all the parameters to their starting value to start a new level or redo a level
+         */
         void reset();
 
+        /**
+         * Return the current level
+         * @return
+         */
         int getCurrentLevel() const;
 
+        /**
+         * Set the current level
+         * @param currentLevel
+         */
         void setCurrentLevel(int currentLevel);
 
+        /**
+         * Finish the level
+         * add final score of levels to total score and give signal for end of level
+         */
         void finish();
 
+        /**
+         * Returns if the level is finished
+         * @return
+         */
         bool isLevelFinished() const;
 
+        /**
+         * Set if the level is finished
+         * @param levelFinished
+         */
         void setLevelFinished(bool levelFinished);
 
+        /**
+         * Get the reset timer for the world used at the end of a level
+         * @return
+         */
         int getWorldResetTimer() const;
 
+        /**
+         * Set the world reset timer
+         * @param worldResetTimer
+         */
         void setWorldResetTimer(int worldResetTimer);
 
+        /**
+         * Return if a level is started
+         * (the beginnen of a level with the timer is not counted as started)
+         * @return
+         */
         bool isLevelStarted() const;
 
+        /**
+         * Set if the level is started
+         */
         void setLevelStarted(bool levelStarted);
 
+        /**
+         * Return timer in frames (timer of 3 seconds for the start = 90 frames at 30FPS)
+         * @return
+         */
         int getTimerInFrames() const;
 
+        /**
+         * Set timer in frames
+         * @param timerInFrames
+         */
         void setTimerInFrames(int timerInFrames);
 
-        const std::shared_ptr<roadfighter::AIRacer> &getAi() const;
-
+        /**
+         * Set the AI
+         * @param ai
+         */
         void setAi(const std::shared_ptr<roadfighter::AIRacer> &ai);
 
+        /**
+         * Return the distance
+         * @return
+         */
         int getDistance() const;
 
-        void setDistance(int distance);
-
+        /**
+         * Return if there is a boss fight happening
+         * @return
+         */
         bool isBossFight() const;
 
-        void setBossFight(bool bossFight);
-
+        /**
+         * Return the boss
+         * @return
+         */
         const std::shared_ptr<roadfighter::Boss> &getBoss() const;
 
+        /**
+         * Set the boss
+         * @param boss
+         */
         void setBoss(const std::shared_ptr<roadfighter::Boss> &boss);
 
+        /**
+         * Initiate ending of game and set final scores
+         */
         void gameEnd();
 
+        /**
+         * Return if game is ending
+         * @return
+         */
         bool isGameEnding() const;
 
+        /**
+         * Return distance to next level
+         * @return
+         */
         int getDistanceToNextLevel() const;
 
+        /**
+         * Return finalscores
+         * @return
+         */
         const std::vector<int> &getFinalscores() const;
 
+        /**
+         * Set the final scores
+         * @param finalscores
+         */
         void setFinalscores(const std::vector<int> &finalscores);
 
     };

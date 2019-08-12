@@ -13,6 +13,9 @@ namespace roadfighter {
 class Entity : public std::enable_shared_from_this<roadfighter::Entity>
 {
 protected:
+    /**
+     * Configuration data
+     */
     std::shared_ptr<ConfigData> Config;
 
 public:
@@ -39,10 +42,11 @@ public:
          */
         virtual int getSpeed() = 0;
 
-        /**
-         * Return if an object must be deleted
-         * @return
-         */
+    /**
+     * Returns a certain value to determine the delete status
+     * 0 = nothing, 1 = delete, 2 = respawn
+     * @return
+     */
         virtual int Delete() = 0;
 
         /**

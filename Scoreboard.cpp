@@ -7,6 +7,7 @@
 #include "Exception_class/FontLoadError.h"
 #include "Singleton/Transformation.h"
 #include "JSON/single_include/nlohmann/json.hpp"
+#include "ConfigData.h"
 
 using json = nlohmann::json;
 

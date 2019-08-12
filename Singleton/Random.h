@@ -22,8 +22,21 @@ public:
          * @return double
          */
         double getRandom();
+        /**
+         * returns a random int between 0 and 2
+         * @return
+         */
         double getRandom2();
+        /**
+         * Returns a random value of the positionsRock vector
+         * @return
+         */
        double getRandom3();
+
+       /**
+        * Returns a random int between 0 and the size of the positionsrock vector
+        * @return
+        */
        int getRandom4();
 
 

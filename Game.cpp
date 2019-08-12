@@ -331,10 +331,10 @@ Game::Game() {
     //Read the configuration file
     Config = std::make_shared<ConfigData>("../JSON/Config.json");
     //create other needed objects
-    world = std::make_shared<roadfighter::World>();
+    world = std::make_shared<roadfighter::World>(Config);
     factory = std::make_shared<roadfighterSFML::SFMLFactory>(window, Config);
-    menu = std::make_shared<Menu>(window);
-    scoreboard = std::make_shared<Scoreboard>(window);
+    menu = std::make_shared<Menu>(window,Config);
+    scoreboard = std::make_shared<Scoreboard>(window,Config);
 
 }
 

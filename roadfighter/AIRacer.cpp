@@ -4,9 +4,6 @@
 
 #include "AIRacer.h"
 
-void roadfighter::AIRacer::draw() {
-
-}
 
 void roadfighter::AIRacer::update(int speed, std::shared_ptr<roadfighter::Entity> Player) {
 
@@ -55,6 +52,7 @@ void roadfighter::AIRacer::update() {
 void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighter::Entity>> passingCars,std::vector<std::shared_ptr<roadfighter::Entity>> MovingCars,std::vector<std::shared_ptr<roadfighter::Entity>> Rocks,
                                           std::shared_ptr<roadfighter::Entity> player) {
 
+    //Change the position of this car relative to the speed of the player to simulate his movements
     int relativespeed = this->speed - player->getSpeed();
     if (relativespeed < 0) {
         centralpos.second = centralpos.second - 0.01 * abs(relativespeed) / 10;
@@ -78,7 +76,7 @@ void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighte
         obj.insert(obj.end(), Rocks.begin(), Rocks.end());
         obj.push_back(player);
 
-
+        // Control all the objects and which car we will move out of the way for
         for (auto car :obj) {
             double carY = car->getObjbox()->centralpos.second;
             double diff = centralpos.second - carY;
@@ -94,6 +92,7 @@ void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighte
             }
         }
 
+        //Check if we need to move left or right
         if (carToMoveFor != nullptr) {
             double carToMoveForX = carToMoveFor->getObjbox()->centralpos.first;
             double diffX = centralpos.first - carToMoveForX;
@@ -107,6 +106,7 @@ void roadfighter::AIRacer::updateMovement(std::vector<std::shared_ptr<roadfighte
             movement = "";
         }
 
+        //Move left or right if possible
         if (abs(sidemovement) <= 0.3) {
             if (movement == "left") {
                 if (centralpos.first > -1.84) {

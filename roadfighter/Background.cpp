@@ -9,7 +9,7 @@ void roadfighter::Background::update() {}
 void roadfighter::Background::update(int speed, std::shared_ptr<roadfighter::Entity> Player)
 {
 
-        // TODO met speed player aanpassen
+        //If one of the backgrounds has moved below the screen we can move it to the back of the last one so it keeps going
         double movement = 0.01 * speed / 10;
         centralpos1.second = centralpos1.second - movement;
         centralpos2.second = centralpos2.second - movement;

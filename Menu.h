@@ -8,7 +8,7 @@
 #include <memory>
 #include "SFML/Graphics.hpp"
 #include "iostream"
-#include "ConfigData.h"
+class ConfigData;
 
 
 class Menu {

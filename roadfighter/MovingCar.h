@@ -26,7 +26,10 @@ namespace roadfighter {
 
 
     public:
-
+        /**
+         * Constructor with the configuration data
+         * @param config
+         */
         MovingCar(std::shared_ptr<ConfigData> config);
 
         /**
@@ -35,19 +38,21 @@ namespace roadfighter {
         void update() override;
 
         /**
-         * Update with a speed
-         * @param speed
-         */
+          * Updates the object with extra parameters
+          * @param speed
+          * @param Player
+          */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
-         * Return the speed of the object
-         * @return
+         * Returns the speed of the object
+         * @return speed
          */
         int getSpeed() override;
 
         /**
-         * Return if an object must be deleted
+         * Returns a certain value to determine the delete status
+         * 0 = nothing, 1 = delete, 2 = respawn
          * @return
          */
         int Delete() override;

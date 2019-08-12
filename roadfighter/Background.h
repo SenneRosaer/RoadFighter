@@ -9,14 +9,13 @@
 #include <iostream>
 
 namespace roadfighter {
-class Background : public Entity
-{
-protected:
+    class Background : public Entity {
+    protected:
         std::pair<double, double> centralpos1 = {-1, -3};
         std::pair<double, double> centralpos2 = {-1, 3};
         std::pair<double, double> centralpos3 = {-1, 9};
 
-        std::pair<double, double> centralposfin ={ -1, 3};
+        std::pair<double, double> centralposfin = {-1, 3};
 
         bool moveFinish = false;
 
@@ -26,28 +25,31 @@ protected:
 
         bool bossfight = false;
 
-public:
-    Background(std::shared_ptr<ConfigData> config);
+    public:
+        Background(std::shared_ptr<ConfigData> config);
 
-    /**
-     * Updated the object
-     */
+        /**
+         * Updates the object
+         */
         void update() override;
 
         /**
-         * Updates the object with a speed
+         * Updates the object with extra parameters
+         * The speed is used to see how much we need to move the backgrounds
          * @param speed
+         * @param Player
          */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
          * Returns the speed of the object
-         * @return
+         * @return speed
          */
         int getSpeed() override;
 
         /**
-         * Returns if the object must be deleted
+         * Returns a certain value to determine the delete status
+         * 0 = nothing, 1 = delete, 2 = respawn
          * @return
          */
         int Delete() override;
@@ -69,7 +71,7 @@ public:
          * @return
          */
         bool Shoot() override;
-};
+    };
 } // namespace roadfighter
 
 #endif // ROADFIGHTER_BACKGROUND_H

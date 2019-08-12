@@ -24,6 +24,10 @@ protected:
 
 public:
 
+    /**
+     * Constructor with configuration data
+     * @param config
+     */
     PassingCar(std::shared_ptr<ConfigData> config);
 
     /**
@@ -31,22 +35,24 @@ public:
      */
         void update() override;
 
-        /**
-         * Update with a speed
+    /**
+         * Updates the object with extra parameters
          * @param speed
+         * @param Player
          */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
-        /**
-         * Return the speed of the object
-         * @return
-         */
+    /**
+     * Returns the speed of the object
+     * @return speed
+     */
         int getSpeed() override;
 
-        /**
-         * Return if an object must be deleted
-         * @return
-         */
+    /**
+     * Returns a certain value to determine the delete status
+     * 0 = nothing, 1 = delete, 2 = respawn
+     * @return
+     */
         int Delete() override;
 
         /**

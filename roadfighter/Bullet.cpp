@@ -6,6 +6,7 @@
 
 void roadfighter::Bullet::update(int speed, std::shared_ptr<roadfighter::Entity> Player)
 {
+        //uses speed relative to the player to simulate the movement
         int relativespeed = this->speed - speed;
         if (relativespeed < 0) {
                 pos.second = pos.second - 0.01 * abs(relativespeed) / 10;

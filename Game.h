@@ -5,7 +5,6 @@
 #ifndef ROADFIGHTER_GAME_H
 #define ROADFIGHTER_GAME_H
 
-#include <memory>
 #include <SFML/Graphics.hpp>
 #include "roadfighter/Entity.h"
 #include "roadfighter/World.h"

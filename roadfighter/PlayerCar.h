@@ -52,19 +52,25 @@ protected:
         int acceleration;
 
 public:
-
+    /**
+     * Constructor with configuration data
+     * @param config
+     */
     PlayerCar(std::shared_ptr<ConfigData> config);
 
     /**
-     * Update object with a speed
-     * @param speed
-     */
+    * Updates the object with extra parameters
+     * this function is not used since we already have the needed parameters
+     *
+    * @param speed
+    * @param Player
+    */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
-        /**
-         * Return the speed of the object
-         * @return
-         */
+    /**
+     * Returns the speed of the object
+     * @return speed
+     */
         int getSpeed() override;
 
         /**

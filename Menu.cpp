@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "Singleton/Transformation.h"
 #include "Exception_class/FontLoadError.h"
+#include "ConfigData.h"
 
 Menu::Menu(std::shared_ptr<sf::RenderWindow> windowGiven, std::shared_ptr<ConfigData> config) {
     window = windowGiven;

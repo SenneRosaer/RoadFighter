@@ -24,6 +24,9 @@ void roadfighter::PlayerCar::move(std::string input)
 
 void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs)
 {
+    //Update action acording to inputs
+    //Shoot if space or move up, break, left, right
+    //Only possible if we are not in bossfight or respawning
         if(!disableActions) {
             bool speed = false;
             bool breaking = false;
@@ -46,6 +49,7 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs)
                             }
                         }
                     } else {
+                        //We can move left or right during bossfight
                         move(inputs[i]);
                     }
                     if(!bossfight) {
@@ -90,11 +94,6 @@ void roadfighter::PlayerCar::UpdateMovement(std::vector<std::string> inputs)
 }
 
 void roadfighter::PlayerCar::update(int speed, std::shared_ptr<roadfighter::Entity> Player) {
-
-
-
-
-
 }
 
 int roadfighter::PlayerCar::getSpeed() { return speed; }
@@ -113,6 +112,7 @@ bool roadfighter::PlayerCar::Shoot() { return shoot; }
 
 
 void roadfighter::PlayerCar::update() {
+    //Set finished if it is not the last level
     CarTravelledDistance = CarTravelledDistance + speed;
     if(CarTravelledDistance > roadfighter::Entity::Config->getDistance()){
         if(level != 3) {
@@ -132,6 +132,7 @@ void roadfighter::PlayerCar::update() {
         }
     }
 
+    //Initiate boss fight if it is the third level
     if(level == 3 and CarTravelledDistance > roadfighter::Entity::Config->getDistance()){
         speed = roadfighter::Entity::Config->getBossfightSpeed();
         bossfight = true;

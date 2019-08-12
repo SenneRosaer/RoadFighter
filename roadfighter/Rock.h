@@ -22,8 +22,9 @@ namespace roadfighter {
 
     public:
         /**
-         * Updates the object with a speed
+         * Updates the object with extra parameters
          * @param speed
+         * @param Player
          */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
@@ -33,15 +34,16 @@ namespace roadfighter {
         void update() override;
 
         /**
-         * Return the speed of the object
-         * @return
+         * Returns the speed of the object
+         * @return speed
          */
         int getSpeed() override;
 
         /**
-         * Return if an object must be deleted
-         * @return
-         */
+          * Returns a certain value to determine the delete status
+          * 0 = nothing, 1 = delete, 2 = respawn
+          * @return
+          */
         int Delete() override;
 
         /**
@@ -56,7 +58,10 @@ namespace roadfighter {
          */
         std::shared_ptr<ObjBox> getObjbox() override;
 
-
+        /**
+         * Return if we have to shoot but this function is only used by the player
+         * @return
+         */
         bool Shoot() override;
 
 

@@ -6,10 +6,7 @@
 #include "../Singleton/Random.h"
 
 void roadfighter::Boss::update() {
-
-}
-
-void roadfighter::Boss::update(int speed, std::shared_ptr<roadfighter::Entity> Player) {
+    //To continuously move left and right
     if (centralpos.second > 2.4) {
         currentspeed = Startspeed;
         centralpos.second = centralpos.second - 0.02;
@@ -37,8 +34,9 @@ void roadfighter::Boss::update(int speed, std::shared_ptr<roadfighter::Entity> P
 
     }
 
+    //Timer for when to spawn rocks
     if(attackTimer == 0){
-        attackTimer = 60;
+        attackTimer = attackTimerVal;
         std::vector<double> allRockPos = {-1.86,-1.38,-0.3,-0.9};
         int random = Random::getInstance().getRandom4();
 
@@ -48,6 +46,11 @@ void roadfighter::Boss::update(int speed, std::shared_ptr<roadfighter::Entity> P
     } else {
         attackTimer--;
     }
+
+
+}
+
+void roadfighter::Boss::update(int speed, std::shared_ptr<roadfighter::Entity> Player) {
 
 
 }
