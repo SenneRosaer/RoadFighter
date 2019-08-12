@@ -18,12 +18,16 @@ class MovingCar: public roadfighter::MovingCar {
     public:
 
         /**
-         * Constructor with window and a random value to determine the spawning location
+         * Constructor with window and a random value to determine the spawning location and configuration data
          * @param window
          * @param random
+         * @param config
          */
         MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random, std::shared_ptr<ConfigData> config);
 
+        /**
+         * draws the object
+         */
         void draw() override;
     };
 }

@@ -7,6 +7,7 @@
 #include "../Exception_class/SpriteLoadError.h"
 
 void roadfighterSFML::Boss::draw() {
+    //Transforms the positions and draws
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);
@@ -16,6 +17,7 @@ void roadfighterSFML::Boss::draw() {
 
 roadfighterSFML::Boss::Boss(const std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config) : roadfighter::Boss(config) {
     this->window = window;
+    //load texture
     const char* file = config->getBoss().c_str();
     try {
         if (!texture.loadFromFile(file)) {

@@ -40,7 +40,7 @@ roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> 
         throw;
     }
 
-
+    //Creates 3 copies of the background to make a continuous sprite
     BG1.setSize(sf::Vector2f((window->getSize().x / 2), window->getSize().y));
     BG1.setOrigin(window->getSize().x / 4, (window->getSize().y));
     BG1.setTexture(&texture);
@@ -54,21 +54,12 @@ roadfighterSFML::Background::Background(const std::shared_ptr<sf::RenderWindow> 
     if (type == 3) {
         bossfight = true;
     }
-    //https://en.sfml-dev.org/forums/index.php?topic=10660.0
-    /*
-     * eerst texture me al die dingen
-     * texture scalen naar window
-     * laatste twee van rect zijn window size
-     * eerste twee positie
-     * dus van de eerste twee y veranderen om te moven
-     *
-     */
+
 }
 
 void roadfighterSFML::Background::draw() {
 
-    //maxdistance - 6600 87200
-
+    //Transforms the positions and draws them
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos1);
     std::pair<double, double> position2 =
@@ -87,6 +78,7 @@ void roadfighterSFML::Background::draw() {
     window->draw(BG2);
     window->draw(BG3);
 
+    //If we passed a certain distance draw the finish
     if (CarTravelledDistance > roadfighter::Entity::Config->getDistance() - 6100) {
         if (!finishDrawed and !moveFinish) {
 

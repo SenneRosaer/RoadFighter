@@ -23,10 +23,11 @@ public:
         void draw() override;
 
         /**
-         * Constructor with a window and the position
+         * Constructor with a window and the position and configuration data
          * @param window
          * @param first
          * @param second
+         * @param config
          */
         Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second, std::shared_ptr<ConfigData> config);
 };

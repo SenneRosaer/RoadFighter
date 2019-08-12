@@ -29,8 +29,10 @@ private:
 
 public:
         /**
-         * Constructor with window
+         * Constructor with sfml level what the level is and configuration data
          * @param window
+         * @param type
+         * @param config
          */
         Background(const std::shared_ptr<sf::RenderWindow>& window, int type,std::shared_ptr<ConfigData> config);
 

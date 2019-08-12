@@ -11,7 +11,7 @@
 roadfighterSFML::AIRacer::AIRacer(const std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config): roadfighter::AIRacer(std::move(config)) {
 
     this->window = window;
-
+    //loads the texture
     try {
         const char* file = roadfighter::Entity::Config->getAi().c_str();
         if (!texture.loadFromFile(file)) {
@@ -32,6 +32,7 @@ roadfighterSFML::AIRacer::AIRacer(const std::shared_ptr<sf::RenderWindow> window
 }
 
 void roadfighterSFML::AIRacer::draw() {
+    //Transform to window positions
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);

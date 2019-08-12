@@ -7,6 +7,7 @@
 #include "../Exception_class/SpriteLoadError.h"
 
 void roadfighterSFML::Rock::draw() {
+    //Transforms positions and draws
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);
@@ -16,8 +17,10 @@ void roadfighterSFML::Rock::draw() {
 roadfighterSFML::Rock::Rock(std::shared_ptr<sf::RenderWindow> window, double i, std::shared_ptr<ConfigData> config) {
     roadfighter::Entity::Config = config;
     this->window = window;
+    //sets position
     centralpos = {i, 3.5};
 
+    //Loads texture
     this->window = window;
     const char* file = config->getRock().c_str();
     try {

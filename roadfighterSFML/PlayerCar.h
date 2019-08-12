@@ -19,8 +19,9 @@ private:
 
 public:
         /**
-         * Constructor with a SFML window
+         * Constructor with a SFML window and configuration
          * @param window
+         * @param config
          */
         PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level, std::shared_ptr<ConfigData> config);
         /**

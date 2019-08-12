@@ -10,6 +10,7 @@ roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> wi
     this->window = window;
     this->level = level;
 
+    //Loads the texture
     try {
         const char* file = roadfighter::Entity::Config->getPlayer().c_str();
         if (!texture.loadFromFile(file)) {
@@ -32,6 +33,7 @@ roadfighterSFML::PlayerCar::PlayerCar(const std::shared_ptr<sf::RenderWindow> wi
 }
 
 void roadfighterSFML::PlayerCar::draw() {
+    //transforms position and draws
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);
@@ -40,6 +42,7 @@ void roadfighterSFML::PlayerCar::draw() {
 
 void roadfighterSFML::PlayerCar::update() {
 
+    //checks for input and gives it to the logic side
     std::vector<std::string> inputs;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {

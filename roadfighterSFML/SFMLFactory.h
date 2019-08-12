@@ -50,12 +50,30 @@ namespace roadfighterSFML {
          */
         std::shared_ptr<roadfighter::Entity> createBullet(double first, double second) override;
 
+        /**
+         * Create a Rock with a random position
+         * @param i
+         * @return shared_ptr of Entity
+         */
         std::shared_ptr<roadfighter::Entity> createRock(double i) override;
 
+        /**
+         * Create a moving car with a random position
+         * @param i
+         * @return shared_ptr of Entity
+         */
         std::shared_ptr<roadfighter::Entity> createMovingCar(double i) override;
 
+        /**
+         * Create an ai
+         * @return shared_ptr of Entity
+         */
         std::shared_ptr<roadfighter::AIRacer> createAI() override;
 
+        /**
+         * Create a boss
+         * @return  shared_ptr of Entity
+         */
         std::shared_ptr<roadfighter::Boss> createBoss() override;
 
 

@@ -9,8 +9,10 @@
 
 roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> window, double random, std::shared_ptr<ConfigData> config):roadfighter::MovingCar(config){
     this->window = window;
+    // set position according to random
     centralpos = {random, 3.5};
 
+    //loads texture
     this->window = window;
     const char* file = config->getMovingCar().c_str();
     try {
@@ -35,6 +37,7 @@ roadfighterSFML::MovingCar::MovingCar(const std::shared_ptr<sf::RenderWindow> wi
 }
 
 void roadfighterSFML::MovingCar::draw() {
+    //transforms position and draw
     std::pair<double, double> position =
             Transformation::getInstance(window->getSize().x, window->getSize().y).Transform(centralpos);
     sprite.setPosition(position.first, position.second);

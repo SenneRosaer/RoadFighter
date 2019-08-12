@@ -16,7 +16,17 @@ namespace roadfighterSFML{
         sf::Sprite sprite;
         sf::Texture texture;
     public:
+        /**
+         * draws the object
+         */
         void draw() override;
+
+        /**
+         * Constructor with sfml window, random position and configuration data
+         * @param window
+         * @param i
+         * @param config
+         */
         Rock(std::shared_ptr<sf::RenderWindow> window, double i, std::shared_ptr<ConfigData> config);
 
     };

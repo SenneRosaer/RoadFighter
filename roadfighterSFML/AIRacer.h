@@ -15,10 +15,11 @@ namespace roadfighterSFML {
         sf::Sprite sprite;
         sf::Texture texture;
     public:
-        /**
-             * Constructor with a SFML window
-             * @param window
-             */
+       /**
+        * Constructor with sfml window and configuration data
+        * @param window
+        * @param config
+        */
         AIRacer(const std::shared_ptr<sf::RenderWindow> window,std::shared_ptr<ConfigData> config);
         /**
          * Draws the player
