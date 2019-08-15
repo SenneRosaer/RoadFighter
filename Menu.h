@@ -10,16 +10,20 @@
 #include "iostream"
 class ConfigData;
 
-
+/**
+ * Menu class, handles the game menu and the level select
+ */
 class Menu {
 private:
     std::shared_ptr<sf::RenderWindow> window;
 
     std::shared_ptr<ConfigData> config;
 public:
+
     /**
-     * Constructor
+     * Constructor with sfml window and configuration data
      * @param window
+     * @param config
      */
     Menu(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
 

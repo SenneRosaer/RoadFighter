@@ -16,7 +16,9 @@
 #include "ConfigData.h"
 #include <fstream>
 
-
+/**
+ * Runs the game and holds the information of the window and world that need to be displayed
+ */
 class Game {
     private:
 

@@ -11,6 +11,9 @@
 #include <memory>
 
 namespace roadfighterSFML {
+    /**
+     * Graphic side of passingcar
+     */
 class PassingCar : public roadfighter::PassingCar
 {
 private:

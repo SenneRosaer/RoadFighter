@@ -8,16 +8,34 @@
 #include "Entity.h"
 
 namespace roadfighter {
+    /**
+     * The rock obstacle that doesn't have any speed so comes at the player faster
+     */
     class Rock : public roadfighter::Entity {
     protected:
+        /**
+         * Pair of the doubles that contains the x and y position of the center of the object
+         */
         std::pair<double, double> centralpos;
 
+        /**
+         * Speed of the object
+         */
         int speed = 0;
 
+        /**
+         * Object deletion status ( 0 = nothing, 1 = delete, 2 = respawn )
+         */
         int toDel = 0;
 
+        /**
+         * Height of object
+         */
         double height;
 
+        /**
+         * Width of object
+         */
         double width;
 
     public:

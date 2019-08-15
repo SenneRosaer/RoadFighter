@@ -9,6 +9,9 @@
 #include "SFML/Graphics.hpp"
 
 namespace roadfighterSFML {
+    /**
+     * Graphic side of the AI
+     */
     class AIRacer : public roadfighter::AIRacer {
     private:
         std::shared_ptr<sf::RenderWindow> window;

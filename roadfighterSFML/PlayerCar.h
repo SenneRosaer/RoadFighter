@@ -10,6 +10,9 @@
 #include <memory>
 
 namespace roadfighterSFML {
+    /**
+     * Graphic side of the player class
+     */
 class PlayerCar : public roadfighter::PlayerCar
 {
 private:
@@ -19,8 +22,9 @@ private:
 
 public:
         /**
-         * Constructor with a SFML window and configuration
+         * Constructor with sfml window, current level and configuration data
          * @param window
+         * @param level
          * @param config
          */
         PlayerCar(const std::shared_ptr<sf::RenderWindow> window, int level, std::shared_ptr<ConfigData> config);

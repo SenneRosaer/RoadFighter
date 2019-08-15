@@ -10,6 +10,9 @@
 #include "../roadfighter/MovingCar.h"
 
 namespace roadfighterSFML {
+    /**
+     * Graphic side of movingcar
+     */
 class MovingCar: public roadfighter::MovingCar {
     private:
         std::shared_ptr<sf::RenderWindow> window;

@@ -9,6 +9,9 @@
 #include <SFML/Graphics.hpp>
 
 namespace roadfighterSFML {
+    /**
+     * Graphic side of the bullet class
+     */
 class Bullet : public roadfighter::Bullet
 {
 private:

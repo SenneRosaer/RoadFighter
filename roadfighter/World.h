@@ -15,6 +15,10 @@
 class Observer;
 
 namespace roadfighter {
+    /**
+     * The world which holds all the objects and updates them accordingly
+     * also checks for collision, end of game, end of level, boss fight
+     */
     class World : public roadfighter::Entity, public Subject {
 
     private:
@@ -47,10 +51,8 @@ namespace roadfighter {
         int Distance = 0;
         int DistanceToNextLevel = 100000;
 
-        int speedAVG = 0;
 
         std::vector<std::shared_ptr<Observer>> observers;
-        std::shared_ptr<Observer> StartRaceTimerObserver;
 
         int currentLevel;
 
@@ -78,10 +80,18 @@ namespace roadfighter {
         bool crashDuringBoss = false;
 
     public:
-        int respawnTimer = 30;
 
+        /**
+         * Boolean that is true if rocks may be spawned
+         */
         bool rock = false;
+        /**
+         * Boolean that is true if passingcars may be spawned
+         */
         bool passingCar = false;
+        /**
+         * Boolean that is true if movingcars may be spawned
+         */
         bool movingCar = false;
 
     public:
@@ -203,7 +213,6 @@ namespace roadfighter {
 
         /**
          * Notify the observers
-         * @param scoreUpdate
          */
         void notify() override;
 

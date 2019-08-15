@@ -9,23 +9,52 @@
 #include <iostream>
 
 namespace roadfighter {
+    /**
+     * Class that moves the background and makes sure it appears infinite
+     */
     class Background : public Entity {
     protected:
+        /**
+         * X and Y positions of the first background sprite
+         */
         std::pair<double, double> centralpos1 = {-1, -3};
+
+        /**
+         * X and Y positions of the second background sprite
+         */
         std::pair<double, double> centralpos2 = {-1, 3};
+
+        /**
+         * X and Y positions of the third background sprite
+         */
         std::pair<double, double> centralpos3 = {-1, 9};
 
+        /**
+         * X and Y positions of the finish background sprite
+         */
         std::pair<double, double> centralposfin = {-1, 3};
 
+        /**
+         * Boolean that is true if we need to move the finish
+         */
         bool moveFinish = false;
 
+        /**
+         * Object deletion status ( 0 = nothing, 1 = delete, 2 = respawn )
+         */
         int toDel = 0;
 
+        /**
+         * Distance the car has travelled (to know when to show finish)
+         */
         int CarTravelledDistance = 0;
 
-        bool bossfight = false;
 
     public:
+        /**
+         * Constructor with configuration data
+         * @param config
+         */
         Background(std::shared_ptr<ConfigData> config);
 
         /**

@@ -10,34 +10,79 @@
 #include "vector"
 
 namespace roadfighter {
+    /**
+     *  The boss that attacks the player on an certain interval and appears at the end of level 3
+     */
     class Boss : public roadfighter::Entity {
     protected:
+        /**
+         * Height of the object
+         */
         double height;
 
+        /**
+         * Width of the object
+         */
         double width;
 
+        /**
+         * Pair of the doubles that contains the x and y position of the center of the object
+         */
         std::pair<double, double> centralpos = {-0.9, 3.2};
 
+        /**
+         * Starting speed of the boss (so he moves from above the screen to in the screen)
+         */
         int Startspeed = 90;
 
+        /**
+         * Final speed of the boss
+         */
         int endSpeed = 100;
 
+        /**
+         * Current speed of the boss
+         */
         int currentspeed;
 
+        /**
+         * Object deletion status ( 0 = nothing, 1 = delete, 2 = respawn )
+         */
         int toDel = 0;
 
-
+        /**
+         * Boolean that is true if the game is finished
+         */
         bool finished = false;
 
+        /**
+         * String for left and right movement
+         */
         std::string move = "left";
 
+        /**
+         * Timer between attacks
+         */
         int attackTimer;
+
+        /**
+         * Value the timer between attacks starts at
+         */
         int attackTimerVal;
 
+        /**
+         * Positions of the spawned rocks
+         */
         std::vector<double> rockPos;
 
+        /**
+         * Boolean that is true if rocks have been spawned and the game needs to create them
+         */
         bool getRocks = false;
 
+        /**
+         * Lifes of the boss
+         */
         int life = 5;
 
 

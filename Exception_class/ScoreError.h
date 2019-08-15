@@ -8,6 +8,9 @@
 
 #include "GameError.h"
 
+/**
+ * Error that appears when there is a fault with the score
+ */
 class ScoreError: public GameError {
 private:
     const char* errorString = "Negative score";

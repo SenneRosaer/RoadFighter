@@ -11,6 +11,9 @@
 #include "../roadfighter/Boss.h"
 
 namespace roadfighterSFML {
+    /**
+     *Graphic side of the boss
+     */
     class Boss : public roadfighter::Boss {
     private:
         std::shared_ptr<sf::RenderWindow> window;

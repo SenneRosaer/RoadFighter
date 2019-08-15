@@ -9,50 +9,67 @@
 #include <iostream>
 
 namespace roadfighter {
-class PassingCar : public roadfighter::Entity
-{
-protected:
+    /**
+     * Car that the player can pass
+     */
+    class PassingCar : public roadfighter::Entity {
+    protected:
+        /**
+        * Pair of the doubles that contains the x and y position of the center of the object
+        */
         std::pair<double, double> centralpos;
 
+        /**
+         * Speed of the object
+         */
         int speed;
 
+        /**
+         * Object deletion status ( 0 = nothing, 1 = delete, 2 = respawn )
+         */
         int toDel = 0;
 
+        /**
+         * Height of the object
+         */
         double height;
 
+        /**
+         * Width of the object
+         */
         double width;
 
-public:
+    public:
 
-    /**
-     * Constructor with configuration data
-     * @param config
-     */
-    PassingCar(std::shared_ptr<ConfigData> config);
+        /**
+         * Constructor with configuration data
+         * @param config
+         */
+        PassingCar(std::shared_ptr<ConfigData> config);
 
-    /**
-     * Update
-     */
+        /**
+         * Update
+         */
         void update() override;
 
-    /**
-         * Updates the object with extra parameters
-         * @param speed
-         * @param Player
-         */
+        /**
+             * Updates the object with extra parameters
+             * @param speed
+             * @param Player
+             */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
-    /**
-     * Returns the speed of the object
-     * @return speed
-     */
+        /**
+         * Returns the speed of the object
+         * @return speed
+         */
         int getSpeed() override;
 
-    /**
-     * Returns a certain value to determine the delete status
-     * 0 = nothing, 1 = delete, 2 = respawn
-     * @return
-     */
+        /**
+         * Returns a certain value to determine the delete status
+         * 0 = nothing, 1 = delete, 2 = respawn
+         * @return
+         */
         int Delete() override;
 
         /**
@@ -72,7 +89,7 @@ public:
          * @return
          */
         bool Shoot() override;
-};
+    };
 } // namespace roadfighter
 
 #endif // ROADFIGHTER_PASSINGCAR_H

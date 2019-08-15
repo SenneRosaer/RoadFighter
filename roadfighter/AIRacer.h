@@ -10,32 +10,74 @@
 #include "vector"
 
 namespace roadfighter {
+    /**
+     * Class that handles the AI that moves based on other obstacles and races against the player
+     */
     class AIRacer : public roadfighter::Entity {
     protected:
+        /**
+         * Height of the object
+         */
         double height;
 
+        /**
+         * Width of the object
+         */
         double width;
 
+        /**
+         * Pair of the doubles that contains the x and y position of the center of the object
+         */
         std::pair<double, double> centralpos = {-1.3, -2};
 
+        /**
+         * Speed of the object
+         */
         int speed = 0;
 
+        /**
+         * Object deletion status ( 0 = nothing, 1 = delete, 2 = respawn )
+         */
         int toDel = 0;
 
+        /**
+         * Distance that has been travelled by the player
+         */
         int CarTravelledDistance = 0;
 
+        /**
+         * Timer for respawning
+         */
         int respawntimer;
 
+        /**
+         * Value the respawn timer starts at
+         */
         int respawntimeVal;
 
+        /**
+         * Boolean that is true when all the action for the ai are disabled
+         */
         bool disableActions = false;
 
+        /**
+         * Boolean that is true when the AI is finished
+         */
         bool finished = false;
 
+        /**
+         * Maximum speed of the object
+         */
         int maxspeed;
 
+        /**
+         * Maximum speed of the object
+         */
         int acceleration;
 
+        /**
+         * Movement the AI has done sideways to control it doesn't keep moving in one direction
+         */
         double sidemovement = 0;
 
     private:

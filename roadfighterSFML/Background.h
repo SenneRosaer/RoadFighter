@@ -12,7 +12,10 @@
 #include <memory>
 
 namespace roadfighterSFML {
-class Background : public roadfighter::Background
+    /**
+     * Graphic side of the background
+     */
+    class Background : public roadfighter::Background
 {
 
 private:

@@ -10,6 +10,9 @@
 #include "../roadfighter/Rock.h"
 
 namespace roadfighterSFML{
+    /**
+     * Graphic side of the rock class
+     */
     class Rock : public roadfighter::Rock {
     private:
         std::shared_ptr<sf::RenderWindow> window;

@@ -8,9 +8,16 @@
 #include <iostream>
 #include <vector>
 
+/**
+ * Singleton class that handles generation of randoms
+ */
 class Random
 {
 public:
+        /**
+         * Returns an instance of the random singleton
+         * @return
+         */
         static Random& getInstance()
         {
                 static Random instance;

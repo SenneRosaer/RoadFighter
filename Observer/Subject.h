@@ -9,12 +9,22 @@
 
 class Observer;
 
+/**
+ * Base class for subjects for observer pattern
+ */
 class Subject
 {
 
 public:
+        /**
+         * Attach an observer to the subject
+         * @param observer
+         */
         virtual void attach(std::shared_ptr<Observer> observer) = 0;
 
+        /**
+         * Notify the observers on a certain change
+         */
         virtual void notify() = 0;
 };
 

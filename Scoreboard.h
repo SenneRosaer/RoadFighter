@@ -10,7 +10,9 @@
 #include "iostream"
 class ConfigData;
 
-
+/**
+ * Handles the scoreboard at the end of the game
+ */
 class Scoreboard {
 private:
     /**
@@ -29,8 +31,9 @@ private:
     std::shared_ptr<ConfigData> config;
 public:
     /**
-     * Constructor
+     * Constructor with sfml window and configuration data
      * @param window
+     * @param config
      */
     Scoreboard(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
 

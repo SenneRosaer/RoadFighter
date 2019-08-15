@@ -8,8 +8,15 @@
 #include "iostream"
 
 
+/**
+ * Base exception class for errors in the game
+ */
 class GameError: public std::exception {
 public:
+    /**
+     * Return the error message
+     * @return
+     */
     virtual const char* what() const noexcept = 0;
 };
 

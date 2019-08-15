@@ -7,6 +7,9 @@
 
 #include <iostream>
 
+/**
+ * The class that handles transformation from our 6 x 8 ratio to the real screen
+ */
 class Transformation
 {
 
@@ -49,6 +52,12 @@ public:
         void setScreensize(const std::pair<int, int>& Screensize);
 
 public:
+        /**
+         * Getter for an instance of transformation singleton with a x and y position to transform
+         * @param x
+         * @param y
+         * @return
+         */
         static Transformation& getInstance(int x, int y)
         {
                 static Transformation instance(x, y);

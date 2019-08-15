@@ -8,18 +8,32 @@
 #include "Observer.h"
 #include <SFML/Graphics.hpp>
 
-class ObserverScore : public Observer
-{
+/**
+ * The observer that handles the score
+ */
+class ObserverScore : public Observer {
 private:
-        std::shared_ptr<sf::RenderWindow> window;
-        sf::Font font;
-        sf::Text text;
+    std::shared_ptr<sf::RenderWindow> window;
+    sf::Font font;
+    sf::Text text;
 
 public:
-        ObserverScore(std::shared_ptr<sf::RenderWindow> wind);
+    /**
+     * Constructor with sfml window
+     * @param wind
+     */
+    ObserverScore(std::shared_ptr<sf::RenderWindow> wind);
 
-        void update(int score) override;
+    /**
+     * Updates the score
+     * @param score
+     */
+    void update(int score) override;
 
+    /**
+     * Returns the type of the observer
+     * @return
+     */
     std::string getType() override;
 };
 

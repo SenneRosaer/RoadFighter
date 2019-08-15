@@ -11,6 +11,9 @@
 #include <memory>
 
 namespace roadfighter {
+    /**
+     * Factory for creating entities
+     */
     class EntityFactory {
 
     public:
