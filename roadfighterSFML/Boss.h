@@ -5,21 +5,23 @@
 #ifndef ROADFIGHTER_SFMLBOSS_H
 #define ROADFIGHTER_SFMLBOSS_H
 
-#include "SFML/Graphics.hpp"
-#include <iostream>
-#include "memory"
 #include "../roadfighter/Boss.h"
+#include "SFML/Graphics.hpp"
+#include "memory"
+#include <iostream>
 
 namespace roadfighterSFML {
-    /**
-     *Graphic side of the boss
-     */
-    class Boss : public roadfighter::Boss {
-    private:
+/**
+ *Graphic side of the boss
+ */
+class Boss : public roadfighter::Boss
+{
+private:
         std::shared_ptr<sf::RenderWindow> window;
         sf::Sprite sprite;
         sf::Texture texture;
-    public:
+
+public:
         /**
          * Draws the object
          */
@@ -31,9 +33,7 @@ namespace roadfighterSFML {
          * @param config
          */
         Boss(const std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
+};
+} // namespace roadfighterSFML
 
-    };
-}
-
-
-#endif //ROADFIGHTER_BOSS_H
+#endif // ROADFIGHTER_BOSS_H

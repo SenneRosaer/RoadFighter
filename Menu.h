@@ -5,65 +5,64 @@
 #ifndef ROADFIGHTER_MENU_H
 #define ROADFIGHTER_MENU_H
 
-#include <memory>
 #include "SFML/Graphics.hpp"
 #include "iostream"
+#include <memory>
 class ConfigData;
 
 /**
  * Menu class, handles the game menu and the level select
  */
-class Menu {
+class Menu
+{
 private:
-    std::shared_ptr<sf::RenderWindow> window;
+        std::shared_ptr<sf::RenderWindow> window;
 
-    std::shared_ptr<ConfigData> config;
+        std::shared_ptr<ConfigData> config;
+
 public:
+        /**
+         * Constructor with sfml window and configuration data
+         * @param window
+         * @param config
+         */
+        Menu(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
 
-    /**
-     * Constructor with sfml window and configuration data
-     * @param window
-     * @param config
-     */
-    Menu(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
+        /**
+         * Draw the menu
+         */
+        void drawMenu();
 
-    /**
-     * Draw the menu
-     */
-    void drawMenu();
+        /**
+         * Move up
+         */
+        void Up();
+        /**
+         * Move down
+         */
+        void Down();
 
-    /**
-     * Move up
-     */
-    void Up();
-    /**
-     * Move down
-     */
-    void Down();
-
-    /**
-     * Give back the selected item
-     * @return integer
-     */
-    int GetSelected();
-
+        /**
+         * Give back the selected item
+         * @return integer
+         */
+        int GetSelected();
 
 private:
-    /**
-     * Selected level to turn red
-     */
-    int selected = 0;
+        /**
+         * Selected level to turn red
+         */
+        int selected = 0;
 
-    /**
-     * Used font
-     */
-    sf::Font font;
+        /**
+         * Used font
+         */
+        sf::Font font;
 
-    /**
-     * Text for every level
-     */
-    sf::Text text[3];
+        /**
+         * Text for every level
+         */
+        sf::Text text[3];
 };
 
-
-#endif //ROADFIGHTER_MENU_H
+#endif // ROADFIGHTER_MENU_H

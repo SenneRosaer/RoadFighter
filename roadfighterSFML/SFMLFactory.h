@@ -5,27 +5,28 @@
 #ifndef ROADFIGHTER_SFMLFACTORY_H
 #define ROADFIGHTER_SFMLFACTORY_H
 
-#include "../roadfighter/EntityFactory.h"
 #include "../roadfighter/Boss.h"
+#include "../roadfighter/EntityFactory.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
 namespace roadfighterSFML {
-    /**
-     * SFML side of the factory that makes sure every object can acces the window
-     */
-    class SFMLFactory : public roadfighter::EntityFactory {
-    private:
+/**
+ * SFML side of the factory that makes sure every object can acces the window
+ */
+class SFMLFactory : public roadfighter::EntityFactory
+{
+private:
         std::shared_ptr<sf::RenderWindow> window;
         std::shared_ptr<ConfigData> Config;
 
-    public:
+public:
         /**
          * Constructor of factory with sfml window and configuration data
          * @param window
          * @param Config
          */
-        SFMLFactory(std::shared_ptr<sf::RenderWindow> window,std::shared_ptr<ConfigData> Config);
+        SFMLFactory(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> Config);
 
         /**
          * Create a playercar
@@ -79,9 +80,7 @@ namespace roadfighterSFML {
          * @return  shared_ptr of Entity
          */
         std::shared_ptr<roadfighter::Boss> createBoss() override;
-
-
-    };
+};
 } // namespace roadfighterSFML
 
 #endif // ROADFIGHTER_SFMLFACTORY_H

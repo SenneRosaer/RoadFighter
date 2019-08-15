@@ -5,18 +5,19 @@
 #ifndef ROADFIGHTER_ENTITYFACTORY_H
 #define ROADFIGHTER_ENTITYFACTORY_H
 
-#include "Entity.h"
 #include "AIRacer.h"
 #include "Boss.h"
+#include "Entity.h"
 #include <memory>
 
 namespace roadfighter {
-    /**
-     * Factory for creating entities
-     */
-    class EntityFactory {
+/**
+ * Factory for creating entities
+ */
+class EntityFactory
+{
 
-    public:
+public:
         /**
          * Create a playercar
          * @return
@@ -69,10 +70,8 @@ namespace roadfighter {
          * @return
          */
         virtual std::shared_ptr<roadfighter::Boss> createBoss() = 0;
-
-
-    };
-}
+};
+} // namespace roadfighter
 // namespace roadfighter
 
 #endif // ROADFIGHTER_ENTITYFACTORY_H

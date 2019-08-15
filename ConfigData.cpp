@@ -2,264 +2,174 @@
 // Created by sennerosaer on 8/11/19.
 //
 
-#include <fstream>
 #include "ConfigData.h"
-#include "JSON/single_include/nlohmann/json.hpp"
 #include "Exception_class/FileError.h"
+#include "JSON/single_include/nlohmann/json.hpp"
+#include <fstream>
 
-using json = nlohmann::json ;
+using json = nlohmann::json;
 
-ConfigData::ConfigData(std::string filename) {
-    try {
+ConfigData::ConfigData(std::string filename)
+{
+        try {
 
+                std::ifstream ifstr(filename);
+                json js = json::parse(ifstr);
 
+                // Files
 
-        std::ifstream ifstr(filename);
-        json js = json::parse(ifstr);
+                Font = js["FilePaths"]["Font"];
+                Level1 = js["FilePaths"]["Level1"];
+                Level2 = js["FilePaths"]["Level2"];
+                Level3 = js["FilePaths"]["Level3"];
+                Highscore = js["FilePaths"]["Highscore"];
+                AI = js["FilePaths"]["AI"];
 
-        //Files
+                Boss = js["FilePaths"]["Boss"];
+                Bullet = js["FilePaths"]["Bullet"];
+                MovingCar = js["FilePaths"]["MovingCar"];
+                PassingCar = js["FilePaths"]["PassingCar"];
+                Player = js["FilePaths"]["Player"];
+                Rock = js["FilePaths"]["Rock"];
 
-        Font = js["FilePaths"]["Font"];
-        Level1 = js["FilePaths"]["Level1"];
-        Level2 = js["FilePaths"]["Level2"];
-        Level3 = js["FilePaths"]["Level3"];
-        Highscore = js["FilePaths"]["Highscore"];
-        AI = js["FilePaths"]["AI"];
+                // Variables
+                std::string tempDistance = js["Variables"]["Distance"];
+                distance = std::stoi(tempDistance);
+                // AI
+                std::string temp1 = js["Variables"]["Ai"]["respawnTimer"];
+                std::string temp2 = js["Variables"]["Ai"]["maxSpeed"];
+                std::string temp3 = js["Variables"]["Ai"]["acceleration"];
+                respawnTimerAI = std::stoi(temp1);
+                maxSpeedAI = std::stoi(temp2);
+                accelerationAI = std::stoi(temp3);
 
-        Boss = js["FilePaths"]["Boss"];
-        Bullet = js["FilePaths"]["Bullet"];
-        MovingCar = js["FilePaths"]["MovingCar"];
-        PassingCar = js["FilePaths"]["PassingCar"];
-        Player = js["FilePaths"]["Player"];
-        Rock = js["FilePaths"]["Rock"];
+                // Player
+                std::string tempRTP = js["Variables"]["Player"]["respawnTimer"];
+                std::string tempMSP = js["Variables"]["Player"]["maxSpeed"];
+                std::string tempBFS = js["Variables"]["Player"]["bossFightSpeed"];
+                std::string tempAP = js["Variables"]["Player"]["acceleration"];
+                std::string tempRS = js["Variables"]["Player"]["reloadSpeed"];
 
+                respawnTimerPlayer = std::stoi(tempRTP);
+                maxSpeedPlayer = std::stoi(tempMSP);
+                bossfightSpeed = std::stoi(tempBFS);
+                accelerationPlayer = std::stoi(tempAP);
+                reloadSpeed = std::stoi(tempRS);
 
+                // PassingCar
+                std::string tempMSPassing = js["Variables"]["PassingCar"]["maxSpeed"];
+                maxSpeedPassingCar = std::stoi(tempMSPassing);
 
-        //Variables
-        std::string tempDistance = js["Variables"]["Distance"];
-        distance = std::stoi(tempDistance);
-            //AI
-            std::string temp1 =  js["Variables"]["Ai"]["respawnTimer"] ;
-            std::string temp2 =  js["Variables"]["Ai"]["maxSpeed"];
-            std::string temp3 = js["Variables"]["Ai"]["acceleration"];
-            respawnTimerAI = std::stoi(temp1);
-            maxSpeedAI = std::stoi(temp2);
-            accelerationAI = std::stoi(temp3);
+                // Bullet
+                std::string tempBulletSpeed = js["Variables"]["Bullet"]["BulletSpeed"];
+                bulletSpeed = std::stoi(tempBulletSpeed);
 
-            //Player
-            std::string tempRTP = js["Variables"]["Player"]["respawnTimer"];
-            std::string tempMSP =  js["Variables"]["Player"]["maxSpeed"];
-            std::string tempBFS = js["Variables"]["Player"]["bossFightSpeed"];
-            std::string tempAP = js["Variables"]["Player"]["acceleration"];
-            std::string tempRS = js["Variables"]["Player"]["reloadSpeed"];
+                // Boss
+                std::string tempLifes = js["Variables"]["Boss"]["life"];
+                std::string tempattackTimer = js["Variables"]["Boss"]["attackTimer"];
 
-            respawnTimerPlayer = std::stoi(tempRTP);
-            maxSpeedPlayer = std::stoi(tempMSP);
-            bossfightSpeed = std::stoi(tempBFS);
-            accelerationPlayer = std::stoi(tempAP);
-            reloadSpeed = std::stoi(tempRS);
+                lifes = std::stoi(tempLifes);
+                attackTimer = std::stoi(tempattackTimer);
 
-            //PassingCar
-            std::string tempMSPassing = js["Variables"]["PassingCar"]["maxSpeed"];
-            maxSpeedPassingCar = std::stoi(tempMSPassing);
+                // Extra
+                std::string tempGameEndingTimer = js["Variables"]["GameEndingTimer"];
+                std::string tempRockSpawnTimer = js["Variables"]["RockSpawnTimer"];
+                std::string tempCarSpawnTimer = js["Variables"]["CarSpawnTimer"];
 
-            //Bullet
-            std::string tempBulletSpeed = js["Variables"]["Bullet"]["BulletSpeed"];
-            bulletSpeed = std::stoi(tempBulletSpeed);
+                GameEndingTimer = std::stoi(tempGameEndingTimer);
+                RockSpawnTimer = std::stoi(tempRockSpawnTimer);
+                CarSpawnTimer = std::stoi(tempCarSpawnTimer);
 
-            //Boss
-            std::string tempLifes = js["Variables"]["Boss"]["life"];
-            std::string tempattackTimer = js["Variables"]["Boss"]["attackTimer"];
-
-            lifes = std::stoi(tempLifes);
-            attackTimer = std::stoi(tempattackTimer);
-
-            //Extra
-            std::string tempGameEndingTimer = js["Variables"]["GameEndingTimer"];
-            std::string tempRockSpawnTimer = js["Variables"]["RockSpawnTimer"];
-            std::string tempCarSpawnTimer = js["Variables"]["CarSpawnTimer"];
-
-            GameEndingTimer = std::stoi(tempGameEndingTimer);
-            RockSpawnTimer = std::stoi(tempRockSpawnTimer);
-            CarSpawnTimer = std::stoi(tempCarSpawnTimer);
-
-
-    } catch (FileError &e) {
-        std::cerr << e.what() << e.filePath() << std::endl;
-        throw;
-    }
-
-
+        } catch (FileError& e) {
+                std::cerr << e.what() << e.filePath() << std::endl;
+                throw;
+        }
 }
 
+const std::string& ConfigData::getFont() const { return Font; }
 
-const std::string &ConfigData::getFont() const {
-    return Font;
-}
+const std::string& ConfigData::getLevel1() const { return Level1; }
 
-const std::string &ConfigData::getLevel1() const {
-    return Level1;
-}
+const std::string& ConfigData::getLevel2() const { return Level2; }
 
-const std::string &ConfigData::getLevel2() const {
-    return Level2;
-}
+const std::string& ConfigData::getLevel3() const { return Level3; }
 
-const std::string &ConfigData::getLevel3() const {
-    return Level3;
-}
+const std::string& ConfigData::getHighscore() const { return Highscore; }
 
-const std::string &ConfigData::getHighscore() const {
-    return Highscore;
-}
+const std::string& ConfigData::getAi() const { return AI; }
 
-const std::string &ConfigData::getAi() const {
-    return AI;
-}
+const std::string& ConfigData::getBackground1() const { return Background1; }
 
-const std::string &ConfigData::getBackground1() const {
-    return Background1;
-}
+const std::string& ConfigData::getBackground2() const { return Background2; }
 
-const std::string &ConfigData::getBackground2() const {
-    return Background2;
-}
+const std::string& ConfigData::getBackground3() const { return Background3; }
 
-const std::string &ConfigData::getBackground3() const {
-    return Background3;
-}
+const std::string& ConfigData::getBackground1Fin() const { return Background1Fin; }
 
-const std::string &ConfigData::getBackground1Fin() const {
-    return Background1Fin;
-}
+const std::string& ConfigData::getBackground2Fin() const { return Background2Fin; }
 
-const std::string &ConfigData::getBackground2Fin() const {
-    return Background2Fin;
-}
+const std::string& ConfigData::getBackground3Fin() const { return Background3Fin; }
 
-const std::string &ConfigData::getBackground3Fin() const {
-    return Background3Fin;
-}
+const std::string& ConfigData::getBoss() const { return Boss; }
 
-const std::string &ConfigData::getBoss() const {
-    return Boss;
-}
+const std::string& ConfigData::getBullet() const { return Bullet; }
 
-const std::string &ConfigData::getBullet() const {
-    return Bullet;
-}
+const std::string& ConfigData::getMovingCar() const { return MovingCar; }
 
-const std::string &ConfigData::getMovingCar() const {
-    return MovingCar;
-}
+const std::string& ConfigData::getPassingCar() const { return PassingCar; }
 
-const std::string &ConfigData::getPassingCar() const {
-    return PassingCar;
-}
+const std::string& ConfigData::getPlayer() const { return Player; }
 
-const std::string &ConfigData::getPlayer() const {
-    return Player;
-}
+const std::string& ConfigData::getRock() const { return Rock; }
 
-const std::string &ConfigData::getRock() const {
-    return Rock;
-}
+// AI
+int ConfigData::getRespawnTimerAi() const { return respawnTimerAI; }
 
+int ConfigData::getMaxSpeedAi() const { return maxSpeedAI; }
 
+int ConfigData::getAccelerationAi() const { return accelerationAI; }
 
-//AI
-int ConfigData::getRespawnTimerAi() const {
-    return respawnTimerAI;
-}
+// Player
+int ConfigData::getDistance() const { return distance; }
 
-int ConfigData::getMaxSpeedAi() const {
-    return maxSpeedAI;
-}
+int ConfigData::getRespawnTimerPlayer() const { return respawnTimerPlayer; }
 
-int ConfigData::getAccelerationAi() const {
-    return accelerationAI;
-}
+int ConfigData::getMaxSpeedPlayer() const { return maxSpeedPlayer; }
 
-//Player
-int ConfigData::getDistance() const {
-    return distance;
-}
+int ConfigData::getAccelerationPlayer() const { return accelerationPlayer; }
 
-int ConfigData::getRespawnTimerPlayer() const {
-    return respawnTimerPlayer;
-}
+int ConfigData::getBossfightSpeed() const { return bossfightSpeed; }
 
-int ConfigData::getMaxSpeedPlayer() const {
-    return maxSpeedPlayer;
-}
+int ConfigData::getReloadSpeed() const { return reloadSpeed; }
 
-int ConfigData::getAccelerationPlayer() const {
-    return accelerationPlayer;
-}
+// PassingCar
 
-int ConfigData::getBossfightSpeed() const {
-    return bossfightSpeed;
-}
+int ConfigData::getMaxSpeedPassingCar() const { return maxSpeedPassingCar; }
 
-int ConfigData::getReloadSpeed() const {
-    return reloadSpeed;
-}
+// Bullet
+int ConfigData::getBulletSpeed() const { return bulletSpeed; }
 
-//PassingCar
+// Boss
+int ConfigData::getLifes() const { return lifes; }
 
-int ConfigData::getMaxSpeedPassingCar() const {
-    return maxSpeedPassingCar;
-}
+int ConfigData::getAttackTimer() const { return attackTimer; }
 
-//Bullet
-int ConfigData::getBulletSpeed() const {
-    return bulletSpeed;
-}
+// Extra
+int ConfigData::getGameEndingTimer() const { return GameEndingTimer; }
 
-//Boss
-int ConfigData::getLifes() const {
-    return lifes;
-}
+int ConfigData::getCarSpawnTimer() const { return CarSpawnTimer; }
 
-int ConfigData::getAttackTimer() const {
-    return attackTimer;
-}
+int ConfigData::getRockSpawnTimer() const { return RockSpawnTimer; }
 
-//Extra
-int ConfigData::getGameEndingTimer() const {
-    return GameEndingTimer;
-}
+// SETTERS
+void ConfigData::setBackground1(const std::string& background1) { Background1 = background1; }
 
-int ConfigData::getCarSpawnTimer() const {
-    return CarSpawnTimer;
-}
+void ConfigData::setBackground2(const std::string& background2) { Background2 = background2; }
 
-int ConfigData::getRockSpawnTimer() const {
-    return RockSpawnTimer;
-}
+void ConfigData::setBackground3(const std::string& background3) { Background3 = background3; }
 
+void ConfigData::setBackground1Fin(const std::string& background1Fin) { Background1Fin = background1Fin; }
 
-//SETTERS
-void ConfigData::setBackground1(const std::string &background1) {
-    Background1 = background1;
-}
+void ConfigData::setBackground2Fin(const std::string& background2Fin) { Background2Fin = background2Fin; }
 
-void ConfigData::setBackground2(const std::string &background2) {
-    Background2 = background2;
-}
-
-void ConfigData::setBackground3(const std::string &background3) {
-    Background3 = background3;
-}
-
-void ConfigData::setBackground1Fin(const std::string &background1Fin) {
-    Background1Fin = background1Fin;
-}
-
-void ConfigData::setBackground2Fin(const std::string &background2Fin) {
-    Background2Fin = background2Fin;
-}
-
-void ConfigData::setBackground3Fin(const std::string &background3Fin) {
-    Background3Fin = background3Fin;
-}
+void ConfigData::setBackground3Fin(const std::string& background3Fin) { Background3Fin = background3Fin; }

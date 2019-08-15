@@ -33,8 +33,6 @@ public:
          * @return
          */
         virtual std::string getType() = 0;
-
-
 };
 
 #endif // ROADFIGHTER_OBSERVER_H

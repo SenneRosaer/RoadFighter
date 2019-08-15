@@ -9,11 +9,12 @@
 #include <iostream>
 
 namespace roadfighter {
-    /**
-     * Class that moves the background and makes sure it appears infinite
-     */
-    class Background : public Entity {
-    protected:
+/**
+ * Class that moves the background and makes sure it appears infinite
+ */
+class Background : public Entity
+{
+protected:
         /**
          * X and Y positions of the first background sprite
          */
@@ -49,8 +50,12 @@ namespace roadfighter {
          */
         int CarTravelledDistance = 0;
 
+        /**
+         * true if bossfight is happening
+         */
+        bool bossfight = false;
 
-    public:
+public:
         /**
          * Constructor with configuration data
          * @param config
@@ -100,7 +105,7 @@ namespace roadfighter {
          * @return
          */
         bool Shoot() override;
-    };
+};
 } // namespace roadfighter
 
 #endif // ROADFIGHTER_BACKGROUND_H

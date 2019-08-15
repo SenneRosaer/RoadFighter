@@ -9,9 +9,9 @@
 #include <SFML/Graphics.hpp>
 
 namespace roadfighterSFML {
-    /**
-     * Graphic side of the bullet class
-     */
+/**
+ * Graphic side of the bullet class
+ */
 class Bullet : public roadfighter::Bullet
 {
 private:
@@ -32,8 +32,9 @@ public:
          * @param second
          * @param config
          */
-        Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second, std::shared_ptr<ConfigData> config);
+        Bullet(const std::shared_ptr<sf::RenderWindow> window, double first, double second,
+               std::shared_ptr<ConfigData> config);
 };
 } // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_BULLET_H
+#endif // ROADFIGHTER_BULLET_H

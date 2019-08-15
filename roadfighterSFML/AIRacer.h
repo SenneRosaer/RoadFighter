@@ -9,21 +9,23 @@
 #include "SFML/Graphics.hpp"
 
 namespace roadfighterSFML {
-    /**
-     * Graphic side of the AI
-     */
-    class AIRacer : public roadfighter::AIRacer {
-    private:
+/**
+ * Graphic side of the AI
+ */
+class AIRacer : public roadfighter::AIRacer
+{
+private:
         std::shared_ptr<sf::RenderWindow> window;
         sf::Sprite sprite;
         sf::Texture texture;
-    public:
-       /**
-        * Constructor with sfml window and configuration data
-        * @param window
-        * @param config
-        */
-        AIRacer(const std::shared_ptr<sf::RenderWindow> window,std::shared_ptr<ConfigData> config);
+
+public:
+        /**
+         * Constructor with sfml window and configuration data
+         * @param window
+         * @param config
+         */
+        AIRacer(const std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<ConfigData> config);
         /**
          * Draws the player
          */
@@ -33,7 +35,7 @@ namespace roadfighterSFML {
          * Updates the player
          */
         void update() override;
-    };
-}
+};
+} // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_AIRACER_H
+#endif // ROADFIGHTER_AIRACER_H

@@ -9,14 +9,15 @@
 #include <iostream>
 
 namespace roadfighter {
-    /**
-     * Car that the player can pass
-     */
-    class PassingCar : public roadfighter::Entity {
-    protected:
+/**
+ * Car that the player can pass
+ */
+class PassingCar : public roadfighter::Entity
+{
+protected:
         /**
-        * Pair of the doubles that contains the x and y position of the center of the object
-        */
+         * Pair of the doubles that contains the x and y position of the center of the object
+         */
         std::pair<double, double> centralpos;
 
         /**
@@ -39,8 +40,7 @@ namespace roadfighter {
          */
         double width;
 
-    public:
-
+public:
         /**
          * Constructor with configuration data
          * @param config
@@ -53,10 +53,10 @@ namespace roadfighter {
         void update() override;
 
         /**
-             * Updates the object with extra parameters
-             * @param speed
-             * @param Player
-             */
+         * Updates the object with extra parameters
+         * @param speed
+         * @param Player
+         */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
@@ -89,7 +89,7 @@ namespace roadfighter {
          * @return
          */
         bool Shoot() override;
-    };
+};
 } // namespace roadfighter
 
 #endif // ROADFIGHTER_PASSINGCAR_H

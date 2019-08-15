@@ -5,21 +5,22 @@
 #ifndef ROADFIGHTER_SFMLMOVINGCAR_H
 #define ROADFIGHTER_SFMLMOVINGCAR_H
 
+#include "../roadfighter/MovingCar.h"
 #include "SFML/Graphics.hpp"
 #include "memory"
-#include "../roadfighter/MovingCar.h"
 
 namespace roadfighterSFML {
-    /**
-     * Graphic side of movingcar
-     */
-class MovingCar: public roadfighter::MovingCar {
-    private:
+/**
+ * Graphic side of movingcar
+ */
+class MovingCar : public roadfighter::MovingCar
+{
+private:
         std::shared_ptr<sf::RenderWindow> window;
         sf::Sprite sprite;
         sf::Texture texture;
-    public:
 
+public:
         /**
          * Constructor with window and a random value to determine the spawning location and configuration data
          * @param window
@@ -32,8 +33,7 @@ class MovingCar: public roadfighter::MovingCar {
          * draws the object
          */
         void draw() override;
-    };
-}
+};
+} // namespace roadfighterSFML
 
-
-#endif //ROADFIGHTER_MOVINGCAR_H
+#endif // ROADFIGHTER_MOVINGCAR_H

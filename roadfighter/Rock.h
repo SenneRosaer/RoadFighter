@@ -8,11 +8,12 @@
 #include "Entity.h"
 
 namespace roadfighter {
-    /**
-     * The rock obstacle that doesn't have any speed so comes at the player faster
-     */
-    class Rock : public roadfighter::Entity {
-    protected:
+/**
+ * The rock obstacle that doesn't have any speed so comes at the player faster
+ */
+class Rock : public roadfighter::Entity
+{
+protected:
         /**
          * Pair of the doubles that contains the x and y position of the center of the object
          */
@@ -38,7 +39,7 @@ namespace roadfighter {
          */
         double width;
 
-    public:
+public:
         /**
          * Updates the object with extra parameters
          * @param speed
@@ -58,10 +59,10 @@ namespace roadfighter {
         int getSpeed() override;
 
         /**
-          * Returns a certain value to determine the delete status
-          * 0 = nothing, 1 = delete, 2 = respawn
-          * @return
-          */
+         * Returns a certain value to determine the delete status
+         * 0 = nothing, 1 = delete, 2 = respawn
+         * @return
+         */
         int Delete() override;
 
         /**
@@ -81,9 +82,7 @@ namespace roadfighter {
          * @return
          */
         bool Shoot() override;
+};
+} // namespace roadfighter
 
-
-    };
-}
-
-#endif //ROADFIGHTER_ROCK_H
+#endif // ROADFIGHTER_ROCK_H

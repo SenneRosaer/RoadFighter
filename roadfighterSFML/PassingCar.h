@@ -11,9 +11,9 @@
 #include <memory>
 
 namespace roadfighterSFML {
-    /**
-     * Graphic side of passingcar
-     */
+/**
+ * Graphic side of passingcar
+ */
 class PassingCar : public roadfighter::PassingCar
 {
 private:
@@ -22,7 +22,6 @@ private:
         sf::Texture texture;
 
 public:
-
         /**
          * Constructor with window and a random value to determine the spawning location and configuration data
          * @param window
@@ -39,4 +38,4 @@ public:
 };
 } // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_PASSINGCAR_H
+#endif // ROADFIGHTER_PASSINGCAR_H

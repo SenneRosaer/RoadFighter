@@ -5,17 +5,17 @@
 #ifndef ROADFIGHTER_SFMLBACKGROUND_H
 #define ROADFIGHTER_SFMLBACKGROUND_H
 
-#include "../roadfighter/Background.h"
 #include "../Observer/Observer.h"
+#include "../roadfighter/Background.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
 
 namespace roadfighterSFML {
-    /**
-     * Graphic side of the background
-     */
-    class Background : public roadfighter::Background
+/**
+ * Graphic side of the background
+ */
+class Background : public roadfighter::Background
 {
 
 private:
@@ -37,16 +37,14 @@ public:
          * @param type
          * @param config
          */
-        Background(const std::shared_ptr<sf::RenderWindow>& window, int type,std::shared_ptr<ConfigData> config);
+        Background(const std::shared_ptr<sf::RenderWindow>& window, int type, std::shared_ptr<ConfigData> config);
 
         /**
          * Draws the background
          */
         void draw() override;
-
-
 };
 
 } // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_BACKGROUND_H
+#endif // ROADFIGHTER_BACKGROUND_H

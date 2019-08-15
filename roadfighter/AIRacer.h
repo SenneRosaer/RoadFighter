@@ -5,16 +5,16 @@
 #ifndef ROADFIGHTER_AIRACER_H
 #define ROADFIGHTER_AIRACER_H
 
-
 #include "Entity.h"
 #include "vector"
 
 namespace roadfighter {
-    /**
-     * Class that handles the AI that moves based on other obstacles and races against the player
-     */
-    class AIRacer : public roadfighter::Entity {
-    protected:
+/**
+ * Class that handles the AI that moves based on other obstacles and races against the player
+ */
+class AIRacer : public roadfighter::Entity
+{
+protected:
         /**
          * Height of the object
          */
@@ -80,13 +80,13 @@ namespace roadfighter {
          */
         double sidemovement = 0;
 
-    private:
-    public:
+private:
+public:
         /**
          * Constructor with the configuration data
          * @param config
          */
-        AIRacer( std::shared_ptr<ConfigData> config);
+        AIRacer(std::shared_ptr<ConfigData> config);
 
         /**
          * Update function from the entity with parameters which is not used in this class but has to be specified
@@ -142,14 +142,17 @@ namespace roadfighter {
          * @param Rocks
          * @param player
          */
-        void updateMovement(std::vector<std::shared_ptr<roadfighter::Entity>> passingCars,std::vector<std::shared_ptr<roadfighter::Entity>> MovingCars,std::vector<std::shared_ptr<roadfighter::Entity>> Rocks, std::shared_ptr<roadfighter::Entity> player);
+        void updateMovement(std::vector<std::shared_ptr<roadfighter::Entity>> passingCars,
+                            std::vector<std::shared_ptr<roadfighter::Entity>> MovingCars,
+                            std::vector<std::shared_ptr<roadfighter::Entity>> Rocks,
+                            std::shared_ptr<roadfighter::Entity> player);
 
         /**
          * Return the distance the AI has travelled
          * @return
          */
         int getCarTravelledDistance() const;
-    };
-}
+};
+} // namespace roadfighter
 
-#endif //ROADFIGHTER_AIRACER_H
+#endif // ROADFIGHTER_AIRACER_H

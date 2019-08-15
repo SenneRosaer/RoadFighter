@@ -10,11 +10,12 @@
 #include <vector>
 
 namespace roadfighter {
-    /**
-     * The player that can be controlled
-     */
-    class PlayerCar : public roadfighter::Entity {
-    protected:
+/**
+ * The player that can be controlled
+ */
+class PlayerCar : public roadfighter::Entity
+{
+protected:
         /**
          * Pair of the doubles that contains the x and y position of the center of the object
          */
@@ -117,7 +118,7 @@ namespace roadfighter {
          */
         int acceleration;
 
-    public:
+public:
         /**
          * Constructor with configuration data
          * @param config
@@ -125,12 +126,12 @@ namespace roadfighter {
         PlayerCar(std::shared_ptr<ConfigData> config);
 
         /**
-        * Updates the object with extra parameters
+         * Updates the object with extra parameters
          * this function is not used since we already have the needed parameters
          *
-        * @param speed
-        * @param Player
-        */
+         * @param speed
+         * @param Player
+         */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
@@ -168,8 +169,8 @@ namespace roadfighter {
          */
         void update() override;
 
-    public:
-    };
+public:
+};
 } // namespace roadfighter
 
 #endif // ROADFIGHTER_PLAYERCAR_H

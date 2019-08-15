@@ -8,12 +8,12 @@
 #include "Entity.h"
 
 namespace roadfighter {
-    /**
-     * Bullet class that gets used when the player shoohts
-     */
-    class Bullet : public roadfighter::Entity {
-    protected:
-
+/**
+ * Bullet class that gets used when the player shoohts
+ */
+class Bullet : public roadfighter::Entity
+{
+protected:
         /**
          * Speed of the object
          */
@@ -29,8 +29,7 @@ namespace roadfighter {
          */
         int toDel = 0;
 
-    public:
-
+public:
         /**
          * Constructor with configuration data
          * @param config
@@ -38,10 +37,10 @@ namespace roadfighter {
         Bullet(std::shared_ptr<ConfigData> config);
 
         /**
-             * Updates the object with extra parameters
-             * @param speed
-             * @param Player
-             */
+         * Updates the object with extra parameters
+         * @param speed
+         * @param Player
+         */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
@@ -79,7 +78,7 @@ namespace roadfighter {
          * @return
          */
         bool Shoot() override;
-    };
+};
 } // namespace roadfighter
 
 #endif // ROADFIGHTER_BULLET_H

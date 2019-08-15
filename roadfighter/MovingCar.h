@@ -5,15 +5,16 @@
 #ifndef ROADFIGHTER_MOVINGCAR_H
 #define ROADFIGHTER_MOVINGCAR_H
 
-#include "iostream"
 #include "Entity.h"
+#include "iostream"
 
 namespace roadfighter {
-    /**
-     * The Moving car that moves to the player when it passes the player
-     */
-    class MovingCar : public roadfighter::Entity {
-    protected:
+/**
+ * The Moving car that moves to the player when it passes the player
+ */
+class MovingCar : public roadfighter::Entity
+{
+protected:
         /**
          * Pair of the doubles that contains the x and y position of the center of the object
          */
@@ -44,9 +45,7 @@ namespace roadfighter {
          */
         double movesLeft = 0.6;
 
-
-
-    public:
+public:
         /**
          * Constructor with the configuration data
          * @param config
@@ -59,10 +58,10 @@ namespace roadfighter {
         void update() override;
 
         /**
-          * Updates the object with extra parameters
-          * @param speed
-          * @param Player
-          */
+         * Updates the object with extra parameters
+         * @param speed
+         * @param Player
+         */
         void update(int speed, std::shared_ptr<roadfighter::Entity> Player) override;
 
         /**
@@ -95,7 +94,7 @@ namespace roadfighter {
          * @return
          */
         bool Shoot() override;
-    };
-}
+};
+} // namespace roadfighter
 
-#endif //ROADFIGHTER_MOVINGCAR_H
+#endif // ROADFIGHTER_MOVINGCAR_H

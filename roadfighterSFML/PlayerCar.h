@@ -10,9 +10,9 @@
 #include <memory>
 
 namespace roadfighterSFML {
-    /**
-     * Graphic side of the player class
-     */
+/**
+ * Graphic side of the player class
+ */
 class PlayerCar : public roadfighter::PlayerCar
 {
 private:
@@ -40,4 +40,4 @@ public:
 };
 } // namespace roadfighterSFML
 
-#endif //ROADFIGHTER_PLAYERCAR_H
+#endif // ROADFIGHTER_PLAYERCAR_H

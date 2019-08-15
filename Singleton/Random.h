@@ -38,21 +38,20 @@ public:
          * Returns a random value of the positionsRock vector
          * @return
          */
-       double getRandom3();
+        double getRandom3();
 
-       /**
-        * Returns a random int between 0 and the size of the positionsrock vector
-        * @return
-        */
-       int getRandom4();
-
+        /**
+         * Returns a random int between 0 and the size of the positionsrock vector
+         * @return
+         */
+        int getRandom4();
 
 private:
         // Vector with positions to choose from TODO Set correct pos
         std::vector<double> positions{-0.1, -1.6, -1, -0.7};
-    std::vector<double> positionsRock{-1.86,-1.38,-0.3,-0.9};
+        std::vector<double> positionsRock{-1.86, -1.38, -0.3, -0.9};
 
-    Random(){};
+        Random(){};
         Random(Random const&);
         Random operator=(Random const&);
 };

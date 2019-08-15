@@ -6,31 +6,30 @@
 #define ROADFIGHTER_WORLD_H
 
 #include "../Observer/Subject.h"
-#include "Entity.h"
 #include "AIRacer.h"
 #include "Boss.h"
+#include "Entity.h"
 #include <memory>
 #include <vector>
 
 class Observer;
 
 namespace roadfighter {
-    /**
-     * The world which holds all the objects and updates them accordingly
-     * also checks for collision, end of game, end of level, boss fight
-     */
-    class World : public roadfighter::Entity, public Subject {
+/**
+ * The world which holds all the objects and updates them accordingly
+ * also checks for collision, end of game, end of level, boss fight
+ */
+class World : public roadfighter::Entity, public Subject
+{
 
-    private:
+private:
         std::shared_ptr<roadfighter::Entity> Player;
-
 
         std::shared_ptr<roadfighter::Entity> Background;
 
         std::vector<std::shared_ptr<roadfighter::Entity>> passingCars;
 
         std::vector<std::shared_ptr<roadfighter::Entity>> movingCars;
-
 
         std::vector<std::shared_ptr<roadfighter::Entity>> Bullets;
 
@@ -51,7 +50,6 @@ namespace roadfighter {
         int Distance = 0;
         int DistanceToNextLevel = 100000;
 
-
         std::vector<std::shared_ptr<Observer>> observers;
 
         int currentLevel;
@@ -62,11 +60,11 @@ namespace roadfighter {
 
         bool finisFunctionReached = false;
 
-        //For timer at start of level
+        // For timer at start of level
         bool levelStarted = false;
         int timerInFrames = 90;
 
-        //Boss
+        // Boss
         bool bossFight = false;
 
         std::shared_ptr<roadfighter::Boss> boss = nullptr;
@@ -79,8 +77,7 @@ namespace roadfighter {
 
         bool crashDuringBoss = false;
 
-    public:
-
+public:
         /**
          * Boolean that is true if rocks may be spawned
          */
@@ -94,7 +91,7 @@ namespace roadfighter {
          */
         bool movingCar = false;
 
-    public:
+public:
         /**
          * Constructor
          */
@@ -109,13 +106,13 @@ namespace roadfighter {
          * Set the player
          * @param Player
          */
-        void setPlayer(const std::shared_ptr<Entity> &Player);
+        void setPlayer(const std::shared_ptr<Entity>& Player);
 
         /**
          * Set the background
          * @param Background
          */
-        void setBackground(const std::shared_ptr<Entity> &Background);
+        void setBackground(const std::shared_ptr<Entity>& Background);
 
         /**
          * Update an object
@@ -139,13 +136,13 @@ namespace roadfighter {
          * Return the player
          * @return
          */
-        const std::shared_ptr<Entity> &getPlayer() const;
+        const std::shared_ptr<Entity>& getPlayer() const;
 
         /**
          * Return the passingcars
          * @return
          */
-        const std::vector<std::shared_ptr<Entity>> &getPassingCars() const;
+        const std::vector<std::shared_ptr<Entity>>& getPassingCars() const;
 
         /**
          * Add a passingcar
@@ -216,7 +213,6 @@ namespace roadfighter {
          */
         void notify() override;
 
-
         /**
          * Add a rock to the rocks
          * @param rock
@@ -227,7 +223,7 @@ namespace roadfighter {
          * Return the movingcars
          * @return
          */
-        const std::vector<std::shared_ptr<Entity>> &getMovingCars() const;
+        const std::vector<std::shared_ptr<Entity>>& getMovingCars() const;
 
         /**
          * Add a moving car
@@ -310,7 +306,7 @@ namespace roadfighter {
          * Set the AI
          * @param ai
          */
-        void setAi(const std::shared_ptr<roadfighter::AIRacer> &ai);
+        void setAi(const std::shared_ptr<roadfighter::AIRacer>& ai);
 
         /**
          * Return the distance
@@ -328,13 +324,13 @@ namespace roadfighter {
          * Return the boss
          * @return
          */
-        const std::shared_ptr<roadfighter::Boss> &getBoss() const;
+        const std::shared_ptr<roadfighter::Boss>& getBoss() const;
 
         /**
          * Set the boss
          * @param boss
          */
-        void setBoss(const std::shared_ptr<roadfighter::Boss> &boss);
+        void setBoss(const std::shared_ptr<roadfighter::Boss>& boss);
 
         /**
          * Initiate ending of game and set final scores
@@ -357,15 +353,14 @@ namespace roadfighter {
          * Return finalscores
          * @return
          */
-        const std::vector<int> &getFinalscores() const;
+        const std::vector<int>& getFinalscores() const;
 
         /**
          * Set the final scores
          * @param finalscores
          */
-        void setFinalscores(const std::vector<int> &finalscores);
-
-    };
+        void setFinalscores(const std::vector<int>& finalscores);
+};
 
 } // namespace roadfighter
 

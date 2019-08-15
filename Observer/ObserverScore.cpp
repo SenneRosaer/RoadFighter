@@ -5,7 +5,7 @@
 #include "ObserverScore.h"
 #include "../Singleton/Transformation.h"
 
-ObserverScore::ObserverScore( std::shared_ptr<sf::RenderWindow> wind)
+ObserverScore::ObserverScore(std::shared_ptr<sf::RenderWindow> wind)
 
 {
         this->window = wind;
@@ -26,7 +26,4 @@ void ObserverScore::update(int score)
         window->draw(text);
 }
 
-
-std::string ObserverScore::getType() {
-    return "Score";
-}
+std::string ObserverScore::getType() { return "Score"; }

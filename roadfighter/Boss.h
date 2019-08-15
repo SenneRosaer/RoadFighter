@@ -5,16 +5,17 @@
 #ifndef ROADFIGHTER_BOSS_H
 #define ROADFIGHTER_BOSS_H
 
-#include <iostream>
 #include "Entity.h"
 #include "vector"
+#include <iostream>
 
 namespace roadfighter {
-    /**
-     *  The boss that attacks the player on an certain interval and appears at the end of level 3
-     */
-    class Boss : public roadfighter::Entity {
-    protected:
+/**
+ *  The boss that attacks the player on an certain interval and appears at the end of level 3
+ */
+class Boss : public roadfighter::Entity
+{
+protected:
         /**
          * Height of the object
          */
@@ -85,8 +86,7 @@ namespace roadfighter {
          */
         int life = 5;
 
-
-    public:
+public:
         /**
          * Constructor with the configuration data
          * @param config
@@ -150,7 +150,7 @@ namespace roadfighter {
          * Returns the position of rocks to spawn
          * @return
          */
-        const std::vector<double> &getRockPos() const;
+        const std::vector<double>& getRockPos() const;
 
         /**
          * Return the amount of lifes
@@ -163,9 +163,7 @@ namespace roadfighter {
          * @param life
          */
         void setLife(int life);
+};
+} // namespace roadfighter
 
-    };
-}
-
-
-#endif //ROADFIGHTER_BOSS_H
+#endif // ROADFIGHTER_BOSS_H

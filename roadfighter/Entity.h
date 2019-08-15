@@ -5,24 +5,24 @@
 #ifndef ROADFIGHTER_ENTITY_H
 #define ROADFIGHTER_ENTITY_H
 
-#include "../Utils/Utils.h"
 #include "../ConfigData.h"
+#include "../Utils/Utils.h"
 #include <memory>
 
 namespace roadfighter {
-    /**
-     * Holds all the entities that can exist in the game
-     * most are splitted in a logic and SFML part except for the world
-     */
-    class Entity : public std::enable_shared_from_this<roadfighter::Entity> {
-    protected:
+/**
+ * Holds all the entities that can exist in the game
+ * most are splitted in a logic and SFML part except for the world
+ */
+class Entity : public std::enable_shared_from_this<roadfighter::Entity>
+{
+protected:
         /**
          * Configuration data
          */
         std::shared_ptr<ConfigData> Config;
 
-    public:
-
+public:
         /**
          * Draw an object
          */
@@ -70,7 +70,7 @@ namespace roadfighter {
          * @return
          */
         virtual std::shared_ptr<ObjBox> getObjbox() = 0;
-    };
+};
 
 } // namespace roadfighter
 
