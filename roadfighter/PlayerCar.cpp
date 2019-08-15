@@ -125,6 +125,7 @@ void roadfighter::PlayerCar::update() {
         speed = 0;
         respawntimer--;
         disableActions = true;
+        shoot = false;
         if(respawntimer <= 0){
             toDel = 0;
             respawntimer = respawntimerVal;

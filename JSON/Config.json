@@ -41,7 +41,7 @@
 				"BulletSpeed": "350"
 			},
 			"Boss":{
-				"attackTimer" : "60",
+				"attackTimer" : "50",
 				"life" : "5"
 			}
 			

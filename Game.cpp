@@ -264,7 +264,10 @@ void Game::run() {
                             switch (event.key.code) {
 
                                 case sf::Keyboard::Escape:
-                                    window->close();
+                                    world->reset();
+                                    menuActive = true;
+                                    Scoreboard = false;
+                                    gameEndingTimer = Config->getGameEndingTimer();
                                     break;
 
 

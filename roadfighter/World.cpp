@@ -74,6 +74,9 @@ void roadfighter::World::update() {
             }
         }
     }
+    //control for collision
+    Collision();
+
     //Update background with player speed or shoots and updates
     if (Player == nullptr) {
         shoot = false;
@@ -122,8 +125,7 @@ void roadfighter::World::update() {
         }
     }
 
-    //control for collision
-    Collision();
+
     //control if whe need to delete certain objects
     if (Player != nullptr) {
         calcDistance();
@@ -237,7 +239,7 @@ void roadfighter::World::Collision() {
                         crashes++;
                         calcScore();
                         //Make sure you can also crash and lose points during bossfight
-                        if(bossFight){
+                        if (bossFight) {
                             crashDuringBoss = true;
                         }
                         notify();
@@ -326,8 +328,8 @@ void roadfighter::World::Collision() {
         for (auto bullet : Bullets) {
             std::pair<double, double> Position = bullet->getObjbox()->centralpos;
 
-            if (Position.first >= Width1 - 0.05 and Position.first <= Width2 + 0.05) {
-                if (Position.second >= Heigth1 and Position.second <= Heigth2 + 0.1) {
+            if (Position.first >= Width1 - 0.05 and Position.first <= Width2 ) {
+                if (Position.second >= Heigth1 and Position.second <= Heigth2 ) {
                     bullet->setDelete(1);
                     passingcar->setDelete(1);
                     //update score if necessary
@@ -348,6 +350,30 @@ void roadfighter::World::Collision() {
                 }
             }
         }
+        for (auto passingCars2 : allCarCollisionObj) {
+
+            std::shared_ptr<ObjBox> carBox = passingCars2->getObjbox();
+            if (carBox->centralpos.first != PassingBox->centralpos.first and carBox->centralpos.second != PassingBox->centralpos.second) {
+                std::pair<double, double> LUCorner = {carBox->centralpos.first - carBox->width / 2,
+                                                      carBox->centralpos.second + carBox->height / 2};
+                std::pair<double, double> RUCorner = {carBox->centralpos.first + carBox->width / 2,
+                                                      carBox->centralpos.second + carBox->height / 2};
+                std::pair<double, double> LLCorner = {carBox->centralpos.first - carBox->width / 2,
+                                                      carBox->centralpos.second - carBox->height / 2};
+                std::pair<double, double> RLCorner = {carBox->centralpos.first + carBox->width / 2,
+                                                      carBox->centralpos.second - carBox->height / 2};
+                std::vector<std::pair<double, double>> tempvec = {LUCorner, RUCorner, LLCorner, RLCorner};
+                for (int i = 0; i < 4; i++) {
+                    if (tempvec[i].first >= Width1 and tempvec[i].first <= Width2) {
+                        if (tempvec[i].second <= Heigth2 and tempvec[i].second >= Heigth1) {
+                            passingcar->setDelete(1);
+                            passingCars2->setDelete(1);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //Control collision with boss so we know when we hit him and change his lifes
@@ -363,7 +389,7 @@ void roadfighter::World::Collision() {
             std::pair<double, double> Position = bullet->getObjbox()->centralpos;
 
             if (Position.first >= Width1 - 0.05 and Position.first <= Width2 + 0.05) {
-                if (Position.second >= Heigth1 and Position.second <= Heigth2 + 0.1) {
+                if (Position.second >= Heigth1 and Position.second <= Heigth2 ) {
                     bullet->setDelete(1);
                     if (boss->getLife() > 0) {
                         boss->setLife(boss->getLife() - 1);
@@ -415,15 +441,15 @@ void roadfighter::World::calcScore() {
                 }
             }
         } else {
-            if(crashDuringBoss){
-                score = score -100;
+            if (crashDuringBoss) {
+                score = score - 100;
                 crashDuringBoss = false;
             }
         }
-        if(score < 0){
+        if (score < 0) {
             throw (ScoreError());
         }
-    } catch(GameError& e){
+    } catch (GameError &e) {
         std::cerr << e.what() << std::endl;
         score = 0;
     }
@@ -474,7 +500,7 @@ void roadfighter::World::reset() {
     crashes = 0;
     Distance = 0;
     DistanceToNextLevel = roadfighter::Entity::Config->getDistance();
-
+    finalscores = {};
 
     Player.reset();
     Background.reset();
@@ -483,6 +509,7 @@ void roadfighter::World::reset() {
     Bullets.clear();
     Rocks.clear();
     AI.reset();
+    boss.reset();
 
     rock = false;
     passingCar = false;

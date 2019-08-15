@@ -80,7 +80,6 @@ namespace roadfighter {
     public:
         int respawnTimer = 30;
 
-        //TODO getter setter
         bool rock = false;
         bool passingCar = false;
         bool movingCar = false;

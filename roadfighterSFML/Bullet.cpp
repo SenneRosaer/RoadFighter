@@ -30,6 +30,6 @@ roadfighterSFML::Bullet::Bullet(const std::shared_ptr<sf::RenderWindow> window, 
     texture.setSmooth(true);
 
     sprite.setTexture(texture);
-    sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
+    sprite.setOrigin(texture.getSize().x / 2, 0);
     sprite.scale(1.3, 1.3);
 }
