@@ -1,0 +1,84 @@
+\hypertarget{classFileError}{}\section{File\+Error Class Reference}
+\label{classFileError}\index{File\+Error@{File\+Error}}
+
+
+{\ttfamily \#include $<$File\+Error.\+h$>$}
+
+
+
+Inheritance diagram for File\+Error\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFileError__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for File\+Error\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{classFileError__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFileError_a8330c1e4ec86bfae59e4d9e96b2be59b}{File\+Error} (const char $\ast$\hyperlink{classFileError_a0ea1cc225bf7f8fa47aa0cfa0c2ba685}{file})
+\item 
+virtual const char $\ast$ \hyperlink{classFileError_a40918f5dda2ee7063bba81d286392cdd}{file\+Path} () const noexcept=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{classFileError_a0ea1cc225bf7f8fa47aa0cfa0c2ba685}{file}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class that acts as parent class for errors that occur when loading or using files 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFileError_a8330c1e4ec86bfae59e4d9e96b2be59b}\label{classFileError_a8330c1e4ec86bfae59e4d9e96b2be59b}} 
+\index{File\+Error@{File\+Error}!File\+Error@{File\+Error}}
+\index{File\+Error@{File\+Error}!File\+Error@{File\+Error}}
+\subsubsection{\texorpdfstring{File\+Error()}{FileError()}}
+{\footnotesize\ttfamily File\+Error\+::\+File\+Error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file }\end{DoxyParamCaption})}
+
+Constructor for a file error with the file that caused the error 
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFileError_a40918f5dda2ee7063bba81d286392cdd}\label{classFileError_a40918f5dda2ee7063bba81d286392cdd}} 
+\index{File\+Error@{File\+Error}!file\+Path@{file\+Path}}
+\index{file\+Path@{file\+Path}!File\+Error@{File\+Error}}
+\subsubsection{\texorpdfstring{file\+Path()}{filePath()}}
+{\footnotesize\ttfamily virtual const char$\ast$ File\+Error\+::file\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+Return the file that caused the error \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classFontLoadError_aa1b4295ca60b389717e40fcbf723fb83}{Font\+Load\+Error}, \hyperlink{classSpriteLoadError_aa6c6ca97b781b8045eb4271aad6aa6d1}{Sprite\+Load\+Error}, and \hyperlink{classJSONParseError_a24c5c1358b6ae6c96b30ebaa96e0a30b}{J\+S\+O\+N\+Parse\+Error}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classFileError_a0ea1cc225bf7f8fa47aa0cfa0c2ba685}\label{classFileError_a0ea1cc225bf7f8fa47aa0cfa0c2ba685}} 
+\index{File\+Error@{File\+Error}!file@{file}}
+\index{file@{file}!File\+Error@{File\+Error}}
+\subsubsection{\texorpdfstring{file}{file}}
+{\footnotesize\ttfamily const char$\ast$ File\+Error\+::file\hspace{0.3cm}{\ttfamily [protected]}}
+
+File that caused the error 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Exception\+\_\+class/File\+Error.\+h\item 
+Exception\+\_\+class/File\+Error.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,4 @@
+<map id="roadfighter::PlayerCar" name="roadfighter::PlayerCar">
+<area shape="rect" id="node4" href="$classroadfighterSFML_1_1PlayerCar.html" title="roadfighterSFML::PlayerCar" alt="" coords="5,259,189,285"/>
+<area shape="rect" id="node2" href="$classroadfighter_1_1Entity.html" title="roadfighter::Entity" alt="" coords="35,109,160,136"/>
+</map>

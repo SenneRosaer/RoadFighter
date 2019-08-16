@@ -1,0 +1,86 @@
+\hypertarget{classJSONParseError}{}\section{J\+S\+O\+N\+Parse\+Error Class Reference}
+\label{classJSONParseError}\index{J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}}
+
+
+{\ttfamily \#include $<$J\+S\+O\+N\+Parse\+Error.\+h$>$}
+
+
+
+Inheritance diagram for J\+S\+O\+N\+Parse\+Error\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classJSONParseError__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for J\+S\+O\+N\+Parse\+Error\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classJSONParseError__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classJSONParseError_a92ab01ff5045faea98f10ed307b6306d}{J\+S\+O\+N\+Parse\+Error} (const char $\ast$\hyperlink{classFileError_a0ea1cc225bf7f8fa47aa0cfa0c2ba685}{file})
+\item 
+const char $\ast$ \hyperlink{classJSONParseError_a1f33b495974db21a050ede28eb0fe298}{what} () const noexcept override
+\item 
+const char $\ast$ \hyperlink{classJSONParseError_a24c5c1358b6ae6c96b30ebaa96e0a30b}{file\+Path} () const noexcept override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Error that appears when there is a mistake while parsing or loading a json file 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classJSONParseError_a92ab01ff5045faea98f10ed307b6306d}\label{classJSONParseError_a92ab01ff5045faea98f10ed307b6306d}} 
+\index{J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}!J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}}
+\index{J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}!J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+Parse\+Error()}{JSONParseError()}}
+{\footnotesize\ttfamily J\+S\+O\+N\+Parse\+Error\+::\+J\+S\+O\+N\+Parse\+Error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file }\end{DoxyParamCaption})}
+
+Constructor with file that contained the error 
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classJSONParseError_a24c5c1358b6ae6c96b30ebaa96e0a30b}\label{classJSONParseError_a24c5c1358b6ae6c96b30ebaa96e0a30b}} 
+\index{J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}!file\+Path@{file\+Path}}
+\index{file\+Path@{file\+Path}!J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}}
+\subsubsection{\texorpdfstring{file\+Path()}{filePath()}}
+{\footnotesize\ttfamily const char $\ast$ J\+S\+O\+N\+Parse\+Error\+::file\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+Returns the file that caused the erro \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classFileError_a40918f5dda2ee7063bba81d286392cdd}{File\+Error}.
+
+\mbox{\Hypertarget{classJSONParseError_a1f33b495974db21a050ede28eb0fe298}\label{classJSONParseError_a1f33b495974db21a050ede28eb0fe298}} 
+\index{J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}!what@{what}}
+\index{what@{what}!J\+S\+O\+N\+Parse\+Error@{J\+S\+O\+N\+Parse\+Error}}
+\subsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char $\ast$ J\+S\+O\+N\+Parse\+Error\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+Returns the error message \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGameError_afbe93d6a2023f2824be2733aff9e86cb}{Game\+Error}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Exception\+\_\+class/J\+S\+O\+N\+Parse\+Error.\+h\item 
+Exception\+\_\+class/J\+S\+O\+N\+Parse\+Error.\+cpp\end{DoxyCompactItemize}

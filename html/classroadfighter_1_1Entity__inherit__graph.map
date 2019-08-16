@@ -1,0 +1,19 @@
+<map id="roadfighter::Entity" name="roadfighter::Entity">
+<area shape="rect" id="node3" href="$classroadfighter_1_1AIRacer.html" title="roadfighter::AIRacer" alt="" coords="393,5,532,32"/>
+<area shape="rect" id="node5" href="$classroadfighter_1_1Background.html" title="roadfighter::Background" alt="" coords="383,56,543,83"/>
+<area shape="rect" id="node7" href="$classroadfighter_1_1Boss.html" title="roadfighter::Boss" alt="" coords="402,107,523,133"/>
+<area shape="rect" id="node9" href="$classroadfighter_1_1Bullet.html" title="roadfighter::Bullet" alt="" coords="401,157,525,184"/>
+<area shape="rect" id="node11" href="$classroadfighter_1_1MovingCar.html" title="roadfighter::MovingCar" alt="" coords="385,208,540,235"/>
+<area shape="rect" id="node13" href="$classroadfighter_1_1PassingCar.html" title="roadfighter::PassingCar" alt="" coords="383,259,542,285"/>
+<area shape="rect" id="node15" href="$classroadfighter_1_1PlayerCar.html" title="roadfighter::PlayerCar" alt="" coords="388,309,537,336"/>
+<area shape="rect" id="node17" href="$classroadfighter_1_1Rock.html" title="roadfighter::Rock" alt="" coords="401,360,524,387"/>
+<area shape="rect" id="node19" href="$classroadfighter_1_1World.html" title="roadfighter::World" alt="" coords="400,411,525,437"/>
+<area shape="rect" id="node4" href="$classroadfighterSFML_1_1AIRacer.html" title="roadfighterSFML::AIRacer" alt="" coords="601,5,775,32"/>
+<area shape="rect" id="node6" href="$classroadfighterSFML_1_1Background.html" title="roadfighterSFML::Background" alt="" coords="591,56,785,83"/>
+<area shape="rect" id="node8" href="$classroadfighterSFML_1_1Boss.html" title="roadfighterSFML::Boss" alt="" coords="610,107,766,133"/>
+<area shape="rect" id="node10" href="$classroadfighterSFML_1_1Bullet.html" title="roadfighterSFML::Bullet" alt="" coords="609,157,767,184"/>
+<area shape="rect" id="node12" href="$classroadfighterSFML_1_1MovingCar.html" title="roadfighterSFML::MovingCar" alt="" coords="593,208,783,235"/>
+<area shape="rect" id="node14" href="$classroadfighterSFML_1_1PassingCar.html" title="roadfighterSFML::PassingCar" alt="" coords="591,259,785,285"/>
+<area shape="rect" id="node16" href="$classroadfighterSFML_1_1PlayerCar.html" title="roadfighterSFML::PlayerCar" alt="" coords="596,309,780,336"/>
+<area shape="rect" id="node18" href="$classroadfighterSFML_1_1Rock.html" title="roadfighterSFML::Rock" alt="" coords="609,360,767,387"/>
+</map>
