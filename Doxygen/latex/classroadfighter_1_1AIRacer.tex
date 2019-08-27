@@ -1,0 +1,307 @@
+\hypertarget{classroadfighter_1_1AIRacer}{}\section{roadfighter\+:\+:A\+I\+Racer Class Reference}
+\label{classroadfighter_1_1AIRacer}\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+
+
+{\ttfamily \#include $<$A\+I\+Racer.\+h$>$}
+
+
+
+Inheritance diagram for roadfighter\+:\+:A\+I\+Racer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classroadfighter_1_1AIRacer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for roadfighter\+:\+:A\+I\+Racer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classroadfighter_1_1AIRacer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classroadfighter_1_1AIRacer_a81234077ec46f9824600f3aeb853d4d1}{A\+I\+Racer} (std\+::shared\+\_\+ptr$<$ \hyperlink{classConfigData}{Config\+Data} $>$ config)
+\item 
+void \hyperlink{classroadfighter_1_1AIRacer_ab6156385195b3d40d44360d40aafa3a6}{update} (int \hyperlink{classroadfighter_1_1AIRacer_a37f6706ba77522ae4efe782da0125062}{speed}, std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$ Player) override
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_a4fa90fd500b2e790fb50cc6f1505688f}{get\+Speed} () override
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_af6fe47885c72aeddd02d13e136f4790f}{Delete} () override
+\item 
+void \hyperlink{classroadfighter_1_1AIRacer_a10823d4a02dbdad6d760020f8cee7afe}{set\+Delete} (int del) override
+\item 
+bool \hyperlink{classroadfighter_1_1AIRacer_a9e1ce152093bd4f7deb676c443a7851a}{Shoot} () override
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{structObjBox}{Obj\+Box} $>$ \hyperlink{classroadfighter_1_1AIRacer_a597fa189f88db3ca1534ddf24bb51c22}{get\+Objbox} () override
+\item 
+void \hyperlink{classroadfighter_1_1AIRacer_a92afd3d1bfcd290d3b012cbfe44d5a77}{update} () override
+\item 
+void \hyperlink{classroadfighter_1_1AIRacer_a9f80e1203fb9b718d1bd26ffbb562810}{update\+Movement} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$$>$ passing\+Cars, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$$>$ Moving\+Cars, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$$>$ Rocks, std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$ player)
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_a74314c736ef3c26fb695a2bdf75bcd31}{get\+Car\+Travelled\+Distance} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classroadfighter_1_1AIRacer_ae05aeeb75376978119b8dacb3a1416a9}{height}
+\item 
+double \hyperlink{classroadfighter_1_1AIRacer_afb07abbbb10e4d80202390fd940155b1}{width}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classroadfighter_1_1AIRacer_a3acb0b4859882716e2d1f2732b21a76e}{centralpos} = \{-\/1.\+3, -\/2\}
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_a37f6706ba77522ae4efe782da0125062}{speed} = 0
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_a7cfbfadf56859ab7865dd080376471c0}{to\+Del} = 0
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_a789b1e673e527b791854fe63dce6a963}{Car\+Travelled\+Distance} = 0
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_a6b68bb16afb117fce192974c3c044493}{respawntimer}
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_af072697ba6c72e186fe67a197caf2783}{respawntime\+Val}
+\item 
+bool \hyperlink{classroadfighter_1_1AIRacer_a5e5286d19035bc286ef10615bb512dd2}{disable\+Actions} = false
+\item 
+bool \hyperlink{classroadfighter_1_1AIRacer_a67ebabb7866c75cd75568e1e416c53c9}{finished} = false
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_ac997e50a6d864a1bbd4c513748f92836}{maxspeed}
+\item 
+int \hyperlink{classroadfighter_1_1AIRacer_a2e427cf40da5bde2d5aa30406bb649e1}{acceleration}
+\item 
+double \hyperlink{classroadfighter_1_1AIRacer_a79095fd3559c3930d6433ea2d92c35b9}{sidemovement} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that handles the AI that moves based on other obstacles and races against the player 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a81234077ec46f9824600f3aeb853d4d1}\label{classroadfighter_1_1AIRacer_a81234077ec46f9824600f3aeb853d4d1}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!A\+I\+Racer@{A\+I\+Racer}}
+\index{A\+I\+Racer@{A\+I\+Racer}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{A\+I\+Racer()}{AIRacer()}}
+{\footnotesize\ttfamily roadfighter\+::\+A\+I\+Racer\+::\+A\+I\+Racer (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classConfigData}{Config\+Data} $>$}]{config }\end{DoxyParamCaption})}
+
+Constructor with the configuration data 
+\begin{DoxyParams}{Parameters}
+{\em config} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_af6fe47885c72aeddd02d13e136f4790f}\label{classroadfighter_1_1AIRacer_af6fe47885c72aeddd02d13e136f4790f}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!Delete@{Delete}}
+\index{Delete@{Delete}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns a certain value to determine the delete status 0 = nothing, 1 = delete, 2 = respawn \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classroadfighter_1_1Entity_a08190b0b8e6a3fcdb42273d6096152ac}{roadfighter\+::\+Entity}.
+
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a74314c736ef3c26fb695a2bdf75bcd31}\label{classroadfighter_1_1AIRacer_a74314c736ef3c26fb695a2bdf75bcd31}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!get\+Car\+Travelled\+Distance@{get\+Car\+Travelled\+Distance}}
+\index{get\+Car\+Travelled\+Distance@{get\+Car\+Travelled\+Distance}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{get\+Car\+Travelled\+Distance()}{getCarTravelledDistance()}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::get\+Car\+Travelled\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Return the distance the AI has travelled \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a597fa189f88db3ca1534ddf24bb51c22}\label{classroadfighter_1_1AIRacer_a597fa189f88db3ca1534ddf24bb51c22}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!get\+Objbox@{get\+Objbox}}
+\index{get\+Objbox@{get\+Objbox}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{get\+Objbox()}{getObjbox()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{structObjBox}{Obj\+Box} $>$ roadfighter\+::\+A\+I\+Racer\+::get\+Objbox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Return the object box of the object \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classroadfighter_1_1Entity_af14340d04a725175a6d221f23c35fa0c}{roadfighter\+::\+Entity}.
+
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a4fa90fd500b2e790fb50cc6f1505688f}\label{classroadfighter_1_1AIRacer_a4fa90fd500b2e790fb50cc6f1505688f}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!get\+Speed@{get\+Speed}}
+\index{get\+Speed@{get\+Speed}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{get\+Speed()}{getSpeed()}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns the speed of the object \begin{DoxyReturn}{Returns}
+speed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classroadfighter_1_1Entity_ad3760184d764a61922e1db7d98501ee4}{roadfighter\+::\+Entity}.
+
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a10823d4a02dbdad6d760020f8cee7afe}\label{classroadfighter_1_1AIRacer_a10823d4a02dbdad6d760020f8cee7afe}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!set\+Delete@{set\+Delete}}
+\index{set\+Delete@{set\+Delete}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{set\+Delete()}{setDelete()}}
+{\footnotesize\ttfamily void roadfighter\+::\+A\+I\+Racer\+::set\+Delete (\begin{DoxyParamCaption}\item[{int}]{del }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Set the delete variable to a certain value 
+\begin{DoxyParams}{Parameters}
+{\em del} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classroadfighter_1_1Entity_a07e973f0fa941a69e749629716877692}{roadfighter\+::\+Entity}.
+
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a9e1ce152093bd4f7deb676c443a7851a}\label{classroadfighter_1_1AIRacer_a9e1ce152093bd4f7deb676c443a7851a}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!Shoot@{Shoot}}
+\index{Shoot@{Shoot}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{Shoot()}{Shoot()}}
+{\footnotesize\ttfamily bool roadfighter\+::\+A\+I\+Racer\+::\+Shoot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns if we need to shoot but this function is only used for the player so returns false \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classroadfighter_1_1Entity_ad0ecaa0539db252e591da83814251509}{roadfighter\+::\+Entity}.
+
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_ab6156385195b3d40d44360d40aafa3a6}\label{classroadfighter_1_1AIRacer_ab6156385195b3d40d44360d40aafa3a6}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!update@{update}}
+\index{update@{update}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void roadfighter\+::\+A\+I\+Racer\+::update (\begin{DoxyParamCaption}\item[{int}]{speed,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$}]{Player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Update function from the entity with parameters which is not used in this class but has to be specified because it is pure virtual in entity 
+\begin{DoxyParams}{Parameters}
+{\em speed} & \\
+\hline
+{\em Player} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classroadfighter_1_1Entity_a611ba56595dd2137d308876ba820cc09}{roadfighter\+::\+Entity}.
+
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a92afd3d1bfcd290d3b012cbfe44d5a77}\label{classroadfighter_1_1AIRacer_a92afd3d1bfcd290d3b012cbfe44d5a77}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!update@{update}}
+\index{update@{update}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void roadfighter\+::\+A\+I\+Racer\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Updates the object without parameters Checks when the ai has passed the finish and also controls the respawn timer 
+
+Implements \hyperlink{classroadfighter_1_1Entity_a19cd353f12a3e8432acd6d5609137561}{roadfighter\+::\+Entity}.
+
+
+
+Reimplemented in \hyperlink{classroadfighterSFML_1_1AIRacer_aaecd91860a2ac61ef671000e311b7860}{roadfighter\+S\+F\+M\+L\+::\+A\+I\+Racer}.
+
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a9f80e1203fb9b718d1bd26ffbb562810}\label{classroadfighter_1_1AIRacer_a9f80e1203fb9b718d1bd26ffbb562810}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!update\+Movement@{update\+Movement}}
+\index{update\+Movement@{update\+Movement}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{update\+Movement()}{updateMovement()}}
+{\footnotesize\ttfamily void roadfighter\+::\+A\+I\+Racer\+::update\+Movement (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$$>$}]{passing\+Cars,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$$>$}]{Moving\+Cars,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$$>$}]{Rocks,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classroadfighter_1_1Entity}{roadfighter\+::\+Entity} $>$}]{player }\end{DoxyParamCaption})}
+
+Updates the movement of the ai based on the other obstacles in the game it takes the object closest to the front of the car and then moves accordingly Also updates the speed of the AI 
+\begin{DoxyParams}{Parameters}
+{\em passing\+Cars} & \\
+\hline
+{\em Moving\+Cars} & \\
+\hline
+{\em Rocks} & \\
+\hline
+{\em player} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classroadfighter_1_1AIRacer_a2e427cf40da5bde2d5aa30406bb649e1}\label{classroadfighter_1_1AIRacer_a2e427cf40da5bde2d5aa30406bb649e1}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!acceleration@{acceleration}}
+\index{acceleration@{acceleration}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{acceleration}{acceleration}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::acceleration\hspace{0.3cm}{\ttfamily [protected]}}
+
+Maximum speed of the object \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a789b1e673e527b791854fe63dce6a963}\label{classroadfighter_1_1AIRacer_a789b1e673e527b791854fe63dce6a963}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!Car\+Travelled\+Distance@{Car\+Travelled\+Distance}}
+\index{Car\+Travelled\+Distance@{Car\+Travelled\+Distance}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{Car\+Travelled\+Distance}{CarTravelledDistance}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::\+Car\+Travelled\+Distance = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+Distance that has been travelled by the player \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a3acb0b4859882716e2d1f2732b21a76e}\label{classroadfighter_1_1AIRacer_a3acb0b4859882716e2d1f2732b21a76e}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!centralpos@{centralpos}}
+\index{centralpos@{centralpos}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{centralpos}{centralpos}}
+{\footnotesize\ttfamily std\+::pair$<$double, double$>$ roadfighter\+::\+A\+I\+Racer\+::centralpos = \{-\/1.\+3, -\/2\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pair of the doubles that contains the x and y position of the center of the object \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a5e5286d19035bc286ef10615bb512dd2}\label{classroadfighter_1_1AIRacer_a5e5286d19035bc286ef10615bb512dd2}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!disable\+Actions@{disable\+Actions}}
+\index{disable\+Actions@{disable\+Actions}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{disable\+Actions}{disableActions}}
+{\footnotesize\ttfamily bool roadfighter\+::\+A\+I\+Racer\+::disable\+Actions = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+Boolean that is true when all the action for the ai are disabled \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a67ebabb7866c75cd75568e1e416c53c9}\label{classroadfighter_1_1AIRacer_a67ebabb7866c75cd75568e1e416c53c9}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!finished@{finished}}
+\index{finished@{finished}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{finished}{finished}}
+{\footnotesize\ttfamily bool roadfighter\+::\+A\+I\+Racer\+::finished = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+Boolean that is true when the AI is finished \mbox{\Hypertarget{classroadfighter_1_1AIRacer_ae05aeeb75376978119b8dacb3a1416a9}\label{classroadfighter_1_1AIRacer_ae05aeeb75376978119b8dacb3a1416a9}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!height@{height}}
+\index{height@{height}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily double roadfighter\+::\+A\+I\+Racer\+::height\hspace{0.3cm}{\ttfamily [protected]}}
+
+Height of the object \mbox{\Hypertarget{classroadfighter_1_1AIRacer_ac997e50a6d864a1bbd4c513748f92836}\label{classroadfighter_1_1AIRacer_ac997e50a6d864a1bbd4c513748f92836}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!maxspeed@{maxspeed}}
+\index{maxspeed@{maxspeed}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{maxspeed}{maxspeed}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::maxspeed\hspace{0.3cm}{\ttfamily [protected]}}
+
+Maximum speed of the object \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a6b68bb16afb117fce192974c3c044493}\label{classroadfighter_1_1AIRacer_a6b68bb16afb117fce192974c3c044493}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!respawntimer@{respawntimer}}
+\index{respawntimer@{respawntimer}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{respawntimer}{respawntimer}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::respawntimer\hspace{0.3cm}{\ttfamily [protected]}}
+
+Timer for respawning \mbox{\Hypertarget{classroadfighter_1_1AIRacer_af072697ba6c72e186fe67a197caf2783}\label{classroadfighter_1_1AIRacer_af072697ba6c72e186fe67a197caf2783}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!respawntime\+Val@{respawntime\+Val}}
+\index{respawntime\+Val@{respawntime\+Val}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{respawntime\+Val}{respawntimeVal}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::respawntime\+Val\hspace{0.3cm}{\ttfamily [protected]}}
+
+Value the respawn timer starts at \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a79095fd3559c3930d6433ea2d92c35b9}\label{classroadfighter_1_1AIRacer_a79095fd3559c3930d6433ea2d92c35b9}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!sidemovement@{sidemovement}}
+\index{sidemovement@{sidemovement}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{sidemovement}{sidemovement}}
+{\footnotesize\ttfamily double roadfighter\+::\+A\+I\+Racer\+::sidemovement = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+Movement the AI has done sideways to control it doesn\textquotesingle{}t keep moving in one direction \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a37f6706ba77522ae4efe782da0125062}\label{classroadfighter_1_1AIRacer_a37f6706ba77522ae4efe782da0125062}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!speed@{speed}}
+\index{speed@{speed}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::speed = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+Speed of the object \mbox{\Hypertarget{classroadfighter_1_1AIRacer_a7cfbfadf56859ab7865dd080376471c0}\label{classroadfighter_1_1AIRacer_a7cfbfadf56859ab7865dd080376471c0}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!to\+Del@{to\+Del}}
+\index{to\+Del@{to\+Del}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{to\+Del}{toDel}}
+{\footnotesize\ttfamily int roadfighter\+::\+A\+I\+Racer\+::to\+Del = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+Object deletion status ( 0 = nothing, 1 = delete, 2 = respawn ) \mbox{\Hypertarget{classroadfighter_1_1AIRacer_afb07abbbb10e4d80202390fd940155b1}\label{classroadfighter_1_1AIRacer_afb07abbbb10e4d80202390fd940155b1}} 
+\index{roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}!width@{width}}
+\index{width@{width}!roadfighter\+::\+A\+I\+Racer@{roadfighter\+::\+A\+I\+Racer}}
+\subsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily double roadfighter\+::\+A\+I\+Racer\+::width\hspace{0.3cm}{\ttfamily [protected]}}
+
+Width of the object 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+roadfighter/A\+I\+Racer.\+h\item 
+roadfighter/A\+I\+Racer.\+cpp\end{DoxyCompactItemize}

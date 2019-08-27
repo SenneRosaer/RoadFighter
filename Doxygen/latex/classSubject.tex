@@ -1,0 +1,58 @@
+\hypertarget{classSubject}{}\section{Subject Class Reference}
+\label{classSubject}\index{Subject@{Subject}}
+
+
+{\ttfamily \#include $<$Subject.\+h$>$}
+
+
+
+Inheritance diagram for Subject\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classSubject__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classSubject_a6d3186b9f59f044f0c946be2b06606d7}{attach} (std\+::shared\+\_\+ptr$<$ \hyperlink{classObserver}{Observer} $>$ observer)=0
+\item 
+virtual void \hyperlink{classSubject_aedd8aa6de28b18ef5880566de4294bfe}{notify} ()=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for subjects for observer pattern 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSubject_a6d3186b9f59f044f0c946be2b06606d7}\label{classSubject_a6d3186b9f59f044f0c946be2b06606d7}} 
+\index{Subject@{Subject}!attach@{attach}}
+\index{attach@{attach}!Subject@{Subject}}
+\subsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily virtual void Subject\+::attach (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classObserver}{Observer} $>$}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Attach an observer to the subject 
+\begin{DoxyParams}{Parameters}
+{\em observer} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classroadfighter_1_1World_aae11d52bce048722267d7d0515c69985}{roadfighter\+::\+World}.
+
+\mbox{\Hypertarget{classSubject_aedd8aa6de28b18ef5880566de4294bfe}\label{classSubject_aedd8aa6de28b18ef5880566de4294bfe}} 
+\index{Subject@{Subject}!notify@{notify}}
+\index{notify@{notify}!Subject@{Subject}}
+\subsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily virtual void Subject\+::notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Notify the observers on a certain change 
+
+Implemented in \hyperlink{classroadfighter_1_1World_ad2edbd8e41dfbc65c99500512f954940}{roadfighter\+::\+World}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Observer/Subject.\+h\end{DoxyCompactItemize}

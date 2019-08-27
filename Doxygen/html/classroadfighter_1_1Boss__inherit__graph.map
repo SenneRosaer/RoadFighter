@@ -1,0 +1,4 @@
+<map id="roadfighter::Boss" name="roadfighter::Boss">
+<area shape="rect" id="node4" href="$classroadfighterSFML_1_1Boss.html" title="roadfighterSFML::Boss" alt="" coords="5,259,161,285"/>
+<area shape="rect" id="node2" href="$classroadfighter_1_1Entity.html" title="roadfighter::Entity" alt="" coords="21,109,146,136"/>
+</map>
