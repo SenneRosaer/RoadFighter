@@ -62,6 +62,8 @@ void Scoreboard::drawBoard()
                 text[i].setString(std::to_string(scores2[i]));
                 if (scores2[i] == sum) {
                         text[i].setColor(sf::Color::Red);
+                } else {
+                        text[i].setColor(sf::Color::White);
                 }
                 sf::FloatRect rect = text[i].getLocalBounds();
                 text[i].setOrigin(rect.left + rect.width / 2.0f, rect.top + rect.height / 2.0f);

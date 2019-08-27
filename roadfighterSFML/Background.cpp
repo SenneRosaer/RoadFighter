@@ -76,8 +76,9 @@ void roadfighterSFML::Background::draw()
         window->draw(BG2);
         window->draw(BG3);
 
+
         // If we passed a certain distance draw the finish
-        if (CarTravelledDistance > roadfighter::Entity::Config->getDistance() - 6100) {
+        if (CarTravelledDistance >= roadfighter::Entity::Config->getDistance() - 6200 and CarTravelledDistance <= roadfighter::Entity::Config->getDistance() - 5900) {
                 if (!finishDrawed and !moveFinish) {
 
                         moveFinish = true;
