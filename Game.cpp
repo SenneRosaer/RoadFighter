@@ -273,6 +273,8 @@ void Game::run()
                                                         menuActive = true;
                                                         Scoreboard = false;
                                                         gameEndingTimer = Config->getGameEndingTimer();
+                                                        bossCreated = false;
+                                                        world->setFinalscores({});
                                                         break;
                                                 }
                                         }

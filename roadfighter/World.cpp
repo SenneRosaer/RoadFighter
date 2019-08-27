@@ -496,7 +496,6 @@ void roadfighter::World::reset()
         crashes = 0;
         Distance = 0;
         DistanceToNextLevel = roadfighter::Entity::Config->getDistance();
-        finalscores = {};
 
         Player.reset();
         Background.reset();
