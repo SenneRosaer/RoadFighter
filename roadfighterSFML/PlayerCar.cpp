@@ -55,6 +55,9 @@ void roadfighterSFML::PlayerCar::update()
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
                 inputs.push_back("left");
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)){
+                //azerty difference
+                inputs.push_back("left");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
                 inputs.push_back("space");
@@ -66,9 +69,6 @@ void roadfighterSFML::PlayerCar::update()
                 inputs.push_back("down");
         }
 
-        for(auto item: inputs){
-                std::cout << item << std::endl;
-        }
         roadfighter::PlayerCar::update();
 
         UpdateMovement(inputs);
