@@ -64,6 +64,8 @@ void roadfighterSFML::PlayerCar::update()
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
                 inputs.push_back("up");
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z)){
+                inputs.push_back("up");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
                 inputs.push_back("down");
