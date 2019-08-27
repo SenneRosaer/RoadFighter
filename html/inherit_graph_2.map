@@ -1,8 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$classGameError.html" title="GameError" alt="" coords="132,81,217,108"/>
-<area shape="rect" id="node3" href="$classFileError.html" title="FileError" alt="" coords="272,56,343,83"/>
-<area shape="rect" id="node7" href="$classScoreError.html" title="ScoreError" alt="" coords="265,107,349,133"/>
-<area shape="rect" id="node4" href="$classFontLoadError.html" title="FontLoadError" alt="" coords="405,5,509,32"/>
-<area shape="rect" id="node5" href="$classJSONParseError.html" title="JSONParseError" alt="" coords="397,56,517,83"/>
-<area shape="rect" id="node6" href="$classSpriteLoadError.html" title="SpriteLoadError" alt="" coords="401,107,513,133"/>
-</map>

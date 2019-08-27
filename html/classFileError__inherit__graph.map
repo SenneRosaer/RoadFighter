@@ -1,6 +1,0 @@
-<map id="FileError" name="FileError">
-<area shape="rect" id="node4" href="$classFontLoadError.html" title="FontLoadError" alt="" coords="5,229,109,256"/>
-<area shape="rect" id="node5" href="$classJSONParseError.html" title="JSONParseError" alt="" coords="133,229,253,256"/>
-<area shape="rect" id="node6" href="$classSpriteLoadError.html" title="SpriteLoadError" alt="" coords="277,229,389,256"/>
-<area shape="rect" id="node2" href="$classGameError.html" title="GameError" alt="" coords="151,80,236,107"/>
-</map>
