@@ -50,20 +50,24 @@ void roadfighterSFML::PlayerCar::update()
         // checks for input and gives it to the logic side
         std::vector<std::string> inputs;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
                 inputs.push_back("right");
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
-                inputs.push_back("up");
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
-                inputs.push_back("down");
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+                inputs.push_back("left");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
                 inputs.push_back("space");
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
-                inputs.push_back("left");
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+                inputs.push_back("up");
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+                inputs.push_back("down");
+        }
+
+        for(auto item: inputs){
+                std::cout << item << std::endl;
         }
         roadfighter::PlayerCar::update();
 
