@@ -10,4 +10,4 @@ The player can also shoot using space
 With shooting you can destroy other cars but not rocks
 Every car hit gives you bonus score
 There is also another racer that can race with you to the finish and if you finish first you get bonus score
-At the end of the third level there is a boss fight
+At the end of the third level there is a boss fight.
